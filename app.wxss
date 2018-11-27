@@ -1,0 +1,103 @@
+/**app.wxss**/
+@import "common/lib/weui.wxss";
+@import "common/lib/widget/weui-button/weui-button.wxss";
+.container {
+  height: 100%;
+  display: block;
+  width: 100%;
+ background:#f1f4f7
+} 
+
+
+.width_25{width: 25%}
+.color_red{color: red;font-size: 25px}
+.color_white{color: white}
+.bloc{display: block;font-size: 15px}
+.page-head{margin: 15px;display: flex;flex-direction: column;border-radius: 10px;background: white;}
+.m_cheng{background:#f1f4f7;height:10px}
+.m_footer{background: white;border-top: thin solid #ebebeb}
+.m_footer .footer_logo{width:50px;height:50px;text-align:center}
+.m_active{color: #5ECD98}
+.mt_10{margin: 10px}
+/* 梦想池box */
+.menu{padding-top: 10px;margin: 5px}
+.memu_act{border-bottom: solid medium #04bbff}
+.menu_unact{border-bottom:solid medium #bfbfbf;}
+.box_huzhu{margin: 15px;background: white;border-radius: 5px;position: relative}
+.box_huzhu .box_chizi{width: 40%;background: #5ecd98;border-radius:5px;opacity: 0.8;text-align: center;color: white;padding: 5px 5px 5px 5px;font-size: 30rpx;position: absolute;top: -5px;left: 10px}
+/* 未中奖 */
+.no_reward{position: relative}
+.no_reward .pic{position: absolute;background-image: url(http://cloud.antit.top/no_reward.png);z-index: 111;background-repeat:no-repeat; width: 131px;height: 62px;left: 50%;margin-left: -40px}
+.reward .pic{position: absolute;background-image: url(http://cloud.antit.top/reward.png);z-index: 111;width: 158px;height: 128px;left: 50%;margin-left: -79px;margin-top:-30px}
+.cent{text-align: center}
+.col_jindu{position: relative}
+.col_baifenbi{color: red;position: absolute;left: 45%;top:-5px}
+/* 栅格化 */
+.row {
+  display: block;
+  margin: 0px;
+}
+
+.col {
+  display: flex;
+  font-family: -apple-system-font, "Helvetica Neue", sans-serif;
+  font-size: 17px;
+}
+
+.col>.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9,
+.col-10, .col-11, .col-12 {
+  overflow: hidden;
+}
+
+.col-1 {
+  width: 8.33333333333333%;
+}
+
+.col-2 {
+  width: 16.6666666666666%;
+}
+
+.col-3 {
+  width: 25%;
+}
+
+.col-4 {
+  width: 33.3333333333333%;
+  text-align: center
+}
+
+.col-5 {
+  width: 41.6666666666666%;
+}
+
+.col-6 {
+  width: 50%;
+}
+
+.col-7 {
+  width: 58.333333333333333%;
+}
+
+.col-8 {
+  width: 66.66666666666666%;
+}
+
+.col-9 {
+  width: 75%;
+}
+
+.col-10 {
+  width: 83.33333333333333%;
+}
+
+.col-11 {
+  width: 91.66666666666666%;
+}
+
+.col-12 {
+  width: 100%;
+}
+
+.x-center {
+  text-align: center;
+}

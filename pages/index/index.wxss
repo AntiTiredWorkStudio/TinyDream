@@ -1,0 +1,27 @@
+/**index.wxss**/
+/* .page-head{margin: 10px;display: flex;flex-direction: column;border-radius: 10px} */
+.page-head-title{display: flex;flex-direction: row;margin-top: 10px;margin-bottom: 5px}
+.w_logo{width: 30%;align-items: center;justify-content: center;position: relative}
+.image{position: absolute;top: -4rpx}
+.w_name{position: absolute;left: 60rpx}
+.w_desc{width: 70%;text-align: center}
+
+.wm_box{display: flex;flex-direction: column;margin: 10px;
+border-radius: 10px;margin-top: 20px;}
+.wm_header{display: flex;flex-direction: row;background: white;border-radius: 10px}
+.wm_menxiang{width: 40%;background: #5ecd98;border-radius: 0 0 5px 5px;opacity: 0.8;text-align: center;color: white;padding: 5px 5px 5px 5px;font-size: 30rpx;margin-left:10px}
+.wm_time{width: 60%;text-align: center;font-size: 30rpx;padding: 5px 5px 5px 5px; }
+.timer{color: white;background: black;padding: 0px 5px 0px 5px;border-radius: 3px}
+.wm_body{display: flex;flex-direction: row;text-align: center;padding-top: 20px;position: relative;background: white}
+.weui-btn{color: white;background: #e9ba65;border-radius: 10px;position: absolute;bottom: 10px;}
+
+.wm_jindu{display: flex;flex-direction: row;background: white;padding:10px 0px 10px 0px;border-radius: 0 0 10px 10px}
+.m_jine{margin-left: 15px}
+.wm_progress{width: 50%;border-radius: 10px;position: relative;margin-left: 10px}
+.baifenbi{position: absolute;left: 45%;top: 8px;color: white}
+
+.page-buzhou{margin: 15px;display: flex;flex-direction: column;background: white;margin-top: 10px;border-radius: 10px;margin-bottom: 100px}
+.mat_30{margin-left: 30px;margin-top: 12px;font-size: 14px}
+
+/* .m_footer{border-top: solid thin #5ecd98} */
+

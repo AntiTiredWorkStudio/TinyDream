@@ -1,0 +1,83 @@
+<!--pages/reward/reward.wxml-->
+<!--pages/mx_wangjie/mx_wangjie.wxml-->
+<!--pages/mx_jinxing.wxml-->
+<!-- <text>pages/mx_jinxing.wxml</text> -->
+<view class='container'>
+  <view class='page-header'>
+    <view class='menu col' >
+       <view class='col-4 memu_act'>
+        <text>进行中梦想池</text>
+      </view>
+      <view class='col-4 menu_unact'>
+        <text>我参与的梦池</text>
+      </view>
+      <view class='col-4 menu_unact'>
+        <text>往届梦想池</text>
+      </view>
+    </view>
+  </view>
+ <view class='page-body'>
+ <!-- 盒子 -->
+  <view class='box_huzhu'>
+     <view class='box_chizi'>梦想互助池001</view>
+     <view class='col no_reward' style='padding-top:35px'>
+      <view class='pic'>
+      </view>
+      <view class='col-8'  style='text-align:center'>
+        <view class='col'>
+          <view class='col-6'>
+          <text class='bloc'>金额已达</text>
+          <text class='bloc'><text class='color_red'>17.6</text>万元</text>
+          </view>
+          <view class='col-6'>
+          <text class='bloc'>价格</text>
+          <text class='bloc'><text class='color_red'>10</text>元/份</text>
+          </view>
+        </view>
+      </view>
+      <view class='col-4'>
+      <button style='color:white;background:#e60012;border-radius:15px;margin-right:10px'>点击查看</button>
+      </view>
+     </view>
+     <view class='col'>
+      <view class='col-8'><view style='margin-top:5px;margin-left:10px'>距离结束：<text>35:28:26</text></view></view>
+     </view>
+     <view class='col' style='margin-left:10px'>
+      <view class='col-6'>
+        <!-- 进度条 -->
+        <view class='col_jindu' style='margin-top:8px'>
+           <progress class='wm_progress' percent='88' activeColor='#5ecd98' backgroundColor='#a0a0a0' stroke-width='20'>
+           <text class='col_baifenbi'>88%</text>
+           </progress>
+        </view>
+      </view>
+      <view class='col-4'>
+        <text class=''>已购：<text class='color_red'>23</text>份</text>
+      </view>
+       <view class='col-2'>
+       <image src='http://cloud.antit.top/share.png' class='' style='width:35px;height:35px'></image>
+      </view>
+     </view>
+  </view>
+<!-- 盒子结束 -->
+
+ </view>
+ <!-- 底部导航栏 -->
+ <view class="weui-footer_fixed-bottom m_footer row">
+    <view class='col'>
+      <view class='col-4 m_active'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc'>参与互动</text> 
+    </view>
+    <view class='col-4'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc'>小梦想</text> 
+    </view>
+    <view class='col-4'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc' >我的</text> 
+    </view>
+    </view>
+  </view>
+  <!-- 底部结束 -->
+</view>

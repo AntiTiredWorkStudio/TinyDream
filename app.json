@@ -1,0 +1,18 @@
+{
+  "pages": [
+   
+    "pages/mx_naicha/mx_naicha",
+    "pages/reward/reward",
+    
+    "pages/mx_wangjie/mx_wangjie",
+    "pages/mx_jinxing/mx_jinxing",
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "梦想池",
+    "navigationBarTextStyle": "black"
+  }
+}

@@ -1,0 +1,45 @@
+<!--pages/mx_naicha/mx_naicha.wxml-->
+<!-- <text>pages/mx_naicha/mx_naicha.wxml</text> -->
+<!-- <view class='container'> -->
+<view class=''>
+ <view class='page-header'>
+    <view class='menu col'>
+      <view class='col-4 memu_act'>
+        <text>我的小梦想</text>
+      </view>
+      <view class='col-4 menu_unact'>
+        <text>我中标的梦想池</text>
+      </view>
+      <view class='col-4 menu_unact'>
+        <text>梦想规则</text>
+      </view>
+    </view>
+  </view>
+ <view class='page-body'>
+  <view class='box_huzhu' style='text-align:center;color:white;background:#6dceaa'>
+    <text class='bloc' style='padding-top:15px'>开个奶茶店</text>
+    <text class='bloc' style='padding:10px 0 5px 0'>从小我热爱美食，酷爱奶茶，一直有......</text>
+  </view>
+  <view class=''>
+    <image src='http://cloud.antit.top/add.png' style='height:50px;width:50px;display:block;margin:0 auto'></image>
+  </view>
+ </view>
+ <!-- 底部导航栏 -->
+ <view class="weui-footer_fixed-bottom m_footer row">
+    <view class='col'>
+      <view class='col-4 m_active'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc'>参与互动</text> 
+    </view>
+    <view class='col-4'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc'>小梦想</text> 
+    </view>
+    <view class='col-4'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc' >我的</text> 
+    </view>
+    </view>
+  </view>
+  <!-- 底部结束 -->
+</view>
