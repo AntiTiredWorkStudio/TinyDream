@@ -1,0 +1,73 @@
+<!--pages/mx_wode/mx_wode.wxml-->
+<!--pages/mx_guihua/mx_guihua.wxml-->
+<!-- <text>pages/mx_guihua/mx_guihua.wxml</text> -->
+<!--pages/mx_naicha/mx_naicha.wxml-->
+<!-- <text>pages/mx_naicha/mx_naicha.wxml</text> -->
+<!-- <view class='container'> -->
+<view class='mx_container'>
+ <view class='page-header'>
+   <view class='col box_goumai'>
+      <view class='col-4'>
+         <text class='bloc'><text class='color_red'>20</text>个</text>
+          <text class='bloc' style='color:#3fab79'>参与中的梦想</text>
+      </view>
+      <view class='col-4'>
+         <text class='bloc'>￥<text class='color_red'>200000</text></text>
+          <text class='bloc' style='color:#3fab79'>已获得互助总金额</text>
+      </view>
+      <view class='col-4'>
+         <text class='bloc'><text class='color_red'>5</text>个</text>
+          <text class='bloc' style='color:#3fab79'>当日购买梦想数</text>
+      </view>
+    </view>
+  </view>
+ <view class='page-body'>
+  <view class='box_huzhu row'>
+  <!-- 梦想池 -->
+    <view class=' col box_list'>
+      <text class='col-11'>我参与互助的梦想池</text>
+      <text class='col-1'>>></text>
+    </view>
+     <!-- 梦想池 -->
+    <view class=' col box_list'>
+      <text class='col-11'>我参与互助的梦想池</text>
+      <text class='col-1'>>></text>
+    </view>
+     <!-- 梦想池 -->
+    <view class=' col box_list'>
+      <text class='col-11'>我参与互助的梦想池</text>
+      <text class='col-1'>>></text>
+    </view>
+     <!-- 梦想池 -->
+    <view class=' col box_list'>
+      <text class='col-11'>我参与互助的梦想池</text>
+      <text class='col-1'>>></text>
+    </view>
+     <!-- 梦想池 -->
+    <view class=' col box_list'>
+      <text class='col-11'>我参与互助的梦想池</text>
+      <text class='col-1'>>></text>
+    </view>
+    
+  </view>
+  
+ </view>
+ <!-- 底部导航栏 -->
+ <view class="weui-footer_fixed-bottom m_footer row">
+    <view class='col'>
+      <view class='col-4 m_active'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc'>参与互动</text> 
+    </view>
+    <view class='col-4'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc'>小梦想</text> 
+    </view>
+    <view class='col-4'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc' >我的</text> 
+    </view>
+    </view>
+  </view>
+  <!-- 底部结束 -->
+</view>

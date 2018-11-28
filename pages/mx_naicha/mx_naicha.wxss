@@ -1,1 +1,2 @@
 /* pages/mx_naicha/mx_naicha.wxss */
+.box_huzhu{margin: 15px;background: white;border-radius: 5px;position: relative;text-align:center;color:white;background:#6dceaa}

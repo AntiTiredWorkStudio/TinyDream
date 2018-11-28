@@ -1,13 +1,15 @@
 {
   "pages": [
-   
+    "pages/mx_wode/mx_wode",
+    "pages/mx_erweima/mx_erweima",
+    "pages/mx_guihua/mx_guihua",
     "pages/mx_naicha/mx_naicha",
     "pages/reward/reward",
-    
     "pages/mx_wangjie/mx_wangjie",
     "pages/mx_jinxing/mx_jinxing",
     "pages/index/index",
     "pages/logs/logs"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

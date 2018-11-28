@@ -1,0 +1,4 @@
+/* pages/mx_wode/mx_wode.wxss */
+.box_huzhu{margin: 15px}
+.box_list{border-bottom: thin solid #e7e7e7;padding-bottom: 8px;padding-top: 20px}
+.box_goumai{margin:15px;background:#f5f5f5;padding-top:15px;padding-bottom:15px;border-radius:10px}

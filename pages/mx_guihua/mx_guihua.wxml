@@ -1,0 +1,54 @@
+<!--pages/mx_guihua/mx_guihua.wxml-->
+<!-- <text>pages/mx_guihua/mx_guihua.wxml</text> -->
+<!--pages/mx_naicha/mx_naicha.wxml-->
+<!-- <text>pages/mx_naicha/mx_naicha.wxml</text> -->
+<!-- <view class='container'> -->
+<view class=''>
+ <view class='page-header'>
+    <view class='menu col'>
+      <view class='col-4 memu_act'>
+        <text>我的小梦想</text>
+      </view>
+      <view class='col-4 menu_unact'>
+        <text>我中标的梦想池</text>
+      </view>
+      <view class='col-4 menu_unact'>
+        <text>梦想规则</text>
+      </view>
+    </view>
+  </view>
+ <view class='page-body'>
+  <view class='box_huzhu box_list row'>
+    <view class=' col'>
+      <text class='col-2'></text>
+      <text class='col-8'>平台提供梦想规划服务</text>
+      <text class='col-2'>></text>
+    </view>
+  </view>
+  <view class='box_huzhu box_list row'>
+    <view class=' col'>
+      <text class='col-2'></text>
+      <text class='col-8'>平台提供梦想规划服务</text>
+      <text class='col-2'>></text>
+    </view>
+  </view>
+ </view>
+ <!-- 底部导航栏 -->
+ <view class="weui-footer_fixed-bottom m_footer row">
+    <view class='col'>
+      <view class='col-4 m_active'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc'>参与互动</text> 
+    </view>
+    <view class='col-4'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc'>小梦想</text> 
+    </view>
+    <view class='col-4'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc' >我的</text> 
+    </view>
+    </view>
+  </view>
+  <!-- 底部结束 -->
+</view>

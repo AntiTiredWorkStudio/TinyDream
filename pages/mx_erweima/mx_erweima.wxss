@@ -1,0 +1,6 @@
+/* pages/mx_erweima/mx_erweima.wxss */
+.box_huzhu{margin: 15px;background: #dfeee8;border-radius: 5px;box-shadow:5px 5px 5px #d5e2ee}
+.box_jieshao{display:block;width:215px;margin:0 auto}
+.bloc_baohan{width:250px;margin:0 auto;padding-top:20px;display:block}
+.bloc_img{padding-top: 20px;height:215px;width:215px;margin:0 auto;display: block}
+.bloc1{padding-top: 5px;}
