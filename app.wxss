@@ -11,6 +11,7 @@
 
 
 .width_25{width: 25%}
+.width_30{width: 30%}
 .color_red{color: red;font-size: 25px}
 .color_white{color: white}
 .bloc{display: block;font-size: 15px}
@@ -21,11 +22,12 @@
 .m_footer .footer_logo{width:50px;height:50px;text-align:center}
 .m_active{color: #5ECD98}
 .mt_10{margin: 10px}
+.mt_20{margin-top: 20px}
 /* 梦想池box */
 .menu{padding-top: 10px;margin: 5px}
 .memu_act{border-bottom: solid medium #04bbff}
 .menu_unact{border-bottom:solid medium #bfbfbf;}
-.box_huzhu .box_chizi{width: 40%;background: #5ecd98;border-radius:5px;opacity: 0.8;text-align: center;color: white;padding: 5px 5px 5px 5px;font-size: 30rpx;position: absolute;top: -5px;left: 10px}
+.box_huzhu .box_chizi{width: 40%;background: #5ecd98;border-radius:5px;opacity: 0.8;text-align: center;color: white;padding: 5px 5px 5px 5px;font-size: 30rpx;position: absolute;left: 20px}
 /* 未中奖 */
 .no_reward{position: relative}
 .no_reward .pic{position: absolute;background-image: url(http://cloud.antit.top/no_reward.png);z-index: 111;background-repeat:no-repeat; width: 131px;height: 62px;left: 50%;margin-left: -40px}

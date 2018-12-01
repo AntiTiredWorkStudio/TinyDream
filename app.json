@@ -1,11 +1,20 @@
 {
   "pages": [
+    "pages/mx_shenfenzheng/mx_shenfengzheng",
+    "pages/mx_xieyi/mx_xieyi",
+    "pages/mx_phone/mx_phone",
+    "pages/mx_canyu/mx_canyu",
+    "pages/mx_zhongjiang/mx_zhongjiang",
+    "pages/reward/reward",
+    "pages/mx_wangjie/mx_wangjie",
+    "pages/mx_kefu/mx_kefu",
+    "pages/mx_zhongbiao/mx_zhongbiao",
+    "pages/mx_zhifu/mx_zhifu",
+    "pages/mx_zhifutianjia/mx_zhifutianjia",
     "pages/mx_wode/mx_wode",
     "pages/mx_erweima/mx_erweima",
     "pages/mx_guihua/mx_guihua",
     "pages/mx_naicha/mx_naicha",
-    "pages/reward/reward",
-    "pages/mx_wangjie/mx_wangjie",
     "pages/mx_jinxing/mx_jinxing",
     "pages/index/index",
     "pages/logs/logs"

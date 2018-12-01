@@ -1,0 +1,10 @@
+/* pages/mx_canyu/mx_canyu.wxss */
+page{background: #f1f4f7}
+.box_huzhu{background: white;margin: 15px;border-radius: 10px;padding-bottom: 10px}
+.wm_time{text-align: center;font-size: 30rpx;padding: 5px 5px 5px 5px; }
+.timer{color: white;background: black;padding: 0px 5px 0px 5px;border-radius: 3px}
+.mx_kefu{font-size: 30rpx;text-decoration: underline;color: #5ecd98;text-align: center;padding: 5px}
+.box_list{padding: 10px 0px 10px 0px;text-align: center;overflow: hidden;text-overflow: ellipsis;border-bottom: solid thin #d1d1d1;}
+/* .list_jieshao{overflow: hidden;text-overflow: ellipsis;} */
+.box_list .col .text{overflow: hidden;text-overflow: ellipsis;}
+.list_zhankai{color:#5ecd98;text-decoration: underline }

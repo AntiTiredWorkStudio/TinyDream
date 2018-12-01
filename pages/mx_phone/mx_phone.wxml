@@ -1,0 +1,38 @@
+<!--pages/mx_phone/mx_phone.wxml-->
+<view class=''>
+ <view class='page-header'></view>
+ <view class='page-body'>
+  <view class='box_huzhu'>
+    <text class='bloc'>当前手机号</text>
+    <text class='bloc' style='text-align:center'>18000000000</text>
+    <text class='bloc'>修改为：</text>
+    <input type='number' placeholder="请输入您修改的手机号" maxlength="11" class='mx_number bloc' style='margin-top:20px'/>
+    <view class='yz_group row' style='width:70%;margin:10px auto'>
+    <view class='col' style='margin-top:30px'>
+    <view class='col-7'><input class='bloc mx_yzput' type='number' placeholder="请输入验证码"  /></view>
+    <view class='col-5'> <button class='mx_yanzheng'>获取验证码</button></view>
+      </view>
+        <view class='flex-item' style='margin:30rpx 0px 30rpx 0px;'><button style='color:white;background:#5ecd98;border-radius:25px;margin-bottom:10px'>提交</button></view>
+    </view>
+  
+  </view>
+ </view>
+ <!-- 底部导航栏 -->
+ <view class="weui-footer_fixed-bottom m_footer row">
+    <view class='col'>
+      <view class='col-4 m_active'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc'>参与互动</text> 
+    </view>
+    <view class='col-4'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc'>小梦想</text> 
+    </view>
+    <view class='col-4'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc' >我的</text> 
+    </view>
+    </view>
+  </view>
+  <!-- 底部结束 -->
+</view>

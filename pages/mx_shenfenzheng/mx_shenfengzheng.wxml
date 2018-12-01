@@ -1,0 +1,67 @@
+<!--pages/mx_shenfenzheng/mx_shenfengzheng.wxml-->
+<!--pages/mx_xieyi/mx_xieyi.wxml-->
+<!--pages/mx_phone/mx_phone.wxml-->
+<view class=''>
+ <view class='page-header'></view>
+ <view class='page-body'>
+  <view class='box_huzhu' style='margin-bottom:100px'>
+    <text class='bloc'>身份证号码</text>
+    <input type='text' placeholder="8656546545612389544" maxlength="11" class='mx_number bloc' style='margin-top:20px'/>
+    <text class='bloc mt_20'>身份证照片</text>
+    <view class='col mt_20'>
+      <view class='col-6 mx_shenfen'>
+       <text>身份证正面</text> 
+       <view class=''>
+    <image src='http://cloud.antit.top/add.png' style='height:50px;width:50px;display:block;margin:0 auto'></image>
+      </view>
+      </view>
+      <view class='col-6 mx_shenfen'>
+       <text>身份证背面</text> 
+       <view class=''>
+    <image src='http://cloud.antit.top/add.png' style='height:50px;width:50px;display:block;margin:0 auto'></image>
+      </view>
+      </view>
+    </view>
+     <!-- 身份证结束 -->
+     <!-- 银行卡开始 -->
+     <text class='bloc mt_20'>银行卡卡号</text>
+    <input type='number' placeholder="8656546545612389544" maxlength="11" class='mx_number bloc' style='margin-top:20px'/>
+    <text class='bloc mt_20'>银行卡正面照片</text>
+    <view class='col mt_20'>
+    <view class='col-6 mx_shenfen mt_20' style='margin:0 auto'>
+      <text>银行卡正面</text> 
+       <view class=''>
+    <image src='http://cloud.antit.top/add.png' style='height:50px;width:50px;display:block;margin:0 auto'></image>
+     </view>
+     </view>
+    </view>
+    
+      
+    <!-- 银行卡结束 -->
+
+    <view class='yz_group row' style='width:70%;margin:10px auto'>
+      <view class='flex-item' style='margin:30rpx 0px 30rpx 0px;'><button style='color:white;background:#5ecd98;border-radius:25px;margin-bottom:10px'>提交</button></view>
+      </view>
+    </view>
+ </view>
+ <!-- 底部导航栏 -->
+ <view class="weui-footer_fixed-bottom m_footer row">
+    <view class='col'>
+      <view class='col-4 m_active'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc'>参与互动</text> 
+    </view>
+    <view class='col-4'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc'>小梦想</text> 
+    </view>
+    <view class='col-4'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc' >我的</text> 
+    </view>
+    </view>
+  </view>
+  <!-- 底部结束 -->
+</view>
+
+

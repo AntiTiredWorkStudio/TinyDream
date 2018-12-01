@@ -1,0 +1,13 @@
+/* pages/mx_shenfenzheng/mx_shenfengzheng.wxss */
+/* pages/mx_xieyi/mx_xieyi.wxss */
+page{background: #f7f7f7}
+.box_huzhu{margin: 15px;background: white;border-radius: 10px;box-shadow: 0px 5px 5px #e0e9f1;padding: 15px}
+.yz_group{font-size: 20px}
+.bloc{font-size: 20px}
+.bloc_15{font-size: 15px;display: block;margin-top: 20px}
+.mx_xieyi{font-size: 15px;display: block;text-indent: 40px;}
+.mx_number{border-bottom:solid thin black;width:85%;margin:0px auto;text-align:center}
+.mx_yzput{text-align:center;border-bottom:solid thin black;margin-top:10px}
+.mx_yanzheng{font-size:13px;border-radius:25px;color:#5ecd98;border:#5ecd98 thin solid;background:white}
+.textarea_text{margin:0 auto;line-height:20px;text-decoration: underline;border: solid thin black;border-radius: 5px;padding:10px 5px 10px 5px;margin-top: 20px}
+.mx_shenfen{background:#f5f5f5;text-align:center;padding:5px;margin:5px}

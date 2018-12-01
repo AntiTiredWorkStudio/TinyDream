@@ -1,0 +1,49 @@
+<!--pages/mx_kefu/mx_kefu.wxml-->
+<!--pages/mx_zhongbiao/mx_zhongbiao.wxml-->
+<view class=''>
+ <view class='page-header'>
+    <view class='menu col'>
+      <view class='col-4 memu_act'>
+        <text>我的小梦想</text>
+      </view>
+      <view class='col-4 menu_unact'>
+        <text>我中标的梦想池</text>
+      </view>
+      <view class='col-4 menu_unact'>
+        <text>梦想规则</text>
+      </view>
+    </view>
+  </view>
+ <view class='page-body'>
+  <view class='box_huzhu'>
+     <text class='bloc'>恭喜您在：<text style='color:#d50000'>梦想互助池001</text> </text>
+     <text class='bloc'>编号：<text style='color:#d50000'>20190101100135486</text> </text>
+     <text class='bloc'>中奖，梦想池实际达到互助金额为<text style='color:#d50000'>180000</text>元，请您在7日内完善信息联系客服领奖！</text>
+      <view class='row box_bt'>
+        
+          <view class='col'>
+            <button class='bt_style col-5'>联系客服</button>
+          </view>
+      </view>
+  </view>
+ </view>
+ <!-- 底部导航栏 -->
+ <view class="weui-footer_fixed-bottom m_footer row">
+    <view class='col'>
+      <view class='col-4 m_active'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc'>参与互动</text> 
+    </view>
+    <view class='col-4'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc'>小梦想</text> 
+    </view>
+    <view class='col-4'>
+      <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+      <text class='bloc' >我的</text> 
+    </view>
+    </view>
+  </view>
+  <!-- 底部结束 -->
+</view>
+
