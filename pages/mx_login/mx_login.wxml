@@ -1,0 +1,12 @@
+<!--pages/mx_login/mx_login.wxml-->
+<!-- <text>pages/mx_login/mx_login.wxml</text> -->
+<view class='container'>
+  <view class='page-header'></view>
+  <view class='page-body'>
+   <image class='bloc' src='/image/canyuhuzhu.png' style='width:200px;height:200px;margin:0 auto;margin-top:30%'></image>
+   <view class='bloc' style=''>
+    <text class='bloc' style='text-align:center;margin-top:20px'>允许微信授权登录</text>
+    <view class='flex-item box_zhifu'><button style='color:white;background:#3fab79;width:80%;border-radius:5px;margin-top:15px'>微信登录</button></view>
+   </view>
+  </view>
+</view>
