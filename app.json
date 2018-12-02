@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/mx_tanchuang/mx_tanchuang",
     "pages/mx_huzhu/mx_huzhu",
     "pages/mx_login/mx_login",
     "pages/index/index",
@@ -20,7 +21,7 @@
     "pages/mx_naicha/mx_naicha",
     "pages/mx_jinxing/mx_jinxing",
     "pages/logs/logs"
-   
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

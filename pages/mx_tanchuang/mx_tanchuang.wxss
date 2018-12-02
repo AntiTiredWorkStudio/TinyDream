@@ -1,0 +1,7 @@
+/* pages/mx_tanchuang/mx_tanchuang.wxss */
+page{background: white}
+.tan_chuang{padding-bottom: 8px;margin:15px}
+.tan_menu{background:#f7f7f7;padding:10px;}
+.tan_list{padding:10px}
+.tan_li{background:white;border-bottom:solid thin #e7e7e7;padding:10px}
+.tan_active{background:#6dceaa;color:white;border-radius:10px}

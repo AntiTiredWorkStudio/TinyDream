@@ -1,0 +1,14 @@
+<!--pages/mx_tanchuang/mx_tanchuang.wxml-->
+<!-- <text>pages/mx_tanchuang/mx_tanchuang.wxml</text> -->
+<view class='tan_chuang'>
+  <view class='tan_target'>
+   <text class='bloc tan_menu'>请选择一个梦想</text>
+  </view>
+  <view class='tan_list'>
+   <text class='bloc tan_li'>有温度的奶茶店</text>
+   <text class='bloc tan_li'>那个吃汉堡是他奇怪的梦想先生</text>
+   <text class='bloc tan_li tan_active'>有温度的奶茶店</text>
+   <text class='bloc tan_li'>有温度的奶茶店</text>
+  </view>
+   <view class='flex-item' style='margin:30rpx 0px 30rpx 0px;'><button style='color:white;background:#5ecd98;width:80%;border-radius:25px;margin-bottom:10px'>提交</button></view>
+</view>
