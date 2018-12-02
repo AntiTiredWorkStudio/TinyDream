@@ -63,7 +63,7 @@
         <view class='mat_30'>3、幸运者的发现互助资金启动梦想</view>
         <view class='mat_30'>4、梦想执行跟踪报道</view>
          <!-- <view class='mat_30'>4、梦想执行跟踪报道</view> -->
-        <navigator url="../reward/reward"><view class='mat_30' style='float:right;margin-right:20rpx;text-decoration:underline'>查看详情</view></navigator>
+        <navigator url="../mx_huzhu/mx_huzhu"><view class='mat_30' style='float:right;margin-right:20rpx;text-decoration:underline'>查看详情</view></navigator>
        </view>
   </view>
   <!-- 底部导航栏 -->

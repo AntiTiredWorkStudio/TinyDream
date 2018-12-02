@@ -1,3 +1,8 @@
+//index.js
+
+//获取应用实例
+const app = getApp()
+var C = app.lib
 // pages/mx_wode/mx_wode.js
 Page({
 
@@ -33,7 +38,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    
   },
 
   /**

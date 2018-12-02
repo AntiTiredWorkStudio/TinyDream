@@ -32,7 +32,7 @@
         </view>
       </view>
       <view class='col-4'>
-      <button id='{{pool.pid}}' bindtap='onPoolJoinn' style='{{pool.btnStyle}}'>{{pool.btnText}}</button>
+      <button id='{{pool.pid}}' bindtap='onPoolControl' style='{{pool.btnStyle}}'>{{pool.btnText}}</button>
       </view>
      </view>
      <view class='col'>

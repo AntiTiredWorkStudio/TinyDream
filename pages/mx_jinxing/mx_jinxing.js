@@ -20,8 +20,8 @@ Page({
     type: {
       selection: "running",
       running: "col-4 memu_act",
-      joined: "col-4 memu_unact",
-      history: "col-4 memu_unact",
+      joined: "col-4 menu_unact",
+      history: "col-4 menu_unact",
     }
   },
 
@@ -140,13 +140,38 @@ Page({
   onShareAppMessage: function () {
 
   },
-  onPoolJoinn : function(target){
-    console.log(target.currentTarget.id);
-      // console.log(res.currentTarget.id)
-      // console.log(app.globalData.openid);
+  onPoolControl: function (target){
+    //console.log(target.currentTarget.id);
+    //console.log(this.data.showingPool);
+   /* if (this.data.showingPool.hasOwnProperty(target.currentTarget.id)){
+      console.log("hasOwnProperty");
+    }*/
+    var page = this;
+    for (var key in this.data.showingPool){
+      //console.log(this.data.showingPool[key]);
+      
+      if (target.currentTarget.id == this.data.showingPool[key].pid){
+        var ustatus = this.data.showingPool[key].ustatus;
+        if (ustatus == "JOIN|AWARD" || ustatus == "JOIN|NOTAWARD" || ustatus == "NONE|NOTAWARD"){
+          page.onPoolView(target);
+        }else{
+          page.onPoolJoin(target);
+        }
+        break;
+      }
+    }
+  },
+  onPoolView:function(target){
+    console.log("onPoolView:" + target.currentTarget.id);
+  },
+  onPoolJoin : function(target){
+    console.log("onPoolJoin:" + target.currentTarget.id);
+
       C.TDRequest(
         "ds", "buy", { uid: app.globalData.openid, pid: target.currentTarget.id },
-        function (code, data) { console.log(data) }, function (code, data) {
+        function (code, data) { 
+          console.log(data)
+        }, function (code, data){
           console.log(data)
           if (code = '11') {
             wx.showModal({
@@ -167,6 +192,7 @@ Page({
 
         }
       )
+
   },
   pushToDreamPoolsList: function (pools) {
     var that = this;
@@ -254,8 +280,8 @@ Page({
           type: {
             selection: type.currentTarget.id,
             running: "col-4 memu_act",
-            joined: "col-4 memu_unact",
-            history: "col-4 memu_unact",
+            joined: "col-4 menu_unact",
+            history: "col-4 menu_unact",
           }
         })
         break;
@@ -264,9 +290,9 @@ Page({
           showingPool: page.data.joinedPool,
           type: {
             selection: type.currentTarget.id,
-            running: "col-4 memu_unact",
+            running: "col-4 menu_unact",
             joined: "col-4 memu_act",
-            history: "col-4 memu_unact",
+            history: "col-4 menu_unact",
           }
         })
         break;
@@ -275,8 +301,8 @@ Page({
           showingPool: page.data.historyPool,
           type: {
             selection: type.currentTarget.id,
-            running: "col-4 memu_unact",
-            joined: "col-4 memu_unact",
+            running: "col-4 menu_unact",
+            joined: "col-4 menu_unact",
             history: "col-4 memu_act",
           }
         })

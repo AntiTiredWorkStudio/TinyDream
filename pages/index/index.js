@@ -221,7 +221,7 @@ var index = Page({
    // console.log(app.globalData.openid);
     C.TDRequest(
       "ds", "buy", { uid: app.globalData.openid,pid:res.currentTarget.id},
-      function (code, data) { console.log(data) }, function (code, data) { 
+      function (code, data) { console.log(data) }, function (code, data)        { 
         console.log(data)
         if(code = '11'){
           wx.showModal({
@@ -242,6 +242,7 @@ var index = Page({
 
         }
     )
+    
   },
   /**
    * 生命周期函数--监听页面卸载

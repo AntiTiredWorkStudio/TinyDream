@@ -27,6 +27,7 @@ module.exports.TDRequest = function(module,action,data,success,failed){
         if(res.data.code=="0"){
           if(res.data.actions){
             if (self.app!=null && self.app.doAction) {
+              //console.log("do action!")
               self.app.doAction(res.data.actions)
             }
           }
@@ -71,15 +72,20 @@ module.exports.GetPageIntendDataDync = function (tkey,callback) {
 }
 
 module.exports.Intend = function(tUrl,redict = false){
+  //var self = this;
   if(!redict){
     wx.navigateTo({
       url: tUrl,  //跳转页面的路径，可带参数 ？隔开，不同参数用 & 分隔；相对路径，不需要.wxml后缀
-      success: function () { },        //成功后的回调；
+      success: function () {
+
+       },        //成功后的回调；
     })
   } else {
     wx.redirectTo({
       url: tUrl,  //跳转页面的路径，可带参数 ？隔开，不同参数用 & 分隔；相对路径，不需要.wxml后缀
-      success: function () { },        //成功后的回调；
+      success: function () {
+
+       },        //成功后的回调；
     })
   }
 }

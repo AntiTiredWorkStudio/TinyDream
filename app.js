@@ -29,9 +29,24 @@ App({
       this.currentPage.onPageIntend();
     }
   },
+  doFirstAction:function(){
+    if (Object.keys(this.actionList).length>0){
+      var key = Object.keys(this.actionList)[0]
+      console.log(this.actionList[key])
+      //this.doAction(this.actionList[0])
+      if (this.actionRegisted.hasOwnProperty(key)) {
+        this.actionRegisted[key](this.actionList[key])
+        wx.showToast({
+          title:"有未完成动作，不可退出",
+          icon:"none"
+        })
+      }
+    }
+  },
   doAction:function(actions){
-    console.log("do action:", Object.keys(actions)[0])
+   // console.log("do action:", Object.keys(actions)[0])
     this.actionList = actions;
+    //console.log("do action:", actions)
     if (this.actionRegisted.hasOwnProperty(Object.keys(actions)[0])){
       this.actionRegisted[Object.keys(actions)[0]](actions[Object.keys(actions)[0]]);
     }else{
@@ -41,11 +56,26 @@ App({
   actionList : {},//动作列表
   actionRegisted :{
     editdream:function(data){
-      console.log("editdream:",data)
+      console.log("editdream:", data)
+      C.Intend("../mx_xieyi/mx_xieyi",true)
+    },
+    selectdream: function (data) {
+      console.log("selectdream:", data)
+      //C.Intend("../mx_naicha/mx_naicha", true);
+    },
+    buy: function (data) {
+      console.log("buy:", data)
+    },
+    pay: function (data) {
+      console.log("pay:", data)
     }
   },//注册的动作
   registAction : function(id,func){//注册动作
     actionRegisted[id]=func
+  },
+  onPageExit:function(){
+//    console.log("onPageExit")
+    this.doFirstAction()
   },
   currentPage:null,
   lib:null,

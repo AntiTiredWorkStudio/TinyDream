@@ -28,7 +28,7 @@ page{
 /* 梦想池box */
 .menu{padding-top: 10px;margin: 5px}
 .memu_act{border-bottom: solid medium #04bbff}
-.menu_unact{border-bottom:solid medium #bfbfbf;}
+.menu_unact{border-bottom:solid medium #afafaf;}
 .box_huzhu .box_chizi{width: 40%;background: #5ecd98;border-radius:5px;opacity: 0.8;text-align: center;color: white;padding: 5px 5px 5px 5px;font-size: 30rpx;position: absolute;left: 20px}
 /* 未中奖 */
 .no_reward{position: relative}
