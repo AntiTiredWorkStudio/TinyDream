@@ -8,11 +8,12 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"autoAudits": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.0",
-	"appid": "wxf39ef35c8ff31016",
+	"libVersion": "2.4.1",
+	"appid": "wx8da643be043ceadc",
 	"projectname": "TinyDream",
 	"debugOptions": {
 		"hidedInDevtools": []

@@ -1,8 +1,9 @@
 {
   "pages": [
+    "pages/index/index",
+    "pages/mx_phone/mx_phone",
     "pages/mx_shenfenzheng/mx_shenfengzheng",
     "pages/mx_xieyi/mx_xieyi",
-    "pages/mx_phone/mx_phone",
     "pages/mx_canyu/mx_canyu",
     "pages/mx_zhongjiang/mx_zhongjiang",
     "pages/reward/reward",
@@ -16,7 +17,6 @@
     "pages/mx_guihua/mx_guihua",
     "pages/mx_naicha/mx_naicha",
     "pages/mx_jinxing/mx_jinxing",
-    "pages/index/index",
     "pages/logs/logs"
     
   ],

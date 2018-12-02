@@ -3,75 +3,67 @@
   <view class='m_cheng'></view>
   <view class="page-head" >
      <!-- 互助小梦想 -->
-     <view class="page-head-title">
+     <view wx:if="{{!authVisible}}" animation="{{orderAnimation}}" wx:for="{{orderList}}" wx:for-item="order" wx:for-index="seek" class="page-head-title">
         <view class='w_logo flex-item'>
-        <image class="image flex-item" style='width:20px;height:20px;margin:5px' src="/image/1.png"/>
-        <text class='w_name flex-item'>王军</text>
+        <image class="image flex-item" style='width:20px;height:20px;margin:5px' src="{{order.headicon}}"/>
+        <text class='w_name flex-item'>{{order.cNickname}}</text>
         </view>
-      <view class='w_desc flex-item'>一分钟参与互助了1份小梦想</view>
-     </view>
-     <!-- 互助小梦想 -->
-     <view class="page-head-title">
-        <view class='w_logo flex-item'>
-        <image class="image flex-item" style='width:20px;height:20px;margin:5px' src="/image/1.png"/>
-        <text class='w_name flex-item'>王军</text>
-        </view>
-      <view class='w_desc flex-item'>一分钟参与互助了1份小梦想</view>
-     </view>
-     <!-- 互助小梦想 -->
-     <view class="page-head-title">
-        <view class='w_logo flex-item'>
-        <image class="image flex-item" style='width:20px;height:20px;margin:5px' src="/image/1.png"/>
-        <text class='w_name flex-item'>王军</text>
-        </view>
-      <view class='w_desc flex-item'>一分钟参与互助了1份小梦想</view>
+      <view class='w_desc flex-item'>{{order.ctime}}前参与互助了{{order.dcount}}份小梦想</view>
      </view>
   </view>
   
-  <view class="page-body">
-    <view class="page-section wm_box">
+  <view  class="page-body">
+    <view wx:if="{{!authVisible}}" class="page-section wm_box">
       <view class='flex-item wm_header'>
-        <view class='wm_menxiang'>梦想互助池001</view>
+        <view class='wm_menxiang'>{{mainpool.ptitle}}</view>
         <view class='wm_time'>距离结束
-          <text class='timer'>35</text>:
-          <text class='timer'>28</text>:
-          <text class='timer'>26</text>
+          <text class='timer'>{{poolHours}}</text>:
+          <text class='timer'>{{poolMinutes}}</text>:
+          <text class='timer'>{{poolSeconds}}</text>
         </view>
       </view>
        <view class='wm_body'>
          <view class='wm_money width_25'>
           <text class='bloc'>互助目标</text>
-          <text class='bloc'><text class='color_red'>20</text>万元</text>
+          <text class='bloc'><text class='color_red'>{{mainpool.tbill*0.000001}}</text>万元</text>
          </view>
          <view class='wm_timer width_25'>
           <text class='bloc'>时限</text>
-          <text class='bloc'><text class='color_red'>2</text>天</text>
+          <text class='bloc'><text class='color_red'>{{mainpool.duration/86400}}</text>天</text>
          </view>
          <view class='wm_prace width_25'>
           <text class='bloc'>价格</text>
-          <text class='bloc'><text class='color_red'>10</text>/份</text>
+          <text class='bloc'><text class='color_red'>{{mainpool.ubill*0.01}}</text>¥/份</text>
          </view>
          <view class='wm_btn width_25'>
-           <button class='weui-btn'>参与</button>
+           <button id="{{mainpool.pid}}" class='weui-btn' bindtap="joinin">参与</button>
          </view>
        </view>
        <view class='wm_jindu'>
-           <progress class='wm_progress' percent='88' activeColor='#5ecd98' backgroundColor='#a0a0a0' stroke-width='20'>
-           <text class='baifenbi'>88%</text>
+           <progress class='wm_progress' percent='{{mainpool.cbill/mainpool.tbill*100}}' activeColor='#5ecd98' backgroundColor='#a0a0a0' stroke-width='20'>
+           <text class='baifenbi'>{{mainpool.cbill/mainpool.tbill*100}}%</text>
            </progress>
-           <view class='m_jine'>金额已达<text class='color_red'>17.6</text>万元</view>
+           <view class='m_jine'>金额已达<text class='color_red'>{{mainpool.realBill}}</text>{{mainpool.unit}}</view>
         </view>
-        <view class='flex-item' style='margin:40rpx 0px 20rpx 0px'><button style='color:white;background:#5ecd98;width:80%;border-radius:25px'>更多梦想池</button></view>
+        <view class='flex-item' style='margin:40rpx 0px 20rpx 0px'><button style='color:white;background:#5ecd98;width:80%;border-radius:25px' bindtap="morePools">更多梦想池</button>
+        
+        </view>
        </view>
+
+      <view wx:if="{{authVisible}}" class='flex-item' style='margin:40rpx 0px 20rpx 0px'>
+        <text class='.index-ft'>小程序将会获取您的用户信息，请您授权</text>
+      <button style='color:white;background:#5ecd98;width:80%;border-radius:25px' open-type="getUserInfo" bindgetuserinfo='onGetUserInfo'>允许授权</button>
+        </view>
+
        <!-- 小梦想互助步骤 -->
-       <view class='page-buzhou'>
+       <view wx:if="{{!authVisible}}"  class='page-buzhou'>
         <view style='margin-top:10px'>小梦想互助步骤</view>
         <view class='mat_30'>1、多人参与互助完成梦想池互动目标</view>
         <view class='mat_30'>2、公平公正通过彩票号码产生1名幸运者</view>
         <view class='mat_30'>3、幸运者的发现互助资金启动梦想</view>
         <view class='mat_30'>4、梦想执行跟踪报道</view>
          <!-- <view class='mat_30'>4、梦想执行跟踪报道</view> -->
-        <navigator url="#"><view class='mat_30' style='float:right;margin-right:20rpx;text-decoration:underline'>查看详情</view></navigator>
+        <navigator url="../reward/reward"><view class='mat_30' style='float:right;margin-right:20rpx;text-decoration:underline'>查看详情</view></navigator>
        </view>
   </view>
   <!-- 底部导航栏 -->
@@ -79,15 +71,15 @@
        <view class='col'>
         <view class='col-4 m_active'>
         <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
-        <text class='bloc'>参与互动</text> 
+        <text class='bloc'>参与互动</text>
         </view>
        <view class='col-4'>
-        <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
-        <text class='bloc'>小梦想</text> 
+        <navigator redirect="true" url="../mx_naicha/mx_naicha"><image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+        <text class='bloc'>小梦想</text> </navigator>
         </view>
         <view class='col-4'>
-        <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
-        <text class='bloc' >我的</text> 
+        <navigator redirect="true" url="../mx_wode/mx_wode"><image src='/image/canyuhuzhu.png' class='footer_logo'></image>
+        <text class='bloc' >我的</text> </navigator>
         </view>
        </view>
       </view>

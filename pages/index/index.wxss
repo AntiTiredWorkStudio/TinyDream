@@ -18,7 +18,7 @@ border-radius: 10px;margin-top: 20px;}
 .wm_jindu{display: flex;flex-direction: row;background: white;padding:10px 0px 10px 0px;border-radius: 0 0 10px 10px}
 .m_jine{margin-left: 15px}
 .wm_progress{width: 50%;border-radius: 10px;position: relative;margin-left: 10px}
-.baifenbi{position: absolute;left: 45%;top: 8px;color: white}
+.baifenbi{position: absolute;left: 45%;top: 10px;color: white;font-size:14px}
 
 .page-buzhou{margin: 15px;display: flex;flex-direction: column;background: white;margin-top: 10px;border-radius: 10px;margin-bottom: 100px}
 .mat_30{margin-left: 30px;margin-top: 12px;font-size: 14px}

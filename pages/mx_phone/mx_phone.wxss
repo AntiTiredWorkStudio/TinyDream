@@ -5,4 +5,4 @@ page{background: #f7f7f7}
 .bloc{font-size: 20px}
 .mx_number{border-bottom:solid thin black;width:70%;margin:10px auto;text-align:center}
 .mx_yzput{text-align:center;border-bottom:solid thin black;margin-top:10px}
-.mx_yanzheng{font-size:13px;border-radius:25px;color:#5ecd98;border:#5ecd98 thin solid;background:white}
+.mx_yanzheng{font-size:12px;border-radius:25px;color:#5ecd98;border:#5ecd98 thin solid;background:white;float: right}

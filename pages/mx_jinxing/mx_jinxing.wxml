@@ -3,52 +3,52 @@
 <view class='container'>
   <view class='page-header'>
     <view class='menu col'>
-      <view class='col-4 memu_act'>
-        <text>进行中梦想池</text>
+      <view id="running"  bindtap="switchType" class='{{type.running}}' >
+        <text >进行中梦想池</text>
       </view>
-      <view class='col-4 menu_unact'>
+      <view id="joined" bindtap="switchType" class='{{type.joined}}'>
         <text>我参与的梦想池</text>
       </view>
-      <view class='col-4 menu_unact'>
+      <view id="history" bindtap="switchType" class='{{type.history}}'>
         <text>往届梦想池</text>
       </view>
     </view>
   </view>
- <view class='page-body'>
+ <view class='page-body' style='margin-bottom:9em'>
  <!-- 盒子 -->
-  <view class='box_huzhu'>
-     <view class='box_chizi'>梦想互助池001</view>
+  <view wx:for="{{showingPool}}" wx:for-item="pool" wx:for-index="seek" class='box_huzhu'>
+     <view class='box_chizi'>{{pool.ptitle}}</view>
      <view class='col ' style='padding-top:35px'>
       <view class='col-8' style='text-align:center'>
         <view class='col'>
           <view class='col-6'>
           <text class='bloc'>金额已达</text>
-          <text class='bloc'><text class='color_red'>17.6</text>万元</text>
+          <text class='bloc'><text class='color_red'>{{pool.realBill}}</text>{{pool.unit}}</text>
           </view>
           <view class='col-6'>
           <text class='bloc'>价格</text>
-          <text class='bloc'><text class='color_red'>10</text>元/份</text>
+          <text class='bloc'><text class='color_red'>{{pool.ubill*0.01}}</text>元/份</text>
           </view>
         </view>
       </view>
       <view class='col-4'>
-      <button style='color:white;background:#e9ba65;border-radius:15px;margin-right:10px'>参与互助</button>
+      <button id='{{pool.pid}}' bindtap='onPoolJoinn' style='{{pool.btnStyle}}'>{{pool.btnText}}</button>
       </view>
      </view>
      <view class='col'>
-      <view class='col-12'><view class='' style='margin-top:5px;margin-left:10px'>距离结束：<text>35:28:26</text></view></view>
+      <view class='col-12'><view class='' style='margin-top:5px;margin-left:10px'><text>{{pool.tdescription}}</text></view></view>
      </view>
      <view class='col' style='margin-left:10px'>
       <view class='col-6'>
         <!-- 进度条 -->
         <view class='col_jindu' style='margin-top:8px'>
-           <progress class='wm_progress' percent='88' activeColor='#5ecd98' backgroundColor='#a0a0a0' stroke-width='20'>
-           <text class='col_baifenbi'>88%</text>
+           <progress class='wm_progress' percent='{{pool.percent}}' activeColor='#5ecd98' backgroundColor='#a0a0a0' stroke-width='20'>
+           <text class='col_baifenbi'>{{pool.percent}}%</text>
            </progress>
         </view>
       </view>
       <view class='col-4'>
-        <text class=''>已购：<text class='color_red'>23</text>份</text>
+        <text class=''>已购：<text class='color_red'>{{pool.pcount}}</text>份</text>
       </view>
        <view class='col-2'>
        <image src='http://cloud.antit.top/share.png' class='' style='width:35px;height:35px'></image>
@@ -59,7 +59,7 @@
 
  </view>
  <!-- 底部导航栏 -->
- <view class="weui-footer_fixed-bottom m_footer row">
+ <!--view class="weui-footer_fixed-bottom m_footer row">
     <view class='col'>
       <view class='col-4 m_active'>
       <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
@@ -74,6 +74,6 @@
       <text class='bloc' >我的</text> 
     </view>
     </view>
-  </view>
+  </view-->
   <!-- 底部结束 -->
 </view>
