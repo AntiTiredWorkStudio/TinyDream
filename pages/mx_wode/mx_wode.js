@@ -10,14 +10,58 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    owner:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //us=selfinfo&uid=a01
+    var page = this
+    C.TDRequest('us','selfinfo',
+    {
+      uid:app.globalData.openid
+    },
+    function(code,data){
+      console.log(data)
+      var selfInfo = data.selfinfo
+      selfInfo.totalReward = C.BillExchange(parseInt(selfInfo.totalReward))
+      page.setData({
+        owner: selfInfo
+      })
+      if(options.hasOwnProperty('pay')){
+        page.myPool()
+      }
+    },
+    function(code,data){
 
+    }
+    )
+  },
+  myPool:function(){
+    C.TDRequest(
+      "ds", 'plists', {
+      },
+      function (code, data) {
+        //  console.log(data.poolCount) 
+        var poolCount = data.poolCount;
+        C.TDRequest(
+          "ds", "plistg",
+          {
+            uid: app.globalData.openid,
+            min: 1,
+            max: 10
+          }, function (code, data) {
+            //  console.log(data)
+            C.SetPageIntendData("jinxing", data.Pools);
+            C.Intend("../mx_jinxing/mx_jinxing?pcount=" + poolCount + "&min=1&max=10&type=mine");
+          },
+          function (code, data) { console.log(data) }
+        );
+      },
+      function (code, data) { console.log(data) }
+    );
   },
 
   /**
@@ -67,5 +111,11 @@ Page({
    */
   onShareAppMessage: function () {
 
+  }
+
+  , onCommunicate:function(){
+    wx.makePhoneCall({
+      phoneNumber: '15601390196',
+    })
   }
 })

@@ -11,14 +11,42 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    editID:"",
+    titleText:"",
+    contentText:""
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+      //console.log("编辑",options)
+      var page = this
+      if(options.hasOwnProperty('id')){
+        //options.id
+        var tstate = ''
+        if (options.hasOwnProperty('state')){
+          tstate = options.state
+        }
+        C.TDRequest('dr', 'gdream', { uid: app.globalData.openid, did: options.id, state: tstate},
+        function(code,data){  
+          console.log(data)
+          page.setData({
+            editID: options.id,
+            titleText: data.dream.title,
+            contentText: data.dream.content
+          })
+          page.title = data.dream.title
+          page.content = data.dream.content
+        },
+          function (code, data) {
+            console.log(data)
+            wx.showToast({
+              title: data.context,
+            })
+            wx.navigateBack()
+        })
+      }
   },
 
   /**
@@ -46,7 +74,7 @@ Page({
    */
   onUnload: function () {
     //console.log("on hide")
-    app.onPageExit()
+    //app.onPageExit()
   },
 
   /**
@@ -84,6 +112,7 @@ Page({
   },
   submitDream: function (res) {
     console.log("提交梦想")
+    var page = this
     if(!this.agree){
       wx.showToast({
         title:"还未同意用户协议",
@@ -92,6 +121,15 @@ Page({
       return;
     }
 
+    if (C.strIsNull(page.title) || C.strIsNull(page.content)){     
+      wx.showToast({
+        title: "梦想信息填写不完整",
+        icon: "none"
+      })
+      return;
+    }
+    
+
     //dr = dedit & uid=a01 & title=关于程序的梦想 & content=我就特么想赶紧做完这个
     var dataset = {
       uid: app.globalData.openid,
@@ -99,19 +137,63 @@ Page({
       content: this.content,
       //action: app.actionList
     }
+
+    var force = false
+
     if(Object.keys(app.actionList).length>0){
       dataset.action = JSON.stringify(app.actionList)
       console.log(app.actionList);
+      force = true
     }
-
-    C.TDRequest("dr","dedit",
-      dataset, 
-      function(code,data){
-        console.log(data)
-      },
-      function (code, data) {
-        console.log(data)
-      }
-    )
+    if (this.data.editID != ""){
+      C.TDRequest("dr", "gedit",
+        {
+          uid:app.globalData.openid,
+          did:page.data.editID,
+          contentList:JSON.stringify(
+            {
+              title: page.title,
+              content: page.content
+            }
+          )
+        },
+        function (code, data) {
+          console.log(data)
+          wx.navigateBack()
+          app.currentPage.updateList()
+          wx.showToast({
+            title: '修改成功',
+            icon:'success'
+          })
+        },
+        function (code, data) {
+          console.log(data)
+          wx.showToast({
+            title: data.context,
+            icon: "none"
+          })
+        }
+      )
+    }else{
+      C.TDRequest("dr","dedit",
+        dataset, 
+        function(code,data){
+          console.log(data)
+          console.log(force)
+          if(!force){
+            wx.navigateBack()
+            app.currentPage.updateList()
+  //          console.log("current Page",app.currentPage)
+          }
+        },
+        function (code, data) {
+          console.log(data)
+          wx.showToast({
+            title:data.context,
+            icon:"none"
+          })
+        }
+      )
+    }
   }
 })

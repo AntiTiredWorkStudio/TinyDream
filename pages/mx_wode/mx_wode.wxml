@@ -8,15 +8,15 @@
  <view class='page-header'>
    <view class='col box_goumai'>
       <view class='col-4'>
-         <text class='bloc'><text class='color_red'>20</text>个</text>
+         <text class='bloc'><text class='color_red'>{{owner.totalJoin}}</text>个</text>
           <text class='bloc' style='color:#3fab79'>参与中的梦想</text>
       </view>
       <view class='col-4'>
-         <text class='bloc'>￥<text class='color_red'>200000</text></text>
+         <text class='bloc'><text class='color_red'>{{owner.totalReward.value}}</text>{{owner.totalReward.unit}}</text>
           <text class='bloc' style='color:#3fab79'>已获得互助总金额</text>
       </view>
       <view class='col-4'>
-         <text class='bloc'><text class='color_red'>5</text>个</text>
+         <text class='bloc'><text class='color_red'>{{owner.dayBuy}}</text>个</text>
           <text class='bloc' style='color:#3fab79'>当日购买梦想数</text>
       </view>
     </view>
@@ -24,36 +24,72 @@
  <view class='page-body'>
   <view class='box_huzhu row'>
   <!-- 梦想池 -->
-    <view class=' col box_list'>
+    <view bindtap='myPool' class=' col box_list'>
       <text class='col-11'>我参与互助的梦想池</text>
       <text class='col-1'>>></text>
     </view>
      <!-- 梦想池 -->
+     <navigator navigator="true" url="../mx_phone/mx_phone"><view class=' col box_list'>
+     <text class='col-11'>手机号管理</text>
+      <text class='col-1'>>></text>
+    </view></navigator>
+     <!-- 梦想池 -->
+    <navigator navigator="true" url="../mx_shenfenzheng/mx_shenfengzheng">
     <view class=' col box_list'>
-      <text class='col-11'>我参与互助的梦想池</text>
+      <text class='col-11'>实名认证</text>
       <text class='col-1'>>></text>
     </view>
+    </navigator>
      <!-- 梦想池 -->
+    <!--view class=' col box_list'>
+      <text class='col-11'>池主申请</text>
+      <text class='col-1'>>></text>
+    </view-->
+     <!-- 梦想池 --> 
+      <navigator navigator="true" url="../mx_huzhu/mx_huzhu">
     <view class=' col box_list'>
-      <text class='col-11'>我参与互助的梦想池</text>
+      <text class='col-11'>常见问题</text>
       <text class='col-1'>>></text>
     </view>
+    </navigator>
      <!-- 梦想池 -->
-    <view class=' col box_list'>
-      <text class='col-11'>我参与互助的梦想池</text>
-      <text class='col-1'>>></text>
-    </view>
-     <!-- 梦想池 -->
-    <view class=' col box_list'>
-      <text class='col-11'>我参与互助的梦想池</text>
+    <view bindtap='onCommunicate'  class=' col box_list'>
+      <text class='col-11'>联系客服</text>
       <text class='col-1'>>></text>
     </view>
     
   </view>
   
  </view>
+
  <!-- 底部导航栏 -->
-  <view class="weui-footer_fixed-bottom m_footer row">
+
+ <view class="weui-footer_fixed-bottom m_footer row">
+    <view class='col'>
+      <view class='col-4'>
+      <!-- sprite_canyu_act -->
+      <navigator redirect="true" url="../index/index">
+      <view class='sprite_xiaomengxiang'></view>
+      <text class='text_footer'>参与互动</text>
+       </navigator>
+    </view>
+    <view class='col-4'>
+      <!-- sprite_xiaomengxiang_act -->
+      <navigator redirect="true" url="../mx_naicha/mx_naicha">
+      <view class='sprite_canyu'></view>
+      <text class='text_footer'>小梦想</text>
+       </navigator>
+    </view>
+    <view class='col-4 m_active'>
+      <!-- sprite_wode_act -->
+      <view class='sprite_wode_act'></view>
+      <text class='text_footer'>我的</text>
+    </view>
+    </view>
+  </view>
+
+
+  <!--view class="weui-footer_fixed-bottom m_footer row">
        <view class='col'>
         <view class='col-4 m_active'>
         <navigator redirect="true" url="../index/index"><image src='/image/canyuhuzhu.png' class='footer_logo'></image>
@@ -68,6 +104,6 @@
         <text class='bloc' >我的</text>
         </view>
        </view>
-      </view>
+      </view-->
   <!-- 底部结束 -->
 </view>

@@ -1,0 +1,11 @@
+<!--pages/mx_tanchuang/mx_tanchuang.wxml-->
+<!-- <text>pages/mx_tanchuang/mx_tanchuang.wxml</text> -->
+<view class='tan_chuang'>
+  <view class='tan_target'>
+   <text class='bloc tan_menu'>请选择一个梦想 <text style='color:#ff0000'>(仅限未中标的梦想)</text></text>
+  </view>
+  <view class='tan_list'>
+   <text wx:for="{{dlist}}" wx:for-item="dream" wx:for-index="seek" id="{{dream.did}}" bindtap='onSelection' class='{{dream.select}}'>{{dream.title}}</text>
+  </view>
+   <view bindtap='onSubmit' class='flex-item' style='margin:30rpx 0px 30rpx 0px;'><button style='color:white;background:#5ecd98;width:80%;border-radius:25px;margin-bottom:10px'>提交</button></view>
+</view>

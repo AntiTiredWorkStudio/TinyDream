@@ -7,3 +7,7 @@
 .color_green{color: #0cc66d}
 .color_grey{color: #a0a0a0}
 .color_redk{color: #e60012}
+.list_zhankai{color:#5ecd98;text-decoration: underline }
+.box_list{padding: 10px 0px 10px 0px;text-align: center;overflow: hidden;text-overflow: ellipsis;border-bottom: solid thin #d1d1d1;}
+/* .list_jieshao{overflow: hidden;text-overflow: ellipsis;} */
+.box_list .col .text{overflow: hidden;text-overflow: ellipsis;}

@@ -3,6 +3,8 @@
   <view class='m_cheng'></view>
   <view class="page-head" >
      <!-- 互助小梦想 -->
+    
+
      <view wx:if="{{!authVisible}}" animation="{{orderAnimation}}" wx:for="{{orderList}}" wx:for-item="order" wx:for-index="seek" class="page-head-title">
         <view class='w_logo flex-item'>
         <image class="image flex-item" style='width:20px;height:20px;margin:5px' src="{{order.headicon}}"/>
@@ -12,8 +14,22 @@
      </view>
   </view>
   
-  <view  class="page-body">
-    <view wx:if="{{!authVisible}}" class="page-section wm_box">
+
+      <!--view wx:if="{{authVisible}}" class='flex-item' style='margin:40rpx 0px 20rpx 0px'>
+        <text class='.index-ft'>小程序将会获取您的用户信息，请您授权</text>
+      <button style='color:white;background:#5ecd98;width:80%;border-radius:25px' open-type="getUserInfo" bindgetuserinfo='onGetUserInfo'>允许授权</button>
+        </view-->
+  <view wx:if="{{authVisible}}" class='page-body'>
+   <image class='bloc' src='/image/canyuhuzhu.png' style='width:200px;height:200px;margin:0 auto;margin-top:30%'></image>
+   <view class='bloc' style=''>
+    <text class='bloc' style='text-align:center;margin-top:20px'>小程序将会获取您的用户信息，请您授权</text>
+    <view class='flex-item box_zhifu'><button open-type="getUserInfo" bindgetuserinfo='onGetUserInfo' style='color:white;background:#3fab79;width:80%;border-radius:5px;margin-top:15px'>微信授权</button></view>
+   </view>
+  </view>
+
+
+  <view class="page-body">
+    <view  wx:if="{{!authVisible}}"  class="page-section wm_box">
       <view class='flex-item wm_header'>
         <view class='wm_menxiang'>{{mainpool.ptitle}}</view>
         <view class='wm_time'>距离结束
@@ -41,7 +57,7 @@
        </view>
        <view class='wm_jindu'>
            <progress class='wm_progress' percent='{{mainpool.cbill/mainpool.tbill*100}}' activeColor='#5ecd98' backgroundColor='#a0a0a0' stroke-width='20'>
-           <text class='baifenbi'>{{mainpool.cbill/mainpool.tbill*100}}%</text>
+           <text class='baifenbi'>{{(mainpool.percentVal)}}%</text>
            </progress>
            <view class='m_jine'>金额已达<text class='color_red'>{{mainpool.realBill}}</text>{{mainpool.unit}}</view>
         </view>
@@ -49,11 +65,6 @@
         
         </view>
        </view>
-
-      <view wx:if="{{authVisible}}" class='flex-item' style='margin:40rpx 0px 20rpx 0px'>
-        <text class='.index-ft'>小程序将会获取您的用户信息，请您授权</text>
-      <button style='color:white;background:#5ecd98;width:80%;border-radius:25px' open-type="getUserInfo" bindgetuserinfo='onGetUserInfo'>允许授权</button>
-        </view>
 
        <!-- 小梦想互助步骤 -->
        <view wx:if="{{!authVisible}}"  class='page-buzhou'>
@@ -66,8 +77,34 @@
         <navigator url="../mx_huzhu/mx_huzhu"><view class='mat_30' style='float:right;margin-right:20rpx;text-decoration:underline'>查看详情</view></navigator>
        </view>
   </view>
+  <!-- 作为演示，即将开始装逼  -->
   <!-- 底部导航栏 -->
-      <view class="weui-footer_fixed-bottom m_footer row">
+ <view wx:if="{{!authVisible}}" class="weui-footer_fixed-bottom m_footer row">
+    <view class='col'>
+      <view class='col-4 m_active'>
+      <!-- sprite_canyu_act -->
+      <view class='sprite_xiaomengxiang_act'></view>
+      <text class='text_footer'>参与互动</text>
+    </view>
+    <view class='col-4'>
+      <!-- sprite_xiaomengxiang_act -->
+      <navigator redirect="true" url="../mx_naicha/mx_naicha">
+      <view class='sprite_canyu'></view>
+      <text class='text_footer'>小梦想</text>
+       </navigator>
+    </view>
+    <view class='col-4'>
+      <!-- sprite_wode_act -->
+      <navigator redirect="true" url="../mx_wode/mx_wode">
+      <view class='sprite_wode'></view>
+      <text class='text_footer'>我的</text>
+      </navigator>
+    </view>
+    </view>
+  </view>
+  <!-- 底部结束 -->
+  <!-- 底部导航栏 -->
+      <!-- <view wx:if="{{!authVisible}}" class="weui-footer_fixed-bottom m_footer row">
        <view class='col'>
         <view class='col-4 m_active'>
         <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
@@ -82,6 +119,6 @@
         <text class='bloc' >我的</text> </navigator>
         </view>
        </view>
-      </view>
+      </view> -->
       <!-- 底部结束 -->
 </view>

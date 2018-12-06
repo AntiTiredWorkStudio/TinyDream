@@ -1,2 +1,12 @@
 /* pages/mx_naicha/mx_naicha.wxss */
-.box_huzhu{margin: 15px;background: white;border-radius: 5px;position: relative;text-align:center;color:white;background:#6dceaa}
+.box_huzhu{margin: 15px;background: white;border-radius: 5px;position: relative;text-align:center;color:white;background:#6dceaa;box-shadow:5px 5px 5px #d5e2ee;}
+/* pages/mx_zhongbiao/mx_zhongbiao.wxss */
+.box_zhongbiao{margin: 15px 10px 0px 10px;background: #dfeee8;border-radius: 10px;padding: 15px;box-shadow: 0px 5px 5px #d5e2ee;height: 250px;margin-top:50px}
+.bt_style{color:#3fab79;background:white;border:#3fab79 thin solid;border-radius:25px;margin-top:20px;margin-bottom: 15px}
+.bloc{font-size: 16px;margin-top: 8px}
+
+.box_erweima{margin: 15px;background: #dfeee8;border-radius: 5px;box-shadow:5px 5px 5px #d5e2ee;margin-top:50px}
+.box_jieshao{display:block;width:215px;margin:0 auto}
+.bloc_baohan{width:250px;margin:0 auto;padding-top:20px;display:block}
+.bloc_img{padding-top: 20px;height:215px;width:215px;margin:0 auto;display: block}
+.bloc1{padding-top: 5px;}

@@ -56,6 +56,12 @@ var index = Page({
       app.onLoadPage(this)
     }
 
+    /*显示时间戳
+    wx.showModal({
+      title: 'time',
+      content: ''+C.PRCTIME(),
+    })*/
+
     if (app.globalData.hasInfo){//如果已经获取过用户信息
       console.log("已经获取过用户信息")
       this.onInfoReady()
@@ -86,6 +92,7 @@ var index = Page({
     
     pool.realBill = billResult.value;
     pool.unit = billResult.unit;
+    pool.percentVal = Math.floor((pool.cbill / pool.tbill) *10000)/100
     console.log("billResult:",billResult);
     this.setData({
       mainpool:pool
@@ -154,7 +161,11 @@ var index = Page({
     })
   },
   onInfoReady :function(){
+
     var page = this
+    wx.showShareMenu({
+      withShareTicket:true
+    })
     console.log("onInfoReady")
     C.TDRequest("us", "enter",
       {
@@ -168,6 +179,7 @@ var index = Page({
           }
         )
         page.onPageLaunch(data)
+
         console.log(data);
       }, function (code, data) {
         console.log(data);
@@ -187,6 +199,7 @@ var index = Page({
     //启动订单轮播
     that.switchOrders();
     this.orderInterval = setInterval(that.switchOrders, 8000);
+    //console.log("showShareMenu")
   },
   morePools: function (res) {
 
@@ -201,7 +214,7 @@ var index = Page({
           "ds", "plistg",
           {
             uid: app.globalData.openid,
-            min: 1,
+            min: 0,
             max: 10
           }, function (code, data) {
            //  console.log(data)
@@ -223,7 +236,7 @@ var index = Page({
       "ds", "buy", { uid: app.globalData.openid,pid:res.currentTarget.id},
       function (code, data) { console.log(data) }, function (code, data)        { 
         console.log(data)
-        if(code = '11'){
+        if(code == '11'){
           wx.showModal({
             title: '提示',
             content: '您还没有绑定手机号',
@@ -238,6 +251,12 @@ var index = Page({
               }
             }
           })
+        }
+        if (code == '18'){
+            wx.showToast({
+              title: '已到达当日购买上限',
+              icon : 'none'
+            })
         }
 
         }

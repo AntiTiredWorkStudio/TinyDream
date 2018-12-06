@@ -2,7 +2,7 @@
 <!-- <text>pages/mx_jinxing.wxml</text> -->
 <view class='container'>
   <view class='page-header'>
-    <view class='menu col'>
+    <view class='menu col fixed_menu'>
       <view id="running"  bindtap="switchType" class='{{type.running}}' >
         <text >进行中梦想池</text>
       </view>
@@ -14,9 +14,9 @@
       </view>
     </view>
   </view>
- <view class='page-body' style='margin-bottom:9em'>
+ <view class='page-body' style='margin-bottom:9em;padding-top:35px'>
  <!-- 盒子 -->
-  <view wx:for="{{showingPool}}" wx:for-item="pool" wx:for-index="seek" class='box_huzhu'>
+  <view id="{{pool.pid}}" bindtap='poolInfo' wx:for="{{showingPool}}" wx:for-item="pool" wx:for-index="seek" class='box_huzhu'>
      <view class='box_chizi'>{{pool.ptitle}}</view>
      <view class='col ' style='padding-top:35px'>
       <view class='col-8' style='text-align:center'>
@@ -32,7 +32,7 @@
         </view>
       </view>
       <view class='col-4'>
-      <button id='{{pool.pid}}' bindtap='onPoolControl' style='{{pool.btnStyle}}'>{{pool.btnText}}</button>
+      <button id='{{pool.pid}}' catchtap='onPoolControl' style='{{pool.btnStyle}}'>{{pool.btnText}}</button>
       </view>
      </view>
      <view class='col'>
@@ -50,8 +50,10 @@
       <view class='col-4'>
         <text class=''>已购：<text class='color_red'>{{pool.pcount}}</text>份</text>
       </view>
-       <view class='col-2'>
-       <image src='http://cloud.antit.top/share.png' class='' style='width:35px;height:35px'></image>
+      
+       <view catchtap='sharePool' class='col-2'>
+      <button id="{{pool.ptitle}}" open-type='share'  style='background-image:url("http://cloud.antit.top/share.png");background-size:100%;width:35px;height:35px;border:none'  plain='true'></button>
+       <!-- <image src='http://cloud.antit.top/share.png' class='' style='width:35px;height:35px'></image> -->
       </view>
      </view>
   </view>

@@ -3,7 +3,7 @@
 <!-- <view class='container'> -->
 <view class=''>
  <view class='page-header'>
-    <view class='menu col'>
+    <view class='menu col fixed_menu'>
       <view id="mine"  bindtap="switchType" class='{{type.mine}}' >
         <text >我的小梦想</text>
       </view>
@@ -15,19 +15,82 @@
       </view>
     </view>
   </view>
- <view class='page-body'>
-  <view bindtap="onEdit"  wx:for="{{dreams}}" wx:for-item="dream" wx:for-index="seek" id="{{dream.did}}"  class='box_huzhu' style='text-align:center;color:white;background:#6dceaa'>
+ <view wx:if="{{type.selection=='mine'}}" class='page-body' style='margin-bottom:80px;padding-top:45px'>
+  <view  bindtap="onEdit"  wx:for="{{dreams}}" wx:for-item="dream" wx:for-index="seek" id="{{dream.did}}"  class='box_huzhu' style='text-align:center;color:white;background:#6dceaa'>
     <text class='bloc' style='padding-top:15px'>{{dream.title}}</text>
     <text class='bloc' style='padding:10px 0 5px 0'>{{dream.content}}</text>
   </view>
-  <view>
+  <view wx:if='{{canAddDream}}' class='add_box' style='display:block; padding-bottom:60px'>
      <navigator navigate="true" url="../mx_xieyi/mx_xieyi">
       <image src='http://cloud.antit.top/add.png' style='height:50px;width:50px;display:block;margin:0 auto'></image> 
      </navigator>
   </view>
  </view>
+ <!--我中标的梦想-->
+ <view wx:if="{{type.selection=='bingo'}}" wx:for="{{bingos}}" wx:for-item="bingo" wx:for-index="seek" class='box_zhongbiao'>
+     <text class='bloc'>恭喜您在：<text style='color:#d50000'>{{bingo.pool.ptitle}}</text> </text>
+     <text class='bloc'>编号：<text style='color:#d50000'>{{bingo.lottery.lid}}</text> </text>
+     <text class='bloc'>梦想：<text style='color:#d50000'>{{bingo.title}}</text> </text>
+     <text class='bloc'>中奖，梦想池实际达到互助金额为<text style='color:#d50000'>{{bingo.pool.cbill/100}}</text>元，请您在7日内完善信息联系客服领奖！</text>
+      <view class='row box_bt'>
+        <view wx:if="{{bingo.state=='DOING'}}" class='col'>
+         <view class='col-5'>
+            <button id="{{bingo.did}}" bindtap='onDreamPerfect' class='bt_style'>完善梦想</button> 
+          </view>
+           <view class='col-1'></view>
+           <view class='col-1'></view>
+          <view class='col-5'>
+            <button id="{{bingo.did}}" bindtap='onDreamVerify' class='bt_style'>提交审核</button>
+          </view>
+        </view>
+       <view wx:if="{{bingo.state=='VERIFY'}}"  class='col'>
+            <button id="{{bingo.did}}" bindtap='onCommunicate' class='bt_style col-5'>联系客服</button>
+       </view>
+      </view>
+
+  </view>
+ <!--我中标的梦想-->
+
+<!-- 梦想规划-->
+
+ <view wx:if="{{type.selection=='plan'}}" class='box_erweima'>
+  <text class='bloc_baohan'>规划服务包含：</text> 
+   <view class='box_jieshao'>
+    <text class='bloc1'> 1、相关实体和电子书籍</text>
+     <text class='bloc1'>2、专业导师半年的指导</text>
+     <text class='bloc1'>3、梦想执行宣传报道软文</text>
+   </view>
+     <image class='bloc_img' src='http://tdream.antit.top/qrcode_gxh.png'></image>
+     <text class='bloc1' style='text-align:center;padding-bottom:20px'>扫描二维码联系客服</text>
+  </view>
+
+<!-- 梦想规划-->
+
  <!-- 底部导航栏 -->
-  <view class="weui-footer_fixed-bottom m_footer row">
+ <view class="weui-footer_fixed-bottom m_footer row">
+    <view class='col'>
+      <view class='col-4'>
+      <!-- sprite_canyu_act -->
+      <navigator redirect="true" url="../index/index">
+      <view class='sprite_xiaomengxiang'></view>
+      <text class='text_footer'>参与互动</text>
+       </navigator>
+    </view>
+    <view class='col-4 m_active'>
+      <!-- sprite_xiaomengxiang_act -->
+      <view class='sprite_canyu_act'></view>
+      <text class='text_footer'>小梦想</text>
+    </view>
+    <view class='col-4'>
+      <!-- sprite_wode_act -->
+      <navigator redirect="true" url="../mx_wode/mx_wode">
+      <view class='sprite_wode'></view>
+      <text class='text_footer'>我的</text>
+      </navigator>
+    </view>
+    </view>
+  </view>
+  <!--view class="weui-footer_fixed-bottom m_footer row">
        <view class='col'>
         <view class='col-4 m_active'>
         <navigator redirect="true" url="../index/index"><image src='/image/canyuhuzhu.png' class='footer_logo'></image>
@@ -42,6 +105,6 @@
         <text class='bloc' >我的</text> </navigator>
         </view>
        </view>
-      </view>
+      </view-->
   <!-- 底部结束 -->
 </view>

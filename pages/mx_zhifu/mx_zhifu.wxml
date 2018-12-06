@@ -5,7 +5,7 @@
   <view class='page-body'>
     <view class="page-section wm_box">
       <view class='flex-item wm_header'>
-        <view class='wm_menxiang'>梦想互助池001</view>
+        <view class='wm_menxiang'>{{pool.ptitle}}</view>
         <view class='wm_time'>距离结束
           <text class='timer'>35</text>:
           <text class='timer'>28</text>:
@@ -15,22 +15,22 @@
        <view class='wm_body'>
          <view class='wm_money width_30'>
           <text class='bloc'>互助目标</text>
-          <text class='bloc'><text class='color_red'>20</text>万元</text>
+          <text class='bloc'><text class='color_red'>{{pool.rtbill.value}}</text>{{pool.rtbill.unit}}</text>
          </view>
          <view class='wm_timer width_30'>
           <text class='bloc'>时限</text>
-          <text class='bloc'><text class='color_red'>2</text>天</text>
+          <text class='bloc'><text class='color_red'>{{pool.day}}</text>天</text>
          </view>
          <view class='wm_prace width_30'>
           <text class='bloc'>价格</text>
-          <text class='bloc'><text class='color_red'>10</text>/份</text>
+          <text class='bloc'>￥<text class='color_red'>{{pool.rubill}}</text>/份</text>
          </view>
        </view>
        <view class='wm_jindu'>
-           <progress class='wm_progress' percent='88' activeColor='#5ecd98' backgroundColor='#a0a0a0' stroke-width='20'>
-           <text class='baifenbi'>88%</text>
+           <progress class='wm_progress' percent='{{pool.percentVal}}' activeColor='#5ecd98' backgroundColor='#a0a0a0' stroke-width='20'>
+           <text class='baifenbi'>{{pool.percentVal}}%</text>
            </progress>
-           <view class='m_jine'>金额已达<text class='color_red'>17.6</text>万元</view>
+           <view class='m_jine'>金额已达<text class='color_red'>{{pool.realBill}}</text>{{pool.unit}}</view>
         </view>
       </view>
         <!-- 份数 -->
@@ -38,9 +38,9 @@
        <view class='col'>
         <view class='col-6'>份数</view>
         <view class='col-6'>
-         <text class='jian'>-</text>
-         <text class='fenshu'>2</text>
-         <text class='jia'>+</text>
+         <text class='jian' id="-1" bindtap='onChangePiece'>-</text>
+         <text class='fenshu'>{{countPiece}}</text>
+         <text class='jia' id="1" bindtap='onChangePiece'>+</text>
         </view>
        </view>
       </view>
@@ -49,21 +49,21 @@
        <view class='col'>
         <view class='col-6'></view>
         <view class='col-6'>
-        <text class='zongji'>共￥<text class='price'>20</text></text>
+        <text class='zongji'>共￥<text class='price'>{{countPiece*pool.rubill}}</text></text>
         </view>
        </view>
       </view>
       <view class='box_mengxiang row'>
         <view class='col'>
           <text class='col-3'>梦想</text>
-          <text class='col-6'>开个有温度的奶茶店</text>
-          <text class='col-3 tihuan'>替换</text>
+          <text class='col-6'>{{dream.title}}</text>
+          <!--text class='col-3 tihuan'>替换</text-->
         </view>
       </view>
-      <view class='flex-item box_zhifu'><button style='color:white;background:#3fab79;width:80%;border-radius:5px'>微信支付</button></view>
+      <view class='flex-item box_zhifu'><button bindtap='onPay' style='color:white;background:#3fab79;width:80%;border-radius:5px'>微信支付</button></view>
   </view>
   <!-- 底部导航栏 -->
-      <view class="weui-footer_fixed-bottom m_footer row">
+      <!--view class="weui-footer_fixed-bottom m_footer row">
        <view class='col'>
         <view class='col-4 m_active'>
         <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
@@ -78,7 +78,7 @@
         <text class='bloc' >我的</text> 
         </view>
        </view>
-      </view>
+      </view-->
 
       <!-- 底部结束 -->
 </view>
