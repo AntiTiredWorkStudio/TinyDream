@@ -13,9 +13,29 @@ Page({
     pool:{},
     dream:{},
     limPiece:0,
-    countPiece:1
+    countPiece: 1,
+    cd: {
+      h: 0,
+      m: 0,
+      s: 0
+    }
   },
 
+  countdownInterval: null,
+  countDown:function(){
+    var sec = (Math.floor(this.data.pool.ptime) + parseInt(Math.floor(this.data.pool.duration))) - Math.floor(C.PRCTIME())
+    // console.log(sec)
+    var th = Math.floor(sec / 3600);
+    var tm = Math.floor(Math.floor(sec % 3600) / 60);
+    var ts = Math.floor(sec % 60);
+    this.setData({
+      cd: {
+        h: th,
+        m: tm,
+        s: ts
+      }
+    });
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -32,6 +52,7 @@ Page({
           console.log(data)
            var aPool = C.DreamPoolAnalysis(data.pool)
            console.log(aPool)
+        page.countdownInterval = setInterval(page.countDown, 1000);
           page.setData({
             pool: aPool ,
             dream: targetDream,

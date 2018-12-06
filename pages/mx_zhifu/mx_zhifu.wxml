@@ -7,9 +7,9 @@
       <view class='flex-item wm_header'>
         <view class='wm_menxiang'>{{pool.ptitle}}</view>
         <view class='wm_time'>距离结束
-          <text class='timer'>35</text>:
-          <text class='timer'>28</text>:
-          <text class='timer'>26</text>
+          <text class='timer'>{{cd.h}}</text>:
+          <text class='timer'>{{cd.m}}</text>:
+          <text class='timer'>{{cd.s}}</text>
         </view>
       </view>
        <view class='wm_body'>
