@@ -97,7 +97,12 @@ App({
               C.Intend("../mx_zhifu/mx_zhifu", true)
             }
           } else {
-            C.Intend("../mx_jinxing/mx_jinxing", true)
+
+            if (getCurrentPages()[0].route == 'pages/mx_tanchuang/mx_tanchuang') {
+              C.Intend("../index/index", true)
+            } else {
+              C.Intend("../index/index", true)
+            }
           }
         }
       })

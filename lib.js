@@ -96,13 +96,15 @@ module.exports.DreamPoolAnalysis = function(pool){
 }
 
 
-module.exports.Intend = function(tUrl,redict = false){
+module.exports.Intend = function (tUrl, redict = false, onsuccess = null){
   //var self = this;
   if(!redict){
     
     wx.navigateTo({
       url: tUrl,  //跳转页面的路径，可带参数 ？隔开，不同参数用 & 分隔；相对路径，不需要.wxml后缀
       success: function (res) {
+        if(onsuccess)
+        onsuccess(res)
         //console.log("跳转:", res);
        },        //成功后的回调；
        fail:function(res){

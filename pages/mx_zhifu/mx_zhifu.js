@@ -84,7 +84,7 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
     var tbill = page.data.countPiece * page.data.pool.ubill
     console.log(tbill)
 
-    C.TDRequest('ds', 'pay', {
+  /*  C.TDRequest('ds', 'pay', {
       uid: app.globalData.openid,
       oid: app.actionList.pay.oid,
       bill: tbill,
@@ -114,23 +114,30 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
       })
 
     })
-    return
+    return*/
 
 
     C.TDRequest('ds','wxpay',
     {
       oid: app.actionList.pay.oid,
       bill: tbill,
+      uid:app.globalData.openid
     },
     function(code,data){
-      console.log(data)
-
+      console.log("prepayid=" + data.pay.prepayid)
+      console.log(
+        "" + data.pay.timestamp,
+        data.pay.noncestr,
+        "prepayid=" + data.pay.prepayid,
+        data.pay.sign,
+        data.paySign
+      )
       wx.requestPayment({
         timeStamp: ""+data.pay.timestamp,
         nonceStr: data.pay.noncestr,
-        package: data.pay.package,
+        package: 'prepayid='+data.pay.prepayid,
         signType: 'MD5',
-        paySign: data.pay.sign,
+        paySign: data.paySign,
         success(res) {
           console.log(res)
           C.TDRequest('ds', 'pay', {
@@ -165,7 +172,7 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
           })
          },
         fail(res) {
-          console.log(res)
+          console.log("fail:",res)
           wx.showToast({
             title: '支付失败',
             icon: 'none',
@@ -175,7 +182,6 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
               console.log(data)
             }
           })
-          
         }
       })
     },
