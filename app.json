@@ -1,19 +1,24 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/mx_login/mx_login",
+
+    "pages/xiangqingye(new)/xiangqingye(new)",
+    "pages/zhifu(new)/zhifu(new)",
+    "pages/index(new)/index(new)",
+    "pages/mx_zhifu/mx_zhifu",
+    "pages/mx_xieyi/mx_xieyi",
     "pages/mx_tanchuang/mx_tanchuang",
     "pages/mx_huzhu/mx_huzhu",
+    "pages/mx_login/mx_login",
+    
     "pages/mx_phone/mx_phone",
     "pages/mx_shenfenzheng/mx_shenfengzheng",
-    "pages/mx_xieyi/mx_xieyi",
     "pages/mx_canyu/mx_canyu",
     "pages/mx_zhongjiang/mx_zhongjiang",
     "pages/reward/reward",
     "pages/mx_wangjie/mx_wangjie",
     "pages/mx_kefu/mx_kefu",
     "pages/mx_zhongbiao/mx_zhongbiao",
-    "pages/mx_zhifu/mx_zhifu",
     "pages/mx_zhifutianjia/mx_zhifutianjia",
     "pages/mx_wode/mx_wode",
     "pages/mx_erweima/mx_erweima",
@@ -26,7 +31,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "小梦想互助",
+    "navigationBarTitleText": "梦想池",
     "navigationBarTextStyle": "black"
   }
 }

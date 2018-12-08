@@ -4,6 +4,7 @@
 @import "common/lib/widget/weui-button/weui-button.wxss";
 page{
  background:#f1f4f7;
+ font-family: 'PingFangSC-Regular';
 }
 .container {
   height: 100%;
@@ -14,35 +15,22 @@ page{
 
 .width_25{width: 25%}
 .width_30{width: 30%}
-.color_red{color: red;font-size: 25px}
+.col_red{color: red}
+.color_red{color: red;font-size: 35px;}
 .color_white{color: white}
-.bloc{display: block;font-size: 15px}
+.bloc{display: block;font-size: 12px}
 .bloc1{display: block;font-size: 14px}
 .page-head{margin: 15px;display: flex;flex-direction: column;border-radius: 10px;background: white;}
 .m_cheng{background:#f1f4f7;height:10px}
 .m_footer{background: white;border-top: thin solid #ebebeb}
 .m_footer .footer_logo{width:50px;height:50px;text-align:center}
-/* 导航栏的图标 */
-.text_footer{display: block;font-size: 13px}
-.sprite { background-image: url("http://cloud.antit.top/sprite.png"); background-position: -5px -5px; width: 150px; height: 100px; background-repeat: no-repeat; }
-.sprite_canyu{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -5px -55px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
-.sprite_canyu_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -5px -5px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
-
-.sprite_xiaomengxiang{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -55px -55px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
-.sprite_xiaomengxiang_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -55px -5px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
-
-.sprite_wode{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -105px -55px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
-.sprite_wode_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -105px -5px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
-
-
 .m_active{color: #5ECD98}
 .mt_10{margin: 10px}
 .mt_20{margin-top: 20px}
 /* 梦想池box */
-.menu{padding-top: 10px;}
-.fixed_menu{position:fixed;z-index:100;background:#f7f7f7;left:0px;top:0px;width:100%}
+.menu{padding-top: 10px;margin: 5px}
 .memu_act{border-bottom: solid medium #04bbff}
-.menu_unact{border-bottom:solid medium #afafaf;}
+.menu_unact{border-bottom:solid medium #bfbfbf;}
 .box_huzhu .box_chizi{width: 40%;background: #5ecd98;border-radius:5px;opacity: 0.8;text-align: center;color: white;padding: 5px 5px 5px 5px;font-size: 30rpx;position: absolute;left: 20px}
 /* 未中奖 */
 .no_reward{position: relative}
@@ -51,7 +39,6 @@ page{
 .cent{text-align: center}
 .col_jindu{position: relative}
 .col_baifenbi{color: red;position: absolute;left: 45%;top:-5px}
-.success_upload_img{height:100px;width:100%;display:block;margin:0 auto}
 /* 栅格化 */
 .row {
   display: block;

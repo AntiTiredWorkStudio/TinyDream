@@ -1,0 +1,74 @@
+<!--pages/xiangqingye(new)/xiangqingye(new).wxml-->
+<view class='container'>
+  <view class='page-head'></view>
+  <view class='page-body'>
+    <view class='box_huzhu'>
+     <text class='bloc' style='font-size:20px'>基本信息</text>
+     <view class='col huzhu_box'>
+       <view class='col-6'>
+        <text>互助最后完成金额</text>
+       </view>
+       <view class='col-6'>
+        <text> <text class='col_red'>500000</text>元</text>
+       </view>
+     </view>
+      <view class='col huzhu_box'>
+       <view class='col-6'>
+        <text>中奖幸运者编号</text>
+       </view>
+       <view class='col-6'>
+        <text> <text class='col_red'>等待开奖</text></text>
+       </view>
+     </view>
+      <view class='col huzhu_box'>
+       <view class='col-6'>
+        <text>参与价格</text>
+       </view>
+       <view class='col-6'>
+        <text> <text class='col_red'>5</text>元/份</text>
+       </view>
+     </view>
+      <view class='col huzhu_box'>
+       <view class='col-6'>
+        <text>距离结束</text>
+       </view>
+       <view class='col-6'>
+        <text class='timer'>55</text>:
+        <text class='timer'>55</text>:
+      </view>
+     </view>
+      <view class='col huzhu_box'>
+       <view class='col-6'>
+        <text>参与互助人数</text>
+       </view>
+       <view class='col-6'>
+        <text>4590人</text>
+      </view>
+     </view>
+     <view class='yz_group row' style='width:70%;margin:5px auto'>
+      <view class='flex-item' style='margin:30rpx 0px 30rpx 0px;'><button style='color:white;background:#e9ba65;border-radius:10px;'>参与互助</button></view>
+      </view>
+    </view>
+    <!-- 结束 -->
+    <view class='menu col'>
+      <view class='col-6 memu_act'>
+        <text>我的编号</text>
+      </view>
+      <view class='col-6 menu_unact'>
+        <text>参与用户</text>
+      </view>
+    </view>
+    <view class='col box_list'>
+     <view class='col-6 box_li'>20190101100135486</view>
+    <view class='col-6 box_li'>20190101100135486</view>
+    </view>
+    <view class='col box_list'>
+     <view class='col-6 box_li'>20190101100135486</view>
+     <view class='col-6 box_li'>20190101100135486</view>
+    </view>
+    <view class='col box_list'>
+     <view class='col-6 box_li'>20190101100135486</view>
+    <view class='col-6 box_li'>20190101100135486</view>
+    </view>
+  </view>
+</view>
