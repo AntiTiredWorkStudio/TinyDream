@@ -134,6 +134,7 @@ Page({
     switch (this.data.type.selection) {
       case "running":
         page.onTypeRunningLaunch(false,function(object){
+          
           page.setData({
             showingPool: object.poolData,
           })
@@ -158,49 +159,6 @@ Page({
         })
         break;
     }
-   /* console.log("upload");
-    var page = this;
-    var tMin = parseInt(page.data.start)+3
-    var tMax = 3
-    if (tMin > page.data.poolcount){
-      tMin = page.data.poolcount;
-    }
-    if (tMin >= page.data.poolcount){
-      console.log("全部加载完毕")
-      wx.showToast({
-        title: '已经到最底部了',
-        icon: 'none'
-      })
-      return;
-    }
-    this.setData(
-      {
-        start: tMin,
-        end: tMax,
-      }
-    );
-    console.log(tMin,tMax);
-    wx.showToast({
-      title: '正在加载',
-      icon:'loading'
-    })
-    C.TDRequest(
-      "ds", "plistg",
-      {
-        uid: app.globalData.openid,
-        min: page.data.start,
-        max: page.data.end
-      }, function (code, data) {
-        console.log(data)
-        page.pushToDreamPoolsList(data.Pools);
-        page.onloading = false;
-        wx.hideToast()
-      },
-      function (code, data) {
-        console.log(data)
-        page.onloading = false;
-        wx.hideToast()}
-    );*/
   },
 
   /**
@@ -223,34 +181,26 @@ Page({
     }
   },
   onPoolControl: function (target){
-    //console.log(target.currentTarget.id);
-    //console.log(this.data.showingPool);
-   /* if (this.data.showingPool.hasOwnProperty(target.currentTarget.id)){
-      console.log("hasOwnProperty");
-    }*/
     var page = this;
     for (var key in this.data.showingPool){
       //console.log(this.data.showingPool[key]);
-      
+
+     // console.log(target.currentTarget.id, this.data.showingPool[key].pid)
+     // console.log(target.currentTarget.id==this.data.showingPool[key].pid) 
       if (target.currentTarget.id == this.data.showingPool[key].pid){
+        //console.log(page.data.type.selection)
         switch(page.data.type.selection){
           case "running":
             page.onPoolJoin(target);
             break
-          case "finished":
+          case "history":
+          console.log(target)
             page.onPoolView(target);
             break
           case "joined":
             page.onPoolJoin(target);
             break
         }
-        /*var ustatus = this.data.showingPool[key].ustatus;
-        if (ustatus == "JOIN|AWARD" || ustatus == "JOIN|NOTAWARD" || ustatus == "NONE|NOTAWARD"){
-          page.onPoolView(target);
-        }else{
-          page.onPoolJoin(target);
-        }*/
-        break;
       }
     }
   },
@@ -259,9 +209,9 @@ Page({
       
   },
   onPoolView:function(target){
-    //console.log("onPoolView:" + target.currentTarget.id);
+    console.log("onPoolView:" + target.currentTarget.id);
     //C.Intend("../mx_canyu/mx_canyu")
-    this.poolInfo()
+    this.poolInfo(target)
   },
   onPoolJoin : function(target){
     console.log("onPoolJoin:" + target.currentTarget.id);
@@ -308,7 +258,8 @@ Page({
       pools[key].unit = billResult.unit;
       pools[key].percent = Math.ceil(pools[key].cbill / pools[key].tbill * 100)
       var less = (parseInt(pools[key].ptime) + parseInt(pools[key].duration)) - C.PRCTIME()
-      if (less < 0) {
+      //判断条件
+      if (less < 0 || (parseInt(pools[key].cbill) >= parseInt(pools[key].tbill))) {
         pools[key].tdescription = "互助结束"
         pools[key].btnStyle = "color:white;background:#e60012;border-radius:15px;margin-right:10px"
         pools[key].btnText = "点击查看"
@@ -519,9 +470,10 @@ Page({
       //数据处理
       console.log("onTypeRunningPe",data.Pools)
       var cPool = page.poolDataUpgraded(data.Pools)
+      
       console.log("onTypeRunningLaunch",cPool)
       for(var key in cPool){
-        page.runningObject.poolData.push(cPool[key])
+        page.runningObject.poolData.push(C.DreamPoolAnalysis(cPool[key]))
       }
       
       page.runningObject.seek += page.runningObject.size
@@ -575,7 +527,7 @@ Page({
         var cPool = page.poolDataUpgraded(data.Pools)
         console.log(cPool)
         for (var key in cPool) {
-          page.finishedObject.poolData.push(cPool[key])
+          page.finishedObject.poolData.push(C.DreamPoolAnalysis(cPool[key]))
         }
         page.finishedObject.seek += page.finishedObject.size
         if(success)
@@ -629,7 +581,7 @@ Page({
         var cPool = page.poolDataUpgraded(data.Pools)
         console.log(cPool)
         for (var key in cPool) {
-          page.joinedObject.poolData.push(cPool[key])
+          page.joinedObject.poolData.push(C.DreamPoolAnalysis(cPool[key]))
         }
         page.joinedObject.seek += page.joinedObject.size
         if (success)

@@ -1,10 +1,10 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/mx_gongshi/mx_gongshi",
+    "pages/mx_wenti/mx_wenti",
+    "pages/mx_routine/mx_routine",
 
-    "pages/xiangqingye(new)/xiangqingye(new)",
-    "pages/zhifu(new)/zhifu(new)",
-    "pages/index(new)/index(new)",
     "pages/mx_zhifu/mx_zhifu",
     "pages/mx_xieyi/mx_xieyi",
     "pages/mx_tanchuang/mx_tanchuang",
@@ -31,7 +31,7 @@
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "梦想池",
+    "navigationBarTitleText": "小梦想互助",
     "navigationBarTextStyle": "black"
   }
 }

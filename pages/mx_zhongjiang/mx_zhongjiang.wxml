@@ -1,73 +1,90 @@
-<!--pages/mx_zhongjiang/mx_zhongjiang.wxml-->
-<!--pages/reward/reward.wxml-->
-<!--pages/mx_wangjie/mx_wangjie.wxml-->
-<!--pages/mx_jinxing.wxml-->
-<!-- <text>pages/mx_jinxing.wxml</text> -->
+<!-- 新详情页-->
 <view class='container'>
- <view class='page-body'>
- <!-- 盒子 -->
-  <view class='box_huzhu'>
-     <view class='box_chizi'>{{pool.ptitle}}</view>
-     <view class='col' style='padding-top:35px'>
-       <view class='col-6'>
-        <view wx:if='{{cd.h>=0 && cd.m>=0 && cd.s>=0 }}' class='wm_time'>距离结束
-          <text class='timer'>{{cd.h}}</text>:
-          <text class='timer'>{{cd.m}}</text>:
+  <view class='page-head'></view>
+  <view class='page-body'>
+    <view class='box_huzhu'>
+      <view class='box_chizi'>{{pool.ptitle}} </view>
+      <text class='bloc' style='font-size:20px'> </text>
+      <view class='col huzhu_box' style='padding-top:45px'>
+        <view class='col-6'>
+          <text>互助最后完成金额</text>
+        </view>
+        <view class='col-6'>
+          <text> <text class='col_red'>{{pool.realBill}}</text>{{pool.unit}}</text>
+        </view>
+      </view>
+      <view class='col huzhu_box'>
+        <view class='col-6'>
+          <text>中奖幸运者编号</text>
+        </view>
+        <view class='col-6'>
+          <text> <text class='col_red'>{{pstate}}</text></text>
+        </view>
+      </view>
+      <view class='col huzhu_box'>
+        <view class='col-6'>
+          <text>参与价格</text>
+        </view>
+        <view class='col-6'>
+          <text> <text class='col_red'>{{pool.ubill*0.01}}</text>元/份</text>
+        </view>
+      </view>
+      <view class='col huzhu_box'>
+        <view class='col-6'>
+          <text>距离结束</text>
+        </view>
+        <view wx:if="{{pool.tdescription!='互助结束'}}" class='col-6'>
+          <text class='timer'>{{cd.h}}</text>
+          <text style='padding-left:2px;padding-right:2px'>:</text>
+          <text class='timer'>{{cd.m}}</text>
+          <text style='padding-left:2px;padding-right:2px'>:</text>
           <text class='timer'>{{cd.s}}</text>
         </view>
-       </view>
-       <view bindtap='onCommunicate' class='col-5 mx_kefu'>
-         <text class=''>联系客服>></text>
-       </view>
-     </view>
-     <view class='col reward' style='padding-top:15px'>
-      <!--view class='pic'>
-      </view-->
-      <view class='col-10'  style='text-align:center'>
-        <view class='col'>
-          <view class='col-6'>
-          <text class='bloc'>金额已达</text>
-          <text class='bloc'><text class='color_red'>{{pool.realBill}}</text>{{pool.unit}}</text>
-          
-          </view>
-          <view class='col-6'>
-          <text class='bloc'>价格</text>
-          <text class='bloc'><text class='color_red'>{{pool.ubill*0.01}}</text>元/份</text>
-          </view>
+        
+        <view wx:if="{{pool.tdescription=='互助结束'}}" class='col-6'>
+          <text>{{pool.tdescription}}</text>
         </view>
       </view>
-      <view class='col-2'></view>
-     </view>
-     
-     <view class='col' style='margin-left:10px'>
-      <view class='col-6'>
-        <!-- 进度条 -->
-        <view class='col_jindu' style='margin-top:8px'>
-           <progress class='wm_progress' percent='{{pool.percent}}' activeColor='#5ecd98' backgroundColor='#a0a0a0' stroke-width='20'>
-           <text class='col_baifenbi'>{{pool.percent}}%</text>
-           </progress>
+      <view class='col huzhu_box'>
+        <view class='col-6'>
+          <text>参与互助份数</text>
+        </view>
+        <view class='col-6'>
+          <text>{{pool.joincount}}份</text>
         </view>
       </view>
-      <view class='col-4'>
-        <text class=''>已购：<text class='color_red'>{{pool.pcount}}</text>份</text>
-      </view>
-      
-       <view bindtap='sharePool' class='col-2'>
-        <button id="{{pool.ptitle}}" open-type='share' style='background-image:url("http://cloud.antit.top/share.png");background-size:100%;width:35px;height:35px;border:none'  plain='true'></button>
-       <!--image src='http://cloud.antit.top/share.png' class='' style='width:35px;height:35px'></image-->
-      </view>
-     </view>
-     <view  class='flex-item' style='margin:30rpx 0px 30rpx 0px;'><button wx:if='{{type=="code"}}' bindtap='viewDetials' style='color:white;background:#5ecd98;width:80%;border-radius:25px;margin-bottom:10px'>查看本池互助记录</button>
-     <button wx:if='{{type=="detial"}}' bindtap='viewCodes' style='color:white;background:#5ecd98;width:80%;border-radius:25px;margin-bottom:10px'>查看我的编号</button>
-     </view>
-  </view>
 
-<!-- 盒子结束 -->
-  <view  wx:if='{{type=="code"}}'wx:for="{{lottery}}" wx:for-item="lot" wx:for-index="seek" id="{{lottery.lid}}" class='box_huzhu box_list row'>
-    <view class='col'>
+      <view bindtap='sharePool' class='col-2' style='float:right;'>
+        <button id="{{pool.ptitle}}" open-type='share' style='background-image:url("http://cloud.antit.top/share.png");background-size:100%;width:35px;height:35px;border:none;' plain='true'></button>
+      </view>
+      <view class='yz_group row' style='width:70%;margin:5px auto'>
+        <view class='flex-item' style='margin:30rpx 0px 30rpx 0px;'>
+          <button id="{{pool.pid}}" style='{{pool.btnStyle}}' bindtap='onPoolJoin'>{{pool.btnText}}</button>
+        </view>
+      </view>
+    </view>
+    
+    <!-- 结束 -->
+
+
+    <view class='menu col'>
+      <view id='num' catchtap='switchTab' class='{{numTabClass}}'>
+        <text>我的编号</text>
+      </view>
+      <view id='user' catchtap='switchTab' class='{{userTabClass}}'>
+        <text>参与用户</text>
+      </view>
+    </view>
+<view  wx:if='{{type=="code"}}'wx:for="{{lottery}}" wx:for-item="lot" wx:for-index="seek"  class='col box_list'>
+    <!--view class='col box_list'-->
+     <view wx:if="{{lot.left!=null}}" id="{{lot.left.lid}}" class='col-6 box_li'>{{lot.left.lid}}</view>
+     <view wx:if="{{lot.right!=null}}" id="{{lot.right.lid}}" class='col-6 box_li'>{{lot.right.lid}}</view>
+   <!--/view-->
+    <!--view class='col'>
+      
       <text class='col-4'>我的编号：</text>
       <text class='col-8 color_green'>{{lot.lid}}</text>
-    </view>
+    </view-->
   </view>
   
   <view wx:if='{{type=="detial"}}' wx:for="{{orders}}" wx:for-item="order" wx:for-index="seek" class=' box_list row'>
@@ -78,21 +95,20 @@
       <text class='col-5 list_jieshao'>{{order.dtitle}}</text>
     </view>
   </view>
-     <view  class='flex-item' style='margin:30rpx 0px 30rpx 0px;'><button wx:if='{{seek<count}}' bindtap='loadMore' style='color:white;background:#5ecd98;width:80%;border-radius:25px;margin-bottom:10px'>加载更多</button>
+     <view  class='flex-item' style='margin:30rpx 0px 30rpx 0px;'><button wx:if='{{type=="detial" && seek<count}}' bindtap='loadMore' style='font-size:14px;color:white;background:#5ecd98;width:40%;border-radius:25px;margin-bottom:10px'>加载更多</button>
      </view>
-  
-  <!--view class='box_huzhu box_list row'>
-    <view class='col'>
-      <text class='col-4'>我的编号：</text>
-      <text class='col-8 color_grey'>2019010414464651231</text>
-    </view>
-  </view>
-  <view class='box_huzhu box_list row'>
-    <view class='col'>
-      <text class='col-4'>我的编号：</text>
-      <text class='col-8 color_redk'>2019010414464651231</text>
-    </view>
-  </view-->
- </view>
-</view>
+     </view>
 
+    <!--view class='col box_list'>
+     <view class='col-6 box_li'>20190101100135486</view>
+    <view class='col-6 box_li'>20190101100135486</view>
+    </view>
+    <view class='col box_list'>
+     <view class='col-6 box_li'>20190101100135486</view>
+     <view class='col-6 box_li'>20190101100135486</view>
+    </view>
+    <view class='col box_list'>
+     <view class='col-6 box_li'>20190101100135486</view>
+    <view class='col-6 box_li'>20190101100135486</view>
+    </view-->
+  </view>

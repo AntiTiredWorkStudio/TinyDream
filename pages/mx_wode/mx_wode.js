@@ -17,6 +17,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: '个人中心'
+    })
     //us=selfinfo&uid=a01
     var page = this
     C.TDRequest('us','selfinfo',

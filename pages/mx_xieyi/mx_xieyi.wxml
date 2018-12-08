@@ -15,9 +15,7 @@
      <checkbox-group bindchange="checkedEvent">
        <checkbox  value="" checked=""/>
        <text class='' style='font-size:13px'>阅读并同意</text>
-       <text class='' style='font-size:13px'>《小梦想互助平台》</text>
-       <text class='' style='font-size:13px'>和</text>
-       <text class='' style='font-size:13px'>《用户协议》</text>
+       <text class='' bindtap='readDetial' style='font-size:13px;text-decoration:underline;color:#5ecd98'>《小梦想互助平台参与互助协议》</text>
       </checkbox-group>
      </view>
     <view class='yz_group row' style='width:70%;margin:10px auto'>

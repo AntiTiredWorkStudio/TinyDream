@@ -1,4 +1,6 @@
 /* pages/mx_wode/mx_wode.wxss */
-.box_huzhu{margin: 15px}
-.box_list{border-bottom: thin solid #e7e7e7;padding-bottom: 8px;padding-top: 20px}
-.box_goumai{margin:15px;background:#ebebeb;padding-top:15px;padding-bottom:15px;border-radius:10px}
+.box_huzhu{}
+.box_list{padding-left: 18px;border-bottom: thin solid #e7e7e7;padding-bottom: 8px;padding-top: 20px;background:white;}
+.box_goumai{margin:0px 0px 15px 0px;background-image:url("http://tdream.antit.top/me.png");background-size:100% 100%;padding-top:15px;padding-bottom:15px;height:120px;border-radius:0px 0px 10px 10px}
+
+.bloc2{display: block;font-size: 12px}

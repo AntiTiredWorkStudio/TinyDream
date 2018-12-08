@@ -96,6 +96,10 @@ Page({
       code: page.data.inputCode, },
       function (code, data) {
         console.log(data)
+        page.setData({
+          inputTele: "",
+          inputCode: ""
+        })
         wx.showToast({
           title: '绑定成功',
           icon: 'success',

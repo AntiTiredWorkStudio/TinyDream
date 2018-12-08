@@ -52,6 +52,9 @@ var index = Page({
     })
   },
   onLoad: function () {
+    wx.setNavigationBarTitle({
+      title: '参与互助'
+    })
     if (app && app.onLoadPage){
       app.onLoadPage(this)
     }
@@ -77,6 +80,16 @@ var index = Page({
     var h = Math.floor(sec / 3600);
     var m = Math.floor(Math.floor(sec % 3600) / 60);
     var s = Math.floor(sec % 60);
+
+    if (h < 10) {
+      h = '0' + h
+    }
+    if (m < 10) {
+      m = '0' + m 
+    }
+    if (s < 10) {
+      s = '0' + s
+    }
     this.setData({
       poolHours:h,
       poolMinutes:m,
@@ -84,13 +97,36 @@ var index = Page({
     });
     //console.log(sec)
   },
+  bossContent:{
+    'muyan': { 
+      title:"慕岩", 
+      content: "99年开始互联网创业，百合网联合创始人，知名互联网创业者，在互联网产品、品牌、运营有丰富经验和资源。清华大学计算机和经管学院双学位，湖畔大学首期学员"
+    },
+    'yuanfeng': {
+      title: "李圆峰", 
+      content: "猎鹰创投董事总经理 头条大V 青云计划获奖者"
+    }
+  },
+  bossInfo: function(res){
+    console.log('boss')
+    var id = res.currentTarget.id;
+    wx.showModal({
+      title: this.bossContent[id].title,
+      content: this.bossContent[id].content,
+      showCancel :false
+    })
+  },
   setMainPool :function(pool){
     //this.mainpool = pool
     console.log("main pool:",pool)
     
     var billResult = C.BillExchange(pool.cbill);
-    
+    var targetBillResult = C.BillExchange(pool.tbill);
+    pool.realtBill = targetBillResult.value;
+    pool.realtUnit = targetBillResult.unit;
     pool.realBill = billResult.value;
+    pool.realDuration = C.DescriptionTime(pool.duration);
+    //pool.duration;
     pool.unit = billResult.unit;
     pool.percentVal = Math.floor((pool.cbill / pool.tbill) *10000)/100
     console.log("billResult:",billResult);
@@ -114,10 +150,10 @@ var index = Page({
     var that = this;
     
 
-    var start = 0+this.showIndex*3
-    var end = 3 + this.showIndex*3
-    if(end>this.fullOrderList.length){
-      end = this.fullOrderList.length
+    var start = 0 + this.showIndex
+    var end = 1+this.showIndex
+    if(end>this.fullOrderList.length-1){
+      end = 1 + this.showIndex
       this.showIndex = 0;
     }else{
       this.showIndex++;
@@ -130,8 +166,8 @@ var index = Page({
       this.fullOrderList[key].ctime = C.DescriptionTime(outdate);
       var cNickname = this.fullOrderList[key].nickname;
       //console.log(cNickname.length);
-      if (cNickname.length>4){
-        cNickname = cNickname.substr(0, 4) +"..."
+      if (cNickname.length>8){
+        cNickname = cNickname.substr(0, 8) +"..."
       }
       this.fullOrderList[key].cNickname = cNickname
       /*if (this.fullOrderList[key].nickName.replace(/[\u0391-\uFFE5]/g, "aa").length >5){

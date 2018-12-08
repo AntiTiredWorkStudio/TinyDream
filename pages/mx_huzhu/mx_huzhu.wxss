@@ -6,3 +6,4 @@ page{background:white}
 .font_s13{font-size: 13px;color:#696262}
 .bloc{margin-top: 5px}
 .bloc_guize{font-size: 20px;padding-top: 20px;display: block}
+.list_zhankai{color:#5ecd98;text-decoration: underline }

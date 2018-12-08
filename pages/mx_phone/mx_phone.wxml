@@ -3,10 +3,11 @@
  <view class='page-header'></view>
  <view class='page-body'>
   <view class='box_huzhu'>
-    <text class='bloc'>当前手机号</text>
-    <text class='bloc' style='text-align:center'>{{tele}}</text>
-    <text class='bloc'>修改为：</text>
-    <input type='number' placeholder="请输入您修改的手机号" maxlength="11" class='mx_number bloc' bindinput="teleInput" style='margin-top:20px' value="{{inputTele}}"/>
+    <text wx:if='{{tele!="未绑定手机号"}}' class='bloc'>当前手机号</text>
+    <text wx:if='{{tele!="未绑定手机号"}}' class='bloc' style='text-align:center'>{{tele}}</text>
+    <text wx:if='{{tele!="未绑定手机号"}}' class='bloc'>修改为：</text>
+    <text wx:if='{{tele=="未绑定手机号"}}' class='bloc'>请输入手机号：</text>
+    <input type='number' placeholder="请输入您的手机号" maxlength="11" class='mx_number bloc' bindinput="teleInput" style='margin-top:20px' value="{{inputTele}}"/>
     <view class='yz_group row' style='width:70%;margin:10px auto'>
     <view class='col' style='margin-top:30px'>
     <view class='col-7'><input class='bloc mx_yzput' type='number' bindinput="codeInput" placeholder="请输入验证码" value="{{inputCode}}" /></view>

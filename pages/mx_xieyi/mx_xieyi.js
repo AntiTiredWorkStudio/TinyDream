@@ -22,6 +22,7 @@ Page({
   onLoad: function (options) {
       //console.log("编辑",options)
       var page = this
+      this.isSubmit = false;
       if(options.hasOwnProperty('id')){
         //options.id
         var tstate = ''
@@ -110,6 +111,10 @@ Page({
     this.agree = Object.keys(res.detail.value).length ==1;
     console.log(this.agree)
   },
+  readDetial:function(){
+    C.Intend('../mx_routine/mx_routine')
+  },
+  isSubmit : false,
   submitDream: function (res) {
     console.log("提交梦想")
     var page = this
@@ -131,6 +136,11 @@ Page({
     
 
     //dr = dedit & uid=a01 & title=关于程序的梦想 & content=我就特么想赶紧做完这个
+    if (this.isSubmit) {
+      return
+    }
+    this.isSubmit = true
+
     var dataset = {
       uid: app.globalData.openid,
       title: this.title,
@@ -178,11 +188,16 @@ Page({
       C.TDRequest("dr","dedit",
         dataset, 
         function(code,data){
-          console.log(data)
-          console.log(force)
+          //console.log(data)
+          //console.log(force)
           if(!force){
             wx.navigateBack()
             app.currentPage.updateList()
+
+            wx.showToast({
+              title: '提交成功',
+              icon: 'success'
+            })
   //          console.log("current Page",app.currentPage)
           }
         },

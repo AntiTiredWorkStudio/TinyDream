@@ -27,6 +27,9 @@ Page({
    */
   onLoad: function (options) {
     //dr = dlist & uid=11304626
+    wx.setNavigationBarTitle({
+      title: '小梦想'
+    })
     app.onLoadPage(this)
     this.updateList()
   },
@@ -207,6 +210,19 @@ Page({
     console.log(res.currentTarget.id)
     wx.makePhoneCall({
       phoneNumber: '400-600-2233',
+    })
+  },
+  longTap: function () {
+    console.log('longTap')
+    wx.setClipboardData({
+      data: "Melodybaby0925",
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showToast({ title: '微信号复制成功' })
+          }
+        })
+      }
     })
   }
 })

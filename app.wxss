@@ -5,6 +5,7 @@
 page{
  background:#f1f4f7;
  font-family: 'PingFangSC-Regular';
+ 
 }
 .container {
   height: 100%;
@@ -28,7 +29,8 @@ page{
 .mt_10{margin: 10px}
 .mt_20{margin-top: 20px}
 /* 梦想池box */
-.menu{padding-top: 10px;margin: 5px}
+.menu{padding-top: 10px;}
+.fixed_menu{position:fixed;z-index:100;background:#f7f7f7;left:0px;top:0px;width:100%}
 .memu_act{border-bottom: solid medium #04bbff}
 .menu_unact{border-bottom:solid medium #bfbfbf;}
 .box_huzhu .box_chizi{width: 40%;background: #5ecd98;border-radius:5px;opacity: 0.8;text-align: center;color: white;padding: 5px 5px 5px 5px;font-size: 30rpx;position: absolute;left: 20px}
@@ -48,7 +50,7 @@ page{
 .col {
   display: flex;
   font-family: -apple-system-font, "Helvetica Neue", sans-serif;
-  font-size: 17px;
+  font-size: 13px;
 }
 
 .col>.col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9,
@@ -108,3 +110,17 @@ page{
 .x-center {
   text-align: center;
 }
+
+
+/*导航栏css样式可不能删了啊*/
+.sprite { background-image: url("http://cloud.antit.top/sprite.png"); background-position: -5px -5px; width: 150px; height: 100px; background-repeat: no-repeat; }
+.sprite_canyu{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -5px -55px; width: 40px; height: 40px;background-repeat: no-repeat;margin:0 auto }
+.sprite_canyu_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -5px -5px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
+
+.sprite_xiaomengxiang{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -55px -55px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
+.sprite_xiaomengxiang_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -55px -5px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
+
+.sprite_wode{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -105px -55px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
+.sprite_wode_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -105px -5px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
+
+.success_upload_img{height:100px;width:100%;display:block;margin:0 auto}

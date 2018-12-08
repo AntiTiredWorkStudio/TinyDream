@@ -8,16 +8,16 @@
  <view class='page-header'>
    <view class='col box_goumai'>
       <view class='col-4'>
-         <text class='bloc'><text class='color_red'>{{owner.totalJoin}}</text>个</text>
-          <text class='bloc' style='color:#3fab79'>参与中的梦想</text>
+         <text class='bloc'><text class='color_red'>{{owner.totalJoin}}</text><text style='color:white'>个</text></text>
+          <text class='bloc' style='color:#ffffff'>参与中的梦想</text>
       </view>
       <view class='col-4'>
-         <text class='bloc'><text class='color_red'>{{owner.totalReward.value}}</text>{{owner.totalReward.unit}}</text>
-          <text class='bloc' style='color:#3fab79'>已获得互助总金额</text>
+         <text class='bloc'><text class='color_red'>{{owner.totalReward.value}}</text><text style='color:white'>{{owner.totalReward.unit}}</text></text>
+          <text class='bloc' style='color:#ffffff'>已获得互助总金额</text>
       </view>
       <view class='col-4'>
-         <text class='bloc'><text class='color_red'>{{owner.dayBuy}}</text>个</text>
-          <text class='bloc' style='color:#3fab79'>当日购买梦想数</text>
+         <text class='bloc'><text class='color_red'>{{owner.dayBuy}}</text><text style='color:white'>份</text></text>
+          <text class='bloc' style='color:#ffffff'>今日参与份数</text>
       </view>
     </view>
   </view>
@@ -26,18 +26,18 @@
   <!-- 梦想池 -->
     <view bindtap='myPool' class=' col box_list'>
       <text class='col-11'>我参与互助的梦想池</text>
-      <text class='col-1'>>></text>
+      <text class='col-1'>></text>
     </view>
      <!-- 梦想池 -->
      <navigator navigator="true" url="../mx_phone/mx_phone"><view class=' col box_list'>
      <text class='col-11'>手机号管理</text>
-      <text class='col-1'>>></text>
+      <text class='col-1'>></text>
     </view></navigator>
      <!-- 梦想池 -->
     <navigator navigator="true" url="../mx_shenfenzheng/mx_shenfengzheng">
     <view class=' col box_list'>
       <text class='col-11'>实名认证</text>
-      <text class='col-1'>>></text>
+      <text class='col-1'>></text>
     </view>
     </navigator>
      <!-- 梦想池 -->
@@ -46,17 +46,20 @@
       <text class='col-1'>>></text>
     </view-->
      <!-- 梦想池 --> 
-      <navigator navigator="true" url="../mx_huzhu/mx_huzhu">
+      <navigator navigator="true" url="../mx_wenti/mx_wenti">
     <view class=' col box_list'>
       <text class='col-11'>常见问题</text>
-      <text class='col-1'>>></text>
+      <text class='col-1'>></text>
     </view>
     </navigator>
      <!-- 梦想池 -->
     <view bindtap='onCommunicate'  class=' col box_list'>
       <text class='col-11'>联系客服</text>
-      <text class='col-1'>>></text>
+      <text class='col-1'>></text>
     </view>
+    
+      <button class='col box_list' style='border:none;float:left;width:100%;margin-left:-1px;' open-type="feedback" ><text style='float:left;text-align:left;width:95%' open-type="feedback">用户反馈</text><text style='float:right;text-align:right;'>></text></button>
+      
     
   </view>
   
@@ -83,7 +86,7 @@
     <view class='col-4 m_active'>
       <!-- sprite_wode_act -->
       <view class='sprite_wode_act'></view>
-      <text class='text_footer'>我的</text>
+      <text class='text_footer'>个人中心</text>
     </view>
     </view>
   </view>

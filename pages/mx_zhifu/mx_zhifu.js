@@ -28,6 +28,15 @@ Page({
     var th = Math.floor(sec / 3600);
     var tm = Math.floor(Math.floor(sec % 3600) / 60);
     var ts = Math.floor(sec % 60);
+    if(th<10){
+      th = '0'+th
+    }
+    if (tm < 10) {
+      tm = '0' + tm
+    }
+    if (ts < 10) {
+      ts = '0' + ts
+    }
     this.setData({
       cd: {
         h: th,
@@ -212,6 +221,9 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
    /* */
     /**/
   },
+  exchangeDream:function(){
+      console.log("替换梦想")
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -257,7 +269,19 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-
+  onShareAppMessage: function (res) {
+    return {
+      title: res.target.id,
+      path: '/pages/index/index', //这里设定都是以"/page"开头,并拼接好传递的参数
+      success: function (res) {
+        // 转发成功
+        console.log(res);
+        console.log("转发成功:" + JSON.stringify(res));
+      },
+      fail: function (res) {
+        // 转发失败
+        console.log("转发失败:" + JSON.stringify(res));
+      }
+    }
   }
 })

@@ -1,35 +1,94 @@
 <view class="container">
   <!------ 小梦想部分 -------->
   <view class='m_cheng'></view>
-  <view class="page-head" >
-     <!-- 互助小梦想 -->
-    
+  <view wx:if="{{!authVisible}}" class="page-head" style='padding-bottom:8px;padding-left:5px'>
+    <!-- 互助小梦想 -->
 
-     <view wx:if="{{!authVisible}}" animation="{{orderAnimation}}" wx:for="{{orderList}}" wx:for-item="order" wx:for-index="seek" class="page-head-title">
-        <view class='w_logo flex-item'>
-        <image class="image flex-item" style='width:20px;height:20px;margin:5px' src="{{order.headicon}}"/>
+
+    <view wx:if="{{!authVisible}}" animation="{{orderAnimation}}" wx:for="{{orderList}}" wx:for-item="order" wx:for-index="seek" class="page-head-title">
+      <view class='w_logo flex-item'>
+        <image class="image flex-item" style='width:20px;height:20px;margin:5px' src="{{order.headicon}}" />
         <text class='w_name flex-item'>{{order.cNickname}}</text>
-        </view>
+      </view>
       <view class='w_desc flex-item'>{{order.ctime}}前参与互助了{{order.dcount}}份小梦想</view>
-     </view>
+    </view>
   </view>
-  
 
-      <!--view wx:if="{{authVisible}}" class='flex-item' style='margin:40rpx 0px 20rpx 0px'>
+
+  <!--view wx:if="{{authVisible}}" class='flex-item' style='margin:40rpx 0px 20rpx 0px'>
         <text class='.index-ft'>小程序将会获取您的用户信息，请您授权</text>
       <button style='color:white;background:#5ecd98;width:80%;border-radius:25px' open-type="getUserInfo" bindgetuserinfo='onGetUserInfo'>允许授权</button>
         </view-->
   <view wx:if="{{authVisible}}" class='page-body'>
-   <image class='bloc' src='/image/canyuhuzhu.png' style='width:200px;height:200px;margin:0 auto;margin-top:30%'></image>
-   <view class='bloc' style=''>
-    <text class='bloc' style='text-align:center;margin-top:20px'>小程序将会获取您的用户信息，请您授权</text>
-    <view class='flex-item box_zhifu'><button open-type="getUserInfo" bindgetuserinfo='onGetUserInfo' style='color:white;background:#3fab79;width:80%;border-radius:5px;margin-top:15px'>微信授权</button></view>
-   </view>
+    <image class='bloc' src='/image/canyuhuzhu.png' style='width:200px;height:200px;margin:0 auto;margin-top:30%'></image>
+    <view class='bloc' style=''>
+      <text class='bloc' style='text-align:center;margin-top:20px'>小程序将会获取您的用户信息，请您授权</text>
+      <view class='flex-item box_zhifu'>
+        <button open-type="getUserInfo" bindgetuserinfo='onGetUserInfo' style='color:white;background:#3fab79;width:80%;border-radius:5px;margin-top:15px'>微信授权</button>
+      </view>
+    </view>
+  </view>
+  <!--新版UI-->
+  <view class="page-body">
+    <view wx:if="{{!authVisible}}" class="page-section wm_box">
+      <view class='flex-item wm_header'>
+        <view class='wm_menxiang'>{{mainpool.ptitle}}</view>
+        <view class='wm_time'>距离结束
+          <text class='timer'>{{poolHours}}</text>
+          <text style='padding-left:2px;padding-right:2px'>:</text>
+          <text class='timer'>{{poolMinutes}}</text>
+          <text style='padding-left:2px;padding-right:2px'>:</text>
+          <text class='timer'>{{poolSeconds}}</text>
+        </view>
+      </view>
+      <!-- 这一块 -->
+      <view class='col' style='background:white;padding-top:10px'>
+        <text class='bloc' style='text-align:center;margin:0 auto'><text class='color_red'>{{mainpool.realBill}}</text> {{mainpool.unit}}</text>
+      </view>
+      <view class='col' style='background:white'>
+        <text class='bloc' style='text-align:center;margin:0 auto'>金额已达</text>
+      </view>
+      <view class='wm_body col'>
+        <view class='wm_money col-4'>
+          <text class=''>互助目标</text>
+          <text class=''><text class='col_red'>{{mainpool.realtBill}}</text>{{mainpool.realtUnit}}</text>
+        </view>
+        <view class='wm_timer col-4'>
+          <text class=''>时限</text>
+          <text class=''><text class='col_red'>{{mainpool.realDuration}}</text></text>
+        </view>
+        <view class='wm_prace col-4'>
+          <text class=''>价格</text>
+          <text class=''><text class='col_red'>¥{{mainpool.ubill*0.01}}</text>/份</text>
+        </view>
+      </view>
+      <view class='wm_jindu' style='padding-top:15px'>
+        <progress class='wm_progress' percent='{{mainpool.percentVal}}' activeColor='#5ecd98' backgroundColor='#a0a0a0' stroke-width='20'>
+          <text class='baifenbi'>{{mainpool.percentVal}}%</text>
+        </progress>
+        <view class='yz_group row' style='width:70%;margin:5px auto'>
+          <view class='flex-item' style='margin:30rpx 0px 30rpx 0px;'>
+            <button id="{{mainpool.pid}}" bindtap="joinin" style='color:white;background:#e9ba65;border-radius:10px;'>参与互助</button>
+          </view>
+        </view>
+
+        <navigator>
+          <view bindtap='morePools' class='mat_30' style='float:right;margin-right:20rpx;text-decoration:underline'>查看更多梦想</view>
+        </navigator>
+      </view>
+      <!-- 进度结束 -->
+    </view>
+
+    <!--view wx:if="{{authVisible}}" class='flex-item' style='margin:40rpx 0px 20rpx 0px'>
+      <text class='.index-ft'>小程序将会获取您的用户信息，请您授权</text>
+      <button style='color:white;background:#5ecd98;width:80%;border-radius:25px' open-type="getUserInfo" bindgetuserinfo='onGetUserInfo'>允许授权</button>
+    </view-->
   </view>
 
-
+  <!--新增代码 结束-->
   <view class="page-body">
-    <view  wx:if="{{!authVisible}}"  class="page-section wm_box">
+    <!--旧版梦想池-->
+    <!--view  wx:if="{{!authVisible}}"  class="page-section wm_box">
       <view class='flex-item wm_header'>
         <view class='wm_menxiang'>{{mainpool.ptitle}}</view>
         <view class='wm_time'>距离结束
@@ -64,47 +123,63 @@
         <view class='flex-item' style='margin:40rpx 0px 20rpx 0px'><button style='color:white;background:#5ecd98;width:80%;border-radius:25px' bindtap="morePools">更多梦想池</button>
         
         </view>
-       </view>
+       </view-->
+    <!--旧版梦想池 结束-->
 
-       <!-- 小梦想互助步骤 -->
-       <view wx:if="{{!authVisible}}"  class='page-buzhou'>
-        <view style='margin-top:10px'>小梦想互助步骤</view>
-        <view class='mat_30'>1、多人参与互助完成梦想池互动目标</view>
-        <view class='mat_30'>2、公平公正通过彩票号码产生1名幸运者</view>
-        <view class='mat_30'>3、幸运者的发现互助资金启动梦想</view>
-        <view class='mat_30'>4、梦想执行跟踪报道</view>
-         <!-- <view class='mat_30'>4、梦想执行跟踪报道</view> -->
-        <navigator url="../mx_huzhu/mx_huzhu"><view class='mat_30' style='float:right;margin-right:20rpx;text-decoration:underline'>查看详情</view></navigator>
-       </view>
-  </view>
-  <!-- 作为演示，即将开始装逼  -->
-  <!-- 底部导航栏 -->
- <view wx:if="{{!authVisible}}" class="weui-footer_fixed-bottom m_footer row">
-    <view class='col'>
-      <view class='col-4 m_active'>
-      <!-- sprite_canyu_act -->
-      <view class='sprite_xiaomengxiang_act'></view>
-      <text class='text_footer'>参与互动</text>
-    </view>
-    <view class='col-4'>
-      <!-- sprite_xiaomengxiang_act -->
-      <navigator redirect="true" url="../mx_naicha/mx_naicha">
-      <view class='sprite_canyu'></view>
-      <text class='text_footer'>小梦想</text>
-       </navigator>
-    </view>
-    <view class='col-4'>
-      <!-- sprite_wode_act -->
-      <navigator redirect="true" url="../mx_wode/mx_wode">
-      <view class='sprite_wode'></view>
-      <text class='text_footer'>我的</text>
+    <!-- 小梦想互助步骤 -->
+    <view wx:if="{{!authVisible}}" class='page-buzhou'>
+      <view style='margin-top:10px;margin-left:10px;color:#3e3e3e'>小梦想互助步骤</view>
+      <view class='mat_30' style='color:#3e3e3e'>1、多人参与互助完成梦想池互动目标</view>
+      <view class='mat_30' style='color:#3e3e3e'>2、公平公正通过随机号码产生1名幸运者</view>
+      <view class='mat_30' style='color:#3e3e3e'>3、幸运者的发现互助资金启动梦想</view>
+      <view class='mat_30' style='color:#3e3e3e'>4、梦想执行跟踪报道</view>
+      <!-- <view class='mat_30'>4、梦想执行跟踪报道</view> -->
+      <navigator url="../mx_huzhu/mx_huzhu">
+        <view class='mat_30' style='float:right;margin-right:20rpx;text-decoration:underline;color:#3e3e3e'>查看详情</view>
       </navigator>
     </view>
+    
+  </view>
+  
+  <swiper wx:if="{{!authVisible}}" indicator-dots='true' autoplay='4000' indicator-color='#3e3e3e' indicator-active-color='#ffffff' style='height:180px'>
+  <swiper-item ><view id='muyan' bindtap='bossInfo' class='col box_muyan'>
+</view></swiper-item>
+<swiper-item><view id='yuanfeng' bindtap='bossInfo' class='col box_yuanfeng'>
+</view></swiper-item>
+  </swiper>
+
+
+
+<view style='padding-bottom:100px'></view>
+
+  <!-- 作为演示，即将开始装逼  -->
+  <!-- 底部导航栏 -->
+  <view wx:if="{{!authVisible}}" class="weui-footer_fixed-bottom m_footer row">
+    <view class='col'>
+      <view class='col-4 m_active'>
+        <!-- sprite_canyu_act -->
+        <view class='sprite_xiaomengxiang_act'></view>
+        <text class='text_footer'>参与互动</text>
+      </view>
+      <view class='col-4'>
+        <!-- sprite_xiaomengxiang_act -->
+        <navigator redirect="true" url="../mx_naicha/mx_naicha">
+          <view class='sprite_canyu'></view>
+          <text class='text_footer'>小梦想</text>
+        </navigator>
+      </view>
+      <view class='col-4'>
+        <!-- sprite_wode_act -->
+        <navigator redirect="true" url="../mx_wode/mx_wode">
+          <view class='sprite_wode'></view>
+          <text class='text_footer'>个人中心</text>
+        </navigator>
+      </view>
     </view>
   </view>
   <!-- 底部结束 -->
   <!-- 底部导航栏 -->
-      <!-- <view wx:if="{{!authVisible}}" class="weui-footer_fixed-bottom m_footer row">
+  <!-- <view wx:if="{{!authVisible}}" class="weui-footer_fixed-bottom m_footer row">
        <view class='col'>
         <view class='col-4 m_active'>
         <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
@@ -120,5 +195,5 @@
         </view>
        </view>
       </view> -->
-      <!-- 底部结束 -->
+  <!-- 底部结束 -->
 </view>

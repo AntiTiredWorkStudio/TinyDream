@@ -8,17 +8,17 @@
         <text >我的小梦想</text>
       </view>
       <view id="bingo" bindtap="switchType" class='{{type.bingo}}'>
-        <text>我中标的梦想池</text>
+        <text>我的幸运梦想</text>
       </view>
       <view id="plan" bindtap="switchType" class='{{type.plan}}'>
-        <text>梦想规则</text>
+        <text>梦想服务</text>
       </view>
     </view>
   </view>
  <view wx:if="{{type.selection=='mine'}}" class='page-body' style='margin-bottom:80px;padding-top:45px'>
   <view  bindtap="onEdit"  wx:for="{{dreams}}" wx:for-item="dream" wx:for-index="seek" id="{{dream.did}}"  class='box_huzhu' style='text-align:center;color:white;background:#6dceaa'>
-    <text class='bloc' style='padding-top:15px'>{{dream.title}}</text>
-    <text class='bloc' style='padding:10px 0 5px 0'>{{dream.content}}</text>
+    <text class='bloc' style='padding-top:15px;padding-bottom:15px'>{{dream.title}}</text>
+    <!--text class='bloc' style='padding:10px 0 5px 0'>{{dream.content}}</text-->
   </view>
   <view wx:if='{{canAddDream}}' class='add_box' style='display:block; padding-bottom:60px'>
      <navigator navigate="true" url="../mx_xieyi/mx_xieyi">
@@ -56,11 +56,13 @@
  <view wx:if="{{type.selection=='plan'}}" class='box_erweima'>
   <text class='bloc_baohan'>规划服务包含：</text> 
    <view class='box_jieshao'>
-    <text class='bloc1'> 1、相关实体和电子书籍</text>
-     <text class='bloc1'>2、专业导师半年的指导</text>
-     <text class='bloc1'>3、梦想执行宣传报道软文</text>
+    <text class='bloc1'> 1、电子书籍</text>
+     <text class='bloc1'>2、专业导师指导</text>
+     <text class='bloc1'>3、梦想执行宣传报道</text>
    </view>
-     <image class='bloc_img' src='http://tdream.antit.top/qrcode_gxh.png'></image>
+   <view bindlongtap = "longTap" >
+     <image class='bloc_img' src='http://tdream.antit.top/qrcode_xmxhz.jpg'></image>
+     </view>
      <text class='bloc1' style='text-align:center;padding-bottom:20px'>扫描二维码联系客服</text>
   </view>
 
@@ -85,7 +87,7 @@
       <!-- sprite_wode_act -->
       <navigator redirect="true" url="../mx_wode/mx_wode">
       <view class='sprite_wode'></view>
-      <text class='text_footer'>我的</text>
+      <text class='text_footer'>个人中心</text>
       </navigator>
     </view>
     </view>

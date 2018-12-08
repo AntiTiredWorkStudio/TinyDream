@@ -4,60 +4,69 @@
   <view class='page-header'>
     <view class='menu col fixed_menu'>
       <view id="running"  bindtap="switchType" class='{{type.running}}' >
-        <text >进行中梦想池</text>
+        <text >进行中</text>
       </view>
       <view id="joined" bindtap="switchType" class='{{type.joined}}'>
-        <text>我参与的梦想池</text>
+        <text>我参与</text>
       </view>
       <view id="history" bindtap="switchType" class='{{type.history}}'>
-        <text>往届梦想池</text>
+        <text>已结束</text>
       </view>
     </view>
   </view>
  <view class='page-body' style='margin-bottom:9em;padding-top:35px'>
- <!-- 盒子 -->
-  <view id="{{pool.pid}}" bindtap='poolInfo' wx:for="{{showingPool}}" wx:for-item="pool" wx:for-index="seek" class='box_huzhu'>
-     <view class='box_chizi'>{{pool.ptitle}}</view>
-     <view class='col ' style='padding-top:35px'>
-      <view class='col-8' style='text-align:center'>
-        <view class='col'>
-          <view class='col-6'>
-          <text class='bloc'>金额已达</text>
-          <text class='bloc'><text class='color_red'>{{pool.realBill}}</text>{{pool.unit}}</text>
-          </view>
-          <view class='col-6'>
-          <text class='bloc'>价格</text>
-          <text class='bloc'><text class='color_red'>{{pool.ubill*0.01}}</text>元/份</text>
-          </view>
+
+<!--新加梦想池-->
+<view id="{{pool.pid}}" bindtap='poolInfo' wx:for="{{showingPool}}" wx:for-item="pool" wx:for-index="seek" class="page-body">
+    <view  class="page-section wm_box">
+      <view class='flex-item wm_header'>
+        <view class='wm_menxiang'>{{pool.ptitle}}</view>
+        <view class='wm_time'>{{pool.tdescription}}
         </view>
-      </view>
-      <view class='col-4'>
-      <button id='{{pool.pid}}' catchtap='onPoolControl' style='{{pool.btnStyle}}'>{{pool.btnText}}</button>
-      </view>
-     </view>
-     <view class='col'>
-      <view class='col-12'><view class='' style='margin-top:5px;margin-left:10px'><text>{{pool.tdescription}}</text></view></view>
-     </view>
-     <view class='col' style='margin-left:10px'>
-      <view class='col-6'>
-        <!-- 进度条 -->
-        <view class='col_jindu' style='margin-top:8px'>
-           <progress class='wm_progress' percent='{{pool.percent}}' activeColor='#5ecd98' backgroundColor='#a0a0a0' stroke-width='20'>
-           <text class='col_baifenbi'>{{pool.percent}}%</text>
-           </progress>
-        </view>
-      </view>
-      <view class='col-4'>
-        <text class=''>已购：<text class='color_red'>{{pool.pcount}}</text>份</text>
-      </view>
-      
-       <view catchtap='sharePool' class='col-2'>
+        <view catchtap='sharePool' class='col-2'>
       <button id="{{pool.ptitle}}" open-type='share'  style='background-image:url("http://cloud.antit.top/share.png");background-size:100%;width:35px;height:35px;border:none'  plain='true'></button>
-       <!-- <image src='http://cloud.antit.top/share.png' class='' style='width:35px;height:35px'></image> -->
       </view>
-     </view>
-  </view>
-<!-- 盒子结束 -->
+      </view>
+      <!-- 这一块 -->
+      <view class='col' style='background:white;padding-top:10px'>
+        <text class='bloc' style='text-align:center;margin:0 auto'><text class='color_red'>{{pool.realBill}}</text> {{pool.unit}}</text>
+      </view>
+      <view class='col' style='background:white'>
+        <text wx:if='{{pool.state=="RUNNING"}}' class='bloc' style='text-align:center;margin:0 auto'>金额已达</text>
+        <text wx:if='{{pool.state=="FINISHED"}}' class='bloc' style='text-align:center;margin:0 auto'>互助完成金额</text>
+      </view>
+      <view wx:if='{{pool.state=="RUNNING"}}' class='wm_body col'>
+        <view class='wm_money col-4'>
+          <text class=''>互助目标</text>
+          <text class=''><text class='col_red'>{{pool.rtbill.value}}</text>{{pool.rtbill.unit}}</text>
+        </view>
+        <view class='wm_timer col-4'>
+          <text class=''>时限</text>
+          <text class=''><text class='col_red'>{{pool.rduration}}</text></text>
+        </view>
+        <view class='wm_prace col-4'>
+          <text class=''>价格</text>
+          <text class=''><text class='col_red'>¥{{pool.ubill*0.01}}</text>/份</text>
+        </view>
+      </view>
+      <view wx:if='{{pool.state=="FINISHED"}}'  class='wm_jindu' style='padding-top:15px'>
+      </view>
+      <view wx:if='{{pool.state=="RUNNING"}}'  class='wm_jindu' style='padding-top:15px'>
+        <progress class='wm_progress' percent='{{pool.percentVal}}' activeColor='#5ecd98' backgroundColor='#a0a0a0' stroke-width='20'>
+          <text class='baifenbi'>{{pool.percentVal}}%</text>
+        </progress>
+        <view  class='yz_group row' style='width:70%;margin:5px auto'>
+          <view class='flex-item' style='margin:30rpx 0px 30rpx 0px;'>
+            <button id="{{pool.pid}}" class='{{pool.btnStyle}}' catchtap="onPoolControl" style='{{pool.btnStyle}}'>{{pool.btnText}}</button>
+           
+         
+          </view>
+        </view>
+      </view>
+      <!-- 进度结束 -->
+    </view>
+    </view>
+<!--新加梦想池  结束-->
 
  </view>
  <!-- 底部导航栏 -->

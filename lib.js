@@ -88,6 +88,8 @@ module.exports.DreamPoolAnalysis = function(pool){
   pool.rubill = pool.ubill*0.01
   pool.day = Math.floor(pool.duration / 86400)
   pool.rtbill = module.exports.BillExchange(pool.tbill)
+  pool.rduration = module.exports.DescriptionTime(pool.duration)
+  pool.joincount = pool.cbill/pool.ubill
   /*console.log("billResult:", billResult);
   this.setData({
     mainpool: pool

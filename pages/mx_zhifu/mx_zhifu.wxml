@@ -1,5 +1,5 @@
-<!--pages/mx_zhifu/mx_zhifu.wxml-->
-<!-- <text>pages/mx_zhifu/mx_zhifu.wxml</text> -->
+
+<!--新版支付-->
 <view class='container'>
   <view class='page-header' style='background:##f1f4f7;height:10px'></view>
   <view class='page-body'>
@@ -7,40 +7,47 @@
       <view class='flex-item wm_header'>
         <view class='wm_menxiang'>{{pool.ptitle}}</view>
         <view class='wm_time'>距离结束
-          <text class='timer'>{{cd.h}}</text>:
-          <text class='timer'>{{cd.m}}</text>:
+          <text class='timer'>{{cd.h}}</text>
+          <text style='padding-left:2px;padding-right:2px'>:</text>
+          <text class='timer'>{{cd.m}}</text>
+          <text style='padding-left:2px;padding-right:2px'>:</text>
           <text class='timer'>{{cd.s}}</text>
         </view>
       </view>
        <view class='wm_body'>
-         <view class='wm_money width_30'>
-          <text class='bloc'>互助目标</text>
-          <text class='bloc'><text class='color_red'>{{pool.rtbill.value}}</text>{{pool.rtbill.unit}}</text>
-         </view>
-         <view class='wm_timer width_30'>
-          <text class='bloc'>时限</text>
-          <text class='bloc'><text class='color_red'>{{pool.day}}</text>天</text>
-         </view>
-         <view class='wm_prace width_30'>
-          <text class='bloc'>价格</text>
-          <text class='bloc'>￥<text class='color_red'>{{pool.rubill}}</text>/份</text>
-         </view>
-       </view>
-       <view class='wm_jindu'>
-           <progress class='wm_progress' percent='{{pool.percentVal}}' activeColor='#5ecd98' backgroundColor='#a0a0a0' stroke-width='20'>
-           <text class='baifenbi'>{{pool.percentVal}}%</text>
-           </progress>
-           <view class='m_jine'>金额已达<text class='color_red'>{{pool.realBill}}</text>{{pool.unit}}</view>
+       <!-- 从金额开始 -->
+        <view class='bloc' style='margin:0 auto'>
+          <text class='bloc' ><text class='color_red'>{{pool.realBill}}</text>{{pool.unit}} </text>
         </view>
+         <view class='bloc' style='margin:0 auto'>
+          <text class='bloc' >金额已达</text>
+        </view>
+        <view class='col' style='padding:13px 0px'>
+          <view class='col-5' style='text-align:center'>
+            <text>互助目标<text class='col_red'>{{pool.rtbill.value}}</text>{{pool.rtbill.unit}}</text>
+          </view>
+          <view class='col-3' style='text-align:center'>
+            <text>时限{{pool.day}}天</text>
+          </view>
+          <view class='col-3' style='text-align:center'>
+            <text><text class='col_red'>¥{{pool.rubill}}</text>/份</text>
+          </view>
+           <view catchtap='sharePool' class='col-2'>
+      <button id="{{pool.ptitle}}" open-type='share'  style='background-image:url("http://cloud.antit.top/share.png");background-size:100%;width:35px;height:35px;border:none'  plain='true'></button>
+      </view>
+        </view>
+       </view>
+      <!-- 结束 -->
+       
       </view>
         <!-- 份数 -->
       <view class='box_fenshu row'>
        <view class='col'>
         <view class='col-6'>份数</view>
         <view class='col-6'>
-         <text class='jian' id="-1" bindtap='onChangePiece'>-</text>
+         <text id="-1" bindtap='onChangePiece' class='jian'>-</text>
          <text class='fenshu'>{{countPiece}}</text>
-         <text class='jia' id="1" bindtap='onChangePiece'>+</text>
+         <text id="1" bindtap='onChangePiece' class='jia'>+</text>
         </view>
        </view>
       </view>
@@ -57,28 +64,10 @@
         <view class='col'>
           <text class='col-3'>梦想</text>
           <text class='col-6'>{{dream.title}}</text>
-          <!--text class='col-3 tihuan'>替换</text-->
+          <text class='col-3 tihuan' bindtap='exchangeDream'>替换</text>
         </view>
       </view>
-      <view class='flex-item box_zhifu'><button bindtap='onPay' style='color:white;background:#3fab79;width:80%;border-radius:5px'>微信支付</button></view>
+      <view class='flex-item box_zhifu'><button bindtap='onPay'  style='color:white;background:#3fab79;width:80%;border-radius:5px'>微信支付</button></view>
   </view>
-  <!-- 底部导航栏 -->
-      <!--view class="weui-footer_fixed-bottom m_footer row">
-       <view class='col'>
-        <view class='col-4 m_active'>
-        <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
-        <text class='bloc'>参与互动</text> 
-        </view>
-       <view class='col-4'>
-        <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
-        <text class='bloc'>小梦想</text> 
-        </view>
-        <view class='col-4'>
-        <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
-        <text class='bloc' >我的</text> 
-        </view>
-       </view>
-      </view-->
-
-      <!-- 底部结束 -->
 </view>
+<!--新版支付结束-->
