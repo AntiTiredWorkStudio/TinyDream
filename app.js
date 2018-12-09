@@ -9,16 +9,6 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         if (res.code) {
-          /*wx.request({//获取用户的openid
-            url: 'https://api.weixin.qq.com/sns/jscode2session?appid=' + C.conf.appid + '&secret=' + C.conf.secret+'&js_code='+res.code+'&grant_type=authorization_code',
-            success:function(res){
-              app.globalData.openid = res.data.openid;
-              if (app.currentPage && app.currentPage.onLogin){
-                app.currentPage.onLogin(res.data.openid)//调用【当登录】事件
-              }
-              return;
-            }
-          })*/
           C.TDRequest(
             'us', 'gakt', {
               code: res.code
@@ -84,14 +74,15 @@ App({
       //C.Intend("../mx_zhifu/mx_zhifu", true)
       //
       //pages/index/index
-      wx.showModal({
+
+      C.Intend("../mx_zhifu/mx_zhifu", true)
+      /*wx.showModal({
         title: '准备购买',
-        content: '是否决定下单?',
+        content: '是否参与互助?',
         success: function(res) {
           //console.log()
           if (res.confirm) {
             if (getCurrentPages()[0].route == 'pages/mx_tanchuang/mx_tanchuang') {
-              C.Intend("../mx_zhifu/mx_zhifu", true)
             } else {
               C.Intend("../mx_zhifu/mx_zhifu", true)
             }
@@ -104,7 +95,7 @@ App({
             }
           }
         }
-      })
+      })*/
 
     },
     pay: function(data) {
@@ -125,5 +116,6 @@ App({
     openid: null,
     nickname: null,
     headicon: null,
+    hasInfo:false
   }
 })

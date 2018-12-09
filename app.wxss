@@ -23,7 +23,7 @@ page{
 .bloc1{display: block;font-size: 14px}
 .page-head{margin: 15px;display: flex;flex-direction: column;border-radius: 10px;background: white;}
 .m_cheng{background:#f1f4f7;height:10px}
-.m_footer{background: white;border-top: thin solid #ebebeb}
+.m_footer{font-size: 10px;background: white;border-top: thin solid #ebebeb}
 .m_footer .footer_logo{width:50px;height:50px;text-align:center}
 .m_active{color: #5ECD98}
 .mt_10{margin: 10px}
@@ -113,14 +113,23 @@ page{
 
 
 /*导航栏css样式可不能删了啊*/
-.sprite { background-image: url("http://cloud.antit.top/sprite.png"); background-position: -5px -5px; width: 150px; height: 100px; background-repeat: no-repeat; }
-.sprite_canyu{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -5px -55px; width: 40px; height: 40px;background-repeat: no-repeat;margin:0 auto }
-.sprite_canyu_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -5px -5px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
+/* .sprite { background-image: url("http://cloud.antit.top/sprite.png"); background-repeat: no-repeat;background-size:100% 100%;top:0;left:0;width:100%;height:100% } */
 
-.sprite_xiaomengxiang{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -55px -55px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
-.sprite_xiaomengxiang_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -55px -5px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
 
-.sprite_wode{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -105px -55px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
-.sprite_wode_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -105px -5px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
+/* .sprite_canyu{background-image: url("http://cloud.antit.top/sprite.png"); background-position: 
+0% 90% ;width: 33.333%; height: 40px;background-repeat: no-repeat;margin:0 auto }
+.sprite_canyu_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: 0% 10%; width: 33.333%; height: 40px; background-repeat: no-repeat;margin:0 auto }
+.sprite_xiaomengxiang{background-image: url("http://cloud.antit.top/sprite.png"); background-position: 50% 90%; width: 33.333%; height: 40px; background-repeat: no-repeat;margin:0 auto }
+.sprite_xiaomengxiang_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: 50% 10%; width: 33.333%; height: 40px; background-repeat: no-repeat;margin:0 auto }
+.sprite_wode{background-image: url("http://cloud.antit.top/sprite.png"); background-position:  95% 90%; width: 33.333%; height: 40px;background-repeat: no-repeat;margin:0 auto }
+.sprite_wode_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: 95% 10%; width: 33.333%; height: 40px; background-repeat: no-repeat;margin:0 auto } */
+ .sprite_canyu{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -5px -55px; width: 40px; height: 40px;background-repeat: no-repeat;margin:0 auto }
+.sprite_canyu_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -5px -5px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto } 
+
+ .sprite_xiaomengxiang{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -55px -55px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
+.sprite_xiaomengxiang_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -55px -5px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto } 
+
+ .sprite_wode{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -105px -55px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto }
+.sprite_wode_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -105px -5px; width: 33%; height: 40px; background-repeat: no-repeat;margin:0 auto } 
 
 .success_upload_img{height:100px;width:100%;display:block;margin:0 auto}

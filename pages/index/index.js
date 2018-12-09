@@ -5,7 +5,8 @@ var C = app.lib
 
 var index = Page({
   data: {
-    authVisible: true,
+    showSwiper:false,
+    authVisible: false,
     poolHours:0,
     poolMinutes:0,
     poolSeconds:0,
@@ -28,6 +29,9 @@ var index = Page({
   },
   onLogin:function(openid){
     console.log(openid)
+    if(openid == null){
+      return
+    }
     var page = this
     wx.getSetting({
       success: res => {
@@ -68,6 +72,11 @@ var index = Page({
     if (app.globalData.hasInfo){//如果已经获取过用户信息
       console.log("已经获取过用户信息")
       this.onInfoReady()
+      this.setData(
+        {
+          authVisible: false
+        }
+      )
     } else {
       console.log("未获取过用户信息")
     }
@@ -77,6 +86,14 @@ var index = Page({
   countDown: function () {
 //    console.log(this.duration)
     var sec = (Math.floor(this.mainpooltime) + Math.floor(this.duration)) - Math.floor(C.PRCTIME())
+   // sec = sec -86400
+    
+    if(sec <= 0){
+      sec = 0
+      clearInterval(this.countdownInterval)
+      this.onInfoReady()
+    }
+
     var h = Math.floor(sec / 3600);
     var m = Math.floor(Math.floor(sec % 3600) / 60);
     var s = Math.floor(sec % 60);
@@ -202,6 +219,9 @@ var index = Page({
     wx.showShareMenu({
       withShareTicket:true
     })
+    wx.showLoading({
+      title: '加载中',
+    })
     console.log("onInfoReady")
     C.TDRequest("us", "enter",
       {
@@ -215,6 +235,7 @@ var index = Page({
           }
         )
         page.onPageLaunch(data)
+        wx.hideLoading()
 
         console.log(data);
       }, function (code, data) {

@@ -100,9 +100,13 @@ Page({
           inputTele: "",
           inputCode: ""
         })
-        wx.showToast({
-          title: '绑定成功',
-          icon: 'success',
+        wx.navigateBack({
+          complete: function () {
+            wx.showToast({
+              title: '绑定成功',
+              icon: 'success',
+            })
+          }
         })
         page.onInit()
       },

@@ -24,6 +24,22 @@ Page({
   countdownInterval: null,
   countDown:function(){
     var sec = (Math.floor(this.data.pool.ptime) + parseInt(Math.floor(this.data.pool.duration))) - Math.floor(C.PRCTIME())
+
+    var page = this
+    if (sec <= 0) {
+      sec = 0
+      clearInterval(this.countdownInterval)
+      wx.showModal({
+        title: '提示',
+        content: '当前梦想池互助已经结束',
+        showCancel:false,
+        complete:function(){
+          C.Intend('../index/index')
+        }
+      })
+      return
+    }
+
     // console.log(sec)
     var th = Math.floor(sec / 3600);
     var tm = Math.floor(Math.floor(sec % 3600) / 60);
@@ -141,6 +157,48 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
         data.pay.sign,
         data.paySign
       )
+
+      //支付完成API调用
+     /* var payData = {
+        uid: app.globalData.openid,
+        oid: app.actionList.pay.oid,
+        bill: tbill,
+        pcount: page.data.countPiece,
+        action: JSON.stringify(app.actionList)
+      }
+
+      if (page.exchangeDream != null) {
+        payData['did'] = page.exchangeDream.did
+      }
+
+      C.TDRequest('ds', 'pay', payData, function (code, data) {
+        wx.showToast({
+          title: '支付成功',
+          icon: 'none',
+          mask: true,
+          complete: function () {
+            C.Intend('../mx_wode/mx_wode?pay=true', true);
+            console.log(data)
+          }
+        })
+
+      }, function (code, data) {
+        console.log(data)
+        wx.showToast({
+          title: '支付失败',
+          icon: 'none',
+          mask: true,
+          complete: function () {
+            C.Intend('../mx_wode/mx_wode?pay=false', true);
+            console.log(data)
+          }
+        })
+
+        }) */
+      //支付完成API调用 结束
+
+     /* return;*/
+      //微信支付
       wx.requestPayment({
         timeStamp: ""+data.pay.timestamp,
         nonceStr: data.pay.noncestr,
@@ -149,13 +207,21 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
         paySign: data.paySign,
         success(res) {
           console.log(res)
-          C.TDRequest('ds', 'pay', {
+
+          //支付完成API调用
+          var payData = {
             uid: app.globalData.openid,
             oid: app.actionList.pay.oid,
             bill: tbill,
             pcount: page.data.countPiece,
             action: JSON.stringify(app.actionList)
-          }, function (code, data) {
+          }
+
+          if(page.exchangeDream != null){
+            payData['did'] = page.exchangeDream.did
+          }
+
+          C.TDRequest('ds', 'pay', payData, function (code, data) {
             wx.showToast({
               title: '支付成功',
               icon: 'none',
@@ -179,6 +245,11 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
             })
             
           })
+
+          //支付完成API调用 结束
+
+
+
          },
         fail(res) {
           console.log("fail:",res)
@@ -221,8 +292,17 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
    /* */
     /**/
   },
-  exchangeDream:function(){
-      console.log("替换梦想")
+  exchangeDream : null,
+  exchangeDream01: function () {
+    console.log("替换梦想")
+    C.Intend("../mx_tanchuang/mx_tanchuang?type=exchange", false)
+  },
+  onExchangeDream:function(tdream){
+    console.log('onExchangeDream',tdream)
+    this.exchangeDream = tdream;
+    this.setData({
+      dream: tdream
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -235,7 +315,12 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //console.log("ON PAY PAGE SHOW")
 
+    var exchangeDream = C.GetPageIntendData('exchange');
+    if(exchangeDream!=null){
+      this.onExchangeDream(exchangeDream)
+    }
   },
 
   /**
@@ -249,7 +334,7 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    clearInterval(this.countdownInterval)
   },
 
   /**

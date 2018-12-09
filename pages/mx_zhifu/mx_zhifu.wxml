@@ -20,7 +20,7 @@
           <text class='bloc' ><text class='color_red'>{{pool.realBill}}</text>{{pool.unit}} </text>
         </view>
          <view class='bloc' style='margin:0 auto'>
-          <text class='bloc' >金额已达</text>
+          <text class='bloc' >{{pool.billHint}}</text>
         </view>
         <view class='col' style='padding:13px 0px'>
           <view class='col-5' style='text-align:center'>
@@ -30,7 +30,7 @@
             <text>时限{{pool.day}}天</text>
           </view>
           <view class='col-3' style='text-align:center'>
-            <text><text class='col_red'>¥{{pool.rubill}}</text>/份</text>
+            <text><text class='col_red'>{{pool.rubill}}</text>元/份</text>
           </view>
            <view catchtap='sharePool' class='col-2'>
       <button id="{{pool.ptitle}}" open-type='share'  style='background-image:url("http://cloud.antit.top/share.png");background-size:100%;width:35px;height:35px;border:none'  plain='true'></button>
@@ -45,18 +45,29 @@
        <view class='col'>
         <view class='col-6'>份数</view>
         <view class='col-6'>
-         <text id="-1" bindtap='onChangePiece' class='jian'>-</text>
+         <text id="-1" bindtap='onChangePiece' class='jian' >-</text>
          <text class='fenshu'>{{countPiece}}</text>
          <text id="1" bindtap='onChangePiece' class='jia'>+</text>
-        </view>
+         <!-- <text class='bloc' style='margin:0px auto;color:#888;text-align:center;margin-top:10px'>每人每日最多参与5份</text> -->
+         </view>
+       <!-- <view class='col'>
+         <text >每人每日最多参与5份</text>
+       </view> -->
        </view>
       </view>
+      <view class=' row' style='margin:0 10px;background:white;text-align:center;padding:5px 0px'>
+        <view class='col'>
+         <view class='col-6'></view>
+          <view class='col-6' style='color:#888'>每人每日最多参与5份</view>
+        </view>
+      </view>
+
        <!-- 总价 -->
       <view class='box_zongji row'>
        <view class='col'>
         <view class='col-6'></view>
         <view class='col-6'>
-        <text class='zongji'>共￥<text class='price'>{{countPiece*pool.rubill}}</text></text>
+        <text class='zongji'>共<text class='price'>{{countPiece*pool.rubill}}</text>元</text>
         </view>
        </view>
       </view>
@@ -64,7 +75,7 @@
         <view class='col'>
           <text class='col-3'>梦想</text>
           <text class='col-6'>{{dream.title}}</text>
-          <text class='col-3 tihuan' bindtap='exchangeDream'>替换</text>
+          <text class='col-3 tihuan' bindtap='exchangeDream01'>替换</text>
         </view>
       </view>
       <view class='flex-item box_zhifu'><button bindtap='onPay'  style='color:white;background:#3fab79;width:80%;border-radius:5px'>微信支付</button></view>

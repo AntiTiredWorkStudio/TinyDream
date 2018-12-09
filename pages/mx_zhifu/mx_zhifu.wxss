@@ -62,7 +62,7 @@ border-radius: 10px;margin-top: 20px;margin-right: 10px}
 .page-buzhou{margin: 15px;display: flex;flex-direction: column;background: white;margin-top: 10px;border-radius: 10px;margin-bottom: 100px}
 .mat_30{margin-left: 30px;margin-top: 12px;font-size: 14px}
 
-.box_fenshu{background:white;margin-left:10px;margin-right:10px;text-align:center;border-top: solid thin #b5b5b5;padding-top: 10px;padding-bottom: 10px}
+.box_fenshu{background:white;margin-left:10px;margin-right:10px;text-align:center;border-top: solid thin #b5b5b5;padding-top: 10px;padding-bottom: 4px}
 .jian{background:#f5f5f5;padding: 10px}
 .jia{background:#f5f5f5;padding: 10px}
 .fenshu{background:#f5f5f5;padding: 10px;margin:0px 10px 0px 10px}

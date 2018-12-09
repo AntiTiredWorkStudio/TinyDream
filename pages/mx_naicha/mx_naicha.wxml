@@ -54,16 +54,16 @@
 <!-- 梦想规划-->
 
  <view wx:if="{{type.selection=='plan'}}" class='box_erweima'>
-  <text class='bloc_baohan'>规划服务包含：</text> 
+  <text class='bloc_baohan'>梦想服务包含：</text> 
    <view class='box_jieshao'>
     <text class='bloc1'> 1、电子书籍</text>
      <text class='bloc1'>2、专业导师指导</text>
      <text class='bloc1'>3、梦想执行宣传报道</text>
    </view>
    <view bindlongtap = "longTap" >
-     <image class='bloc_img' src='http://tdream.antit.top/qrcode_xmxhz.jpg'></image>
+     <image class='bloc_img' src='http://cloud.antit.top/qrcode.jpg'></image>
      </view>
-     <text class='bloc1' style='text-align:center;padding-bottom:20px'>扫描二维码联系客服</text>
+     <text class='bloc1' style='text-align:center;padding-bottom:20px'>长按二维码复制客服微信</text>
   </view>
 
 <!-- 梦想规划-->

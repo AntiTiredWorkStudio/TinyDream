@@ -30,7 +30,7 @@
   </view>
   <!--新版UI-->
   <view class="page-body">
-    <view wx:if="{{!authVisible}}" class="page-section wm_box">
+    <view wx:if="{{!authVisible && mainpool.pid!=null}}" class="page-section wm_box">
       <view class='flex-item wm_header'>
         <view class='wm_menxiang'>{{mainpool.ptitle}}</view>
         <view class='wm_time'>距离结束
@@ -46,7 +46,7 @@
         <text class='bloc' style='text-align:center;margin:0 auto'><text class='color_red'>{{mainpool.realBill}}</text> {{mainpool.unit}}</text>
       </view>
       <view class='col' style='background:white'>
-        <text class='bloc' style='text-align:center;margin:0 auto'>金额已达</text>
+        <text class='bloc' style='text-align:center;margin:0 auto'>目前互助金</text>
       </view>
       <view class='wm_body col'>
         <view class='wm_money col-4'>
@@ -59,7 +59,7 @@
         </view>
         <view class='wm_prace col-4'>
           <text class=''>价格</text>
-          <text class=''><text class='col_red'>¥{{mainpool.ubill*0.01}}</text>/份</text>
+          <text class=''><text class='col_red'>{{mainpool.ubill*0.01}}</text>元/份</text>
         </view>
       </view>
       <view class='wm_jindu' style='padding-top:15px'>
@@ -131,7 +131,7 @@
       <view style='margin-top:10px;margin-left:10px;color:#3e3e3e'>小梦想互助步骤</view>
       <view class='mat_30' style='color:#3e3e3e'>1、多人参与互助完成梦想池互动目标</view>
       <view class='mat_30' style='color:#3e3e3e'>2、公平公正通过随机号码产生1名幸运者</view>
-      <view class='mat_30' style='color:#3e3e3e'>3、幸运者的发现互助资金启动梦想</view>
+      <view class='mat_30' style='color:#3e3e3e'>3、幸运者获得互助资金启动梦想</view>
       <view class='mat_30' style='color:#3e3e3e'>4、梦想执行跟踪报道</view>
       <!-- <view class='mat_30'>4、梦想执行跟踪报道</view> -->
       <navigator url="../mx_huzhu/mx_huzhu">
@@ -141,7 +141,7 @@
     
   </view>
   
-  <swiper wx:if="{{!authVisible}}" indicator-dots='true' autoplay='4000' indicator-color='#3e3e3e' indicator-active-color='#ffffff' style='height:180px'>
+  <swiper wx:if="{{!authVisible && showSwiper}}" indicator-dots='true' autoplay='4000' indicator-color='#3e3e3e' indicator-active-color='#ffffff' style='height:180px'>
   <swiper-item ><view id='muyan' bindtap='bossInfo' class='col box_muyan'>
 </view></swiper-item>
 <swiper-item><view id='yuanfeng' bindtap='bossInfo' class='col box_yuanfeng'>
@@ -177,6 +177,13 @@
       </view>
     </view>
   </view>
+  
+  <!-- 底部导航栏 -->
+  <!-- <view wx:if="{{!authVisible}}" class="weui-footer_fixed-bottom m_footer row" style='bottom:150px;position:absolute;left:0'>
+    <view class='col' style='background:yellow'>
+      <view class='sprite' style='height:500px'></view>
+    </view>
+  </view> -->
   <!-- 底部结束 -->
   <!-- 底部导航栏 -->
   <!-- <view wx:if="{{!authVisible}}" class="weui-footer_fixed-bottom m_footer row">

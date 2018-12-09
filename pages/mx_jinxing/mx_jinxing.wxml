@@ -32,7 +32,7 @@
         <text class='bloc' style='text-align:center;margin:0 auto'><text class='color_red'>{{pool.realBill}}</text> {{pool.unit}}</text>
       </view>
       <view class='col' style='background:white'>
-        <text wx:if='{{pool.state=="RUNNING"}}' class='bloc' style='text-align:center;margin:0 auto'>金额已达</text>
+        <text wx:if='{{pool.state=="RUNNING"}}' class='bloc' style='text-align:center;margin:0 auto'>{{pool.billHint}}</text>
         <text wx:if='{{pool.state=="FINISHED"}}' class='bloc' style='text-align:center;margin:0 auto'>互助完成金额</text>
       </view>
       <view wx:if='{{pool.state=="RUNNING"}}' class='wm_body col'>
@@ -46,7 +46,7 @@
         </view>
         <view class='wm_prace col-4'>
           <text class=''>价格</text>
-          <text class=''><text class='col_red'>¥{{pool.ubill*0.01}}</text>/份</text>
+          <text class=''><text class='col_red'>{{pool.ubill*0.01}}</text>元/份</text>
         </view>
       </view>
       <view wx:if='{{pool.state=="FINISHED"}}'  class='wm_jindu' style='padding-top:15px'>

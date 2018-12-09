@@ -47,8 +47,13 @@ Page({
 
       }
     )
+    if (options.hasOwnProperty('type') && options.type == 'exchange') {
+      console.log('exchange')
+      this.type = options.type
+      console.log(this.payPage)
+    }
   },
-
+  type:"none",
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -128,6 +133,21 @@ Page({
       })
       return;
     }
+
+    var page = this
+    if (this.type == 'exchange') {
+
+      C.SetPageIntendData('exchange', page.data.dlist[page.currentSelection]);
+      wx.navigateBack({
+        complete: function (res) {
+          console.log(page.payPage)
+          //page.payPage.onExchangeDream(page.data.dlist[page.currentSelection])
+        }
+      })
+
+      return
+    }
+    
     C.TDRequest(
       "dr",
       "sdream",
@@ -136,13 +156,8 @@ Page({
         did: this.currentSelection,
         action : JSON.stringify(app.actionList)
       },
-      function(code,data){
-          //console.log(data,app.actionList)
-          //wx.navigateBack()
-      },
-      function(code,data){
-
-      }
+      function(code,data){console.log(data)},
+      function(code,data){console.log(data)}
     )
    // console.log(app.globalData.openid,this.currentSelection,app.actionList)
   }

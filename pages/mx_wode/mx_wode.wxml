@@ -9,7 +9,7 @@
    <view class='col box_goumai'>
       <view class='col-4'>
          <text class='bloc'><text class='color_red'>{{owner.totalJoin}}</text><text style='color:white'>个</text></text>
-          <text class='bloc' style='color:#ffffff'>参与中的梦想</text>
+          <text class='bloc' style='color:#ffffff'>参与中的梦想池</text>
       </view>
       <view class='col-4'>
          <text class='bloc'><text class='color_red'>{{owner.totalReward.value}}</text><text style='color:white'>{{owner.totalReward.unit}}</text></text>
@@ -53,12 +53,24 @@
     </view>
     </navigator>
      <!-- 梦想池 -->
-    <view bindtap='onCommunicate'  class=' col box_list'>
+    <!--view bindtap='onCommunicate'  class=' col box_list'>
       <text class='col-11'>联系客服</text>
       <text class='col-1'>></text>
-    </view>
+    </view-->
     
-      <button class='col box_list' style='border:none;float:left;width:100%;margin-left:-1px;' open-type="feedback" ><text style='float:left;text-align:left;width:95%' open-type="feedback">用户反馈</text><text style='float:right;text-align:right;'>></text></button>
+      <button plain="true" style='font-size:13px;padding-left:0px;padding-right:0px;border:none;border-radius:0rpx;float:left;width:100%;' open-type="contact" >
+    <view style='width:100%;background:white;height:49px;display: flex;align-items: center;justify-content: center;border-bottom:thin solid #e7e7e7'>
+      <text class='col-11' style='padding-left:17px;float:left;text-align:left;'>联系客服</text>
+      <text class='col-1' style='padding-right:20px;float:right;text-align:right;'>></text>
+    </view>
+    </button>
+    
+      <button plain="true" style='font-size:13px;padding-left:0px;padding-right:0px;border:none;border-radius:0rpx;float:left;width:100%;' open-type="feedback" >
+    <view style='width:100%;background:white;height:49px;display: flex;align-items: center;justify-content: center;border-bottom:thin solid #e7e7e7'>
+      <text class='col-11' style='padding-left:17px;float:left;text-align:left;'>用户反馈</text>
+      <text class='col-1' style='padding-right:20px;float:right;text-align:right;'>></text>
+    </view>
+    </button>
       
     
   </view>

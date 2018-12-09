@@ -71,7 +71,7 @@ Page({
     tPool = C.DreamPoolAnalysis(tPool)
     console.log("DreamPoolAnalysis", tPool)
     tPool = this.poolDataUpgraded(tPool)
-    console.log("poolDataUpgraded",tPool)
+    console.log("poolDataUpgraded", tPool)
     //var real
     var page = this
     var stateText = ''
@@ -273,6 +273,15 @@ Page({
     // console.log(this.data.pool)
     var sec = (Math.floor(this.data.pool.ptime) + parseInt(Math.floor(this.data.pool.duration))) - Math.floor(C.PRCTIME())
     // console.log(sec)
+    var page = this
+    if (sec <= 0) {
+      sec = 0
+      clearInterval(this.countdownInterval)
+      this.onLoad({
+        pid: page.data.pool.pid
+      })
+    }
+
     var th = Math.floor(sec / 3600);
     var tm = Math.floor(Math.floor(sec % 3600) / 60);
     var ts = Math.floor(sec % 60);
@@ -321,7 +330,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function() {
-
+    clearInterval(this.countdownInterval)
   },
 
   /**
