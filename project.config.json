@@ -12,7 +12,7 @@
 		"autoAudits": false
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.4.1",
+	"libVersion": "2.4.2",
 	"appid": "wx9a61a8000316fa66",
 	"projectname": "TinyDream",
 	"debugOptions": {

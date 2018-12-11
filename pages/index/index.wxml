@@ -85,6 +85,28 @@
     </view-->
   </view>
 
+
+
+
+
+
+  <view wx:if="{{!authVisible && mainpool.pid==null}}" class="page-section wm_box">
+      
+      <view class='wm_jindu' style='padding-top:15px;border-radius:10px 10px 10px 10px;'>
+        
+        <view class='yz_group row' style='width:70%;margin:5px auto'>
+         
+        </view>
+         <view class='mat_30' style='color:#3e3e3e'>暂无进行中的梦想池</view>
+        <navigator>
+          <view bindtap='morePools' class='mat_30' style='float:right;margin-right:20rpx;text-decoration:underline'>查看更多梦想</view>
+        </navigator>
+      </view>
+      <!-- 进度结束 -->
+    </view>
+
+
+
   <!--新增代码 结束-->
   <view class="page-body">
     <!--旧版梦想池-->

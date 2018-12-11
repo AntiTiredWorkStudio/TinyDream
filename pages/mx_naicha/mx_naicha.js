@@ -194,12 +194,18 @@ Page({
   },
   onDreamVerify(res) {
     console.log(res.currentTarget.id)
+    var page = this
      C.TDRequest("ds", "sver",{
        uid:app.globalData.openid,
        did: res.currentTarget.id
      },
      function(code,data){
         console.log(data)
+        wx.showToast({
+          title: '提交成功',
+          icon: 'none'
+        })
+        page.updateList()
      },
        function (code, data) {
          console.log(data)
@@ -208,9 +214,10 @@ Page({
   },
   onCommunicate(res) {
     console.log(res.currentTarget.id)
-    wx.makePhoneCall({
+    /*wx.makePhoneCall({
       phoneNumber: '400-600-2233',
-    })
+    })*/
+    this.switchType({currentTarget:{id:'plan'}})
   },
   longTap: function () {
     console.log('longTap')

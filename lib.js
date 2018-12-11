@@ -92,7 +92,7 @@ module.exports.DreamPoolAnalysis = function(pool) {
   pool.joincount = pool.cbill / pool.ubill
   if (pool.state == 'RUNNING') {
     pool.billHint = "目前互助金"
-  } else if (currentPool.state == 'FINISHED') {
+  } else if (pool.state == 'FINISHED') {
     pool.billHint = "最终互助金"
   }
   /*console.log("billResult:", billResult);

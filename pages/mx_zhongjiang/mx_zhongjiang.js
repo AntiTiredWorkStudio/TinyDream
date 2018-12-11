@@ -79,6 +79,9 @@ Page({
       function (code, data) {
         console.log('lfromp', data)
         stateText = data.lid
+        page.setData({
+          pstate: stateText
+        })
       }, function (code, data) {
         console.log('lfromp', data)
         if (tPool.tdescription != '互助结束'){
@@ -100,11 +103,6 @@ Page({
         pid: options.pid
       },
       function(code, data) {
-        console.log(data)
-
-        page.countdownInterval = setInterval(page.countDown, 1000);
-
-
         var seeker = 0
         var count = 0
         var lotteryList = []
@@ -129,6 +127,9 @@ Page({
         page.setData({
           lottery: lotteryList,
           pool: tPool
+        },function(){
+          if (page.data.pool.state == 'RUNNING')
+            page.countdownInterval = setInterval(page.countDown, 1000);
         })
 
 
