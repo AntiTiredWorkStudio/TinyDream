@@ -5,12 +5,12 @@
   <view class='page-body'>
     <view class='bloc box_huzhu'>
       <text class='bloc_guize' style='font-weight:bold'>小梦想互助规则详情</text>
-      <text class='bloc'>1、多人参与小梦想互助——填写小梦想的用户均可以购买梦想池份额，每个梦想池每人每天最多购买5份;
+      <text class='bloc'>1、多人参与互助完成互助目标———提交过小梦想的用户都可以参与每期梦想互助，参与互助需要支付少量互助金（5元/份），每参与一份得到一个有机会成为幸运者的编号，每人每天最多参与5份。
 </text>
-      <text class='bloc'>2、公平产生1名幸运者——每个梦想池产生1名幸运者， 根据动态福利彩票公布结果匹配幸运者，公布幸运者时间为：梦想池互助结束后最新的一个福利彩票开奖后2小时内。 中奖编号计算公式为：((A+B)/C)取余数+10000000。</text><navigator  url="../mx_gongshi/mx_gongshi" rediect='false'><text class='list_zhankai'>查看详情</text></navigator>
-     <text class='bloc'>3、幸运者得到互助资金启动梦想——公布幸运者当日起，7个工作日内完善梦想完成实名认证，审核通过后3日内平台会将梦想互助资金转给幸运者;</text>
+      <text class='bloc'>2、公平产生1名幸运者——每期梦想互助产生1名幸运者， 根据动态福利彩票公布结果计算幸运者编号，公布幸运者时间为：每期梦想互助结束后最新的一个福利彩票开奖后2小时内。 幸运者编号计算公式为：（ （A+B）/C  ）取余数+10000000</text><navigator  url="../mx_gongshi/mx_gongshi" rediect='false'><text class='list_zhankai'>查看详情</text></navigator>
+     <text class='bloc'>3、幸运者得到互助资金启动梦想——公布幸运者编号当日起，幸运者在7个工作日内完善梦想并完成实名认证，审核通过后的3个工作日内平台会将梦想互助总资金转给幸运者；</text>
      <text class='bloc'>4、梦想执行跟踪报道——平台跟踪报道梦想实现进展！</text>
-     <text class='bloc font_s13'> 注：每个梦想池结束时，实际参与互助的金额没有达到梦想池的互助目标金额，则幸运者得到的互助金额以该梦想池实际完成的互助总金额为准。 每个梦想池结束标准为：互助目标金额达到或互助时间截止!</text>
+     <text class='bloc font_s13'>  注：每期梦想互助结束时，实际参与互助的总金额没有达到互助目标金额，则幸运者得到的互助金额以每期实际完成的互助总金额为准。 每期梦想互助结束的标准为：互助目标金额达到或互助时间截止！</text>
     </view>
   </view>
 </view>

@@ -1,10 +1,10 @@
 {
   "pages": [
+    
     "pages/index/index",
-    "pages/mx_gongshi/mx_gongshi",
     "pages/mx_wenti/mx_wenti",
     "pages/mx_routine/mx_routine",
-
+    "pages/mx_gongshi/mx_gongshi",
     "pages/mx_zhifu/mx_zhifu",
     "pages/mx_xieyi/mx_xieyi",
     "pages/mx_tanchuang/mx_tanchuang",
