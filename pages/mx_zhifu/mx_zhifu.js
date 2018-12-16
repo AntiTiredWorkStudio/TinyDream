@@ -109,37 +109,41 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
     var tbill = page.data.countPiece * page.data.pool.ubill
     console.log(tbill)
 
-  /*  C.TDRequest('ds', 'pay', {
-      uid: app.globalData.openid,
-      oid: app.actionList.pay.oid,
-      bill: tbill,
-      pcount: page.data.countPiece,
-      action: JSON.stringify(app.actionList)
-    }, function (code, data) {
-      wx.showToast({
-        title: '支付成功',
-        icon: 'none',
-        mask: true,
-        complete: function () {
-          C.Intend('../mx_wode/mx_wode?pay=true', true);
-          console.log(data)
-        }
-      })
+    if (page.data.pool.ubill == 0){
+      C.TDRequest('ds', 'pay', {
+        uid: app.globalData.openid,
+        oid: app.actionList.pay.oid,
+        bill: tbill,
+        pcount: page.data.countPiece,
+        action: JSON.stringify(app.actionList)
+      }, function (code, data) {
+        wx.showToast({
+          title: '支付成功',
+          icon: 'none',
+          mask: true,
+          complete: function () {
+            C.Intend('../mx_wode/mx_wode?pay=true', true);
+            console.log(data)
+          }
+        })
 
-    }, function (code, data) {
-      console.log(data)
-      wx.showToast({
-        title: '支付失败',
-        icon: 'none',
-        mask: true,
-        complete: function () {
-          C.Intend('../mx_wode/mx_wode?pay=false', true);
-          console.log(data)
-        }
-      })
+      }, function (code, data) {
+        console.log(data)
+        wx.showToast({
+          title: '支付失败',
+          icon: 'none',
+          mask: true,
+          complete: function () {
+            C.Intend('../mx_wode/mx_wode?pay=false', true);
+            console.log(data)
+          }
+        })
 
-    })
-    return*/
+      })
+      return
+    }
+
+
 
 
     C.TDRequest('ds','wxpay',
@@ -149,14 +153,15 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
       uid:app.globalData.openid
     },
     function(code,data){
-      console.log("prepayid=" + data.pay.prepayid)
+      /*console.log("prepayid=" + data.pay.prepayid)
       console.log(
-        "" + data.pay.timestamp,
-        data.pay.noncestr,
-        "prepayid=" + data.pay.prepayid,
-        data.pay.sign,
-        data.paySign
-      )
+        "timeStamp:"+"" + data.pay.timestamp,
+        "noncestr:" +data.pay.noncestr,
+        "package:" +"prepayid=" + data.pay.prepayid,
+        "paySign:" +data.paySign
+      )*/
+
+
 
       //支付完成API调用
      /* var payData = {
@@ -199,11 +204,20 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
 
      /* return;*/
       //微信支付
+      console.log(data)
+      console.log({
+        timeStamp: data.timeStamp,
+        nonceStr: data.nonceStr,
+        package: data.package,
+        signType: data.signType,
+        paySign: data.paySign,
+      });
+      
       wx.requestPayment({
-        timeStamp: ""+data.pay.timestamp,
-        nonceStr: data.pay.noncestr,
-        package: 'prepayid='+data.pay.prepayid,
-        signType: 'MD5',
+        timeStamp: data.timeStamp,
+        nonceStr: data.nonceStr,
+        package: data.package,
+        signType: data.signType,
         paySign: data.paySign,
         success(res) {
           console.log(res)
@@ -259,9 +273,12 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
             mask: true,
             complete: function () {
               C.Intend('../mx_wode/mx_wode?pay=false', true);
-              console.log(data)
+             // console.log(data)
             }
           })
+        },
+        complete(res){
+          console.log('complete:',res)
         }
       })
     },
@@ -279,7 +296,7 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
       })*/
       wx.showModal({
         title: data.context ,
-        content: data.error.return_msg,
+        content: data.error,
         mask: true,
         showCancel:false,
         success: function () {

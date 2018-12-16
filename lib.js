@@ -89,7 +89,11 @@ module.exports.DreamPoolAnalysis = function(pool) {
   pool.day = Math.floor(pool.duration / 86400)
   pool.rtbill = module.exports.BillExchange(pool.tbill)
   pool.rduration = module.exports.DescriptionTime(pool.duration)
-  pool.joincount = pool.cbill / pool.ubill
+  if(pool.ubill >0){
+    pool.joincount = pool.cbill / pool.ubill
+  }else{
+    pool.joincount = pool.pcount
+  }
   if (pool.state == 'RUNNING') {
     pool.billHint = "目前互助金"
   } else if (pool.state == 'FINISHED') {

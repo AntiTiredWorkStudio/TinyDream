@@ -52,7 +52,7 @@ Page({
    */
   currentTab:"num",
   switchTab: function(res) {
-    if (this.currentTab == res.currentTarget.id){
+    if (this.currentTab == res.currentTarget.id) {
       return
     } 
     this.currentTab = res.currentTarget.id
@@ -154,6 +154,7 @@ Page({
     this.setData({
       orders: {}
     })
+    console.log("viewDetials");
     //    ds = precs & pid=100016
     //ds=preco&pid=100016&min=1&max=6
     C.TDRequest('ds', 'precs', {
@@ -180,6 +181,7 @@ Page({
             })
           },
           function (code, data) {
+            console.log(data)
           })
 
       },

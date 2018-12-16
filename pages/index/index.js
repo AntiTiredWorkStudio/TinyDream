@@ -45,6 +45,7 @@ var index = Page({
           )
           page.onGetUserInfo()
         } else {//未授权
+          wx.hideLoading()
           page.setData(
             {
               authVisible: true
@@ -62,7 +63,10 @@ var index = Page({
     if (app && app.onLoadPage){
       app.onLoadPage(this)
     }
-
+    wx.showLoading({
+      title: '正在加载',
+      mask: true
+    })
     /*显示时间戳
     wx.showModal({
       title: 'time',
