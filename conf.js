@@ -1,4 +1,4 @@
-//配置信息
+//配置信息wey新加
 
 module.exports = {
   appid:"wx1eed012d4550cf4c",
