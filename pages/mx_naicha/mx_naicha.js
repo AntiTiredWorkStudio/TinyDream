@@ -32,6 +32,9 @@ Page({
     })
     app.onLoadPage(this)
     this.updateList()
+    if(options.hasOwnProperty('type')){
+      this.switchType({ currentTarget: { id: options.type}});
+    }
   },
   getTitleDescription :function(state){
     //'SUBMIT','DOING','VERIFY','FAILED','SUCCESS'
@@ -209,6 +212,12 @@ Page({
      },
        function (code, data) {
          console.log(data)
+
+         wx.showToast({
+           title: data.context,
+           icon: 'none'
+         })
+         page.updateList()
      }
      );
   },

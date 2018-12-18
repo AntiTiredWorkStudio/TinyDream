@@ -112,6 +112,7 @@ App({
   },
   currentPage: null,
   lib: null,
+  awardHint:false,
   globalData: {
     openid: null,
     nickname: null,

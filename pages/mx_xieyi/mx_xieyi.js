@@ -114,6 +114,32 @@ Page({
   readDetial:function(){
     C.Intend('../mx_routine/mx_routine')
   },
+  downLoad:function(){
+    wx.downloadFile({
+      url:"https://tinydream.antit.top/小梦想互助幸运者梦想互助金申请公函.docx",
+      success:function(res){
+        console.log("下载完成:",res)
+        const path = res.tempFilePath
+        console.log(path)
+        wx.openDocument({
+          filePath:path,
+          fileType:"docx",
+          success(res) {
+            console.log('打开文档成功')
+          }
+        })
+       /* wx.saveFile({
+          tempFilePath: ,
+        })*/
+       // wx.openDocument({
+          /*res.tempFilePath,
+          success:function(res){
+
+          }*/
+        //})
+      }
+    })
+  },
   isSubmit : false,
   submitDream: function (res) {
     console.log("提交梦想")

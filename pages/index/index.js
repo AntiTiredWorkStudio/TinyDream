@@ -260,6 +260,20 @@ var index = Page({
     //启动订单轮播
     that.switchOrders();
     this.orderInterval = setInterval(that.switchOrders, 8000);
+
+    if (data.award.result && !app.awardHint){
+      app.awardHint = true
+      wx.showModal({
+        title: '提示',
+        content: '恭喜您!您的梦想' + data.award.dtitle + '成为了幸运梦想,请前往完善梦想并领取互助金吧!', 
+        success: function (res) {
+          console.log(res)
+          if (res.confirm) {
+            C.Intend('../mx_naicha/mx_naicha?type=bingo',true)
+          }
+        }
+      })
+    }
     //console.log("showShareMenu")
   },
   morePools: function (res) {
