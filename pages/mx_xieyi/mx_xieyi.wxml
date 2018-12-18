@@ -9,7 +9,7 @@
     <text class='bloc mt_20'>梦想简介(140字以内)</text>
     <textarea bindinput='contentInput' value='{{contentText}}'  placeholder="请输入您的梦想" class='textarea_text' style=''></textarea>
     <text class='bloc_15'>我承诺：</text>
-    <text class='mx_xieyi'>我填写的梦想绝对真实,不存在任何虚构、隐瞒及伪造的情况,并会积极的配合平台的采访及报道；如违背上述说明，愿承担全部法律责任,并退还梦想互助金!
+    <text class='mx_xieyi'>我填写的梦想是本人真实的梦想，不存在任何虚构、隐瞒及伪造的情况，并会积极配合平台的审核和采访报道。如违背上述说明，愿意承担全部法律责任，并不能获得幸运者梦想互助金！
 </text>
      <view class='' style='text-align:center'>
      <checkbox-group bindchange="checkedEvent">
