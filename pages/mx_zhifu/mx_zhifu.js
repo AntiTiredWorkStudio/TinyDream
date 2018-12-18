@@ -229,13 +229,17 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
             bill: tbill,
             pcount: page.data.countPiece,
             action: JSON.stringify(app.actionList)
-          }
-
-          if(page.exchangeDream != null){
+          } 
+          
+          if (!C.isEmpty(page.exchangeDream)){
+            console.log("更换的梦想不是空却是:",page.exchangeDream)
             payData['did'] = page.exchangeDream.did
           }
+          console.log("actionList:", app.actionList)
+          console.log("payData:", payData)
 
           C.TDRequest('ds', 'pay', payData, function (code, data) {
+            console.log('支付成功',data)
             wx.showToast({
               title: '支付成功',
               icon: 'none',
@@ -247,7 +251,7 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
             })
             
           }, function (code, data) {
-            console.log(data)
+            console.log('支付失败',data)
             wx.showToast({
               title: '支付失败',
               icon: 'none',

@@ -3,6 +3,20 @@ var conf = require('conf.js')
 module.exports.conf = conf
 module.exports.app = {}
 
+module.exports.isEmpty=function (obj) {
+  if (obj === null) return true;
+  if (typeof obj === 'undefined') {
+    return true;
+  }
+  if (typeof obj === 'string') {
+    if (obj === "") {
+      return true;
+    }
+    var reg = new RegExp("^([ ]+)|([　]+)$");
+    return reg.test(obj);
+  }
+  return false;
+}
 //默认请求模板
 module.exports.TDRequest = function(module, action, data, success, failed) {
   //  var postdata = data

@@ -225,8 +225,8 @@ Page({
           seek: tSeek
         })
       },
-      function(code, data) {
-
+      function (code, data) {
+        console.log('load more:', data)
       })
   },
   onCommunicate: function(res) {
