@@ -583,10 +583,16 @@ Page({
         console.log("onTypeRunningLaunch", data)
         //数据处理
         var cPool = page.poolDataUpgraded(data.Pools)
+        /**/
         console.log(cPool)
         for (var key in cPool) {
           page.joinedObject.poolData.push(C.DreamPoolAnalysis(cPool[key]))
         }
+
+        page.joinedObject.poolData.sort(function (a, b) {
+          return b.ptime - a.ptime;
+        })
+
         page.joinedObject.seek += page.joinedObject.size
         if (success)
           success(page.joinedObject)
