@@ -69,29 +69,26 @@
 <!-- 梦想规划-->
 
  <!-- 底部导航栏 -->
- <view class="weui-footer_fixed-bottom m_footer row">
+ <!--view class="weui-footer_fixed-bottom m_footer row">
     <view class='col'>
       <view class='col-4'>
-      <!-- sprite_canyu_act -->
       <navigator redirect="true" url="../index/index">
       <view class='sprite_xiaomengxiang'></view>
       <text class='text_footer'>参与互动</text>
        </navigator>
     </view>
     <view class='col-4 m_active'>
-      <!-- sprite_xiaomengxiang_act -->
       <view class='sprite_canyu_act'></view>
       <text class='text_footer'>小梦想</text>
     </view>
     <view class='col-4'>
-      <!-- sprite_wode_act -->
       <navigator redirect="true" url="../mx_wode/mx_wode">
       <view class='sprite_wode'></view>
       <text class='text_footer'>个人中心</text>
       </navigator>
     </view>
     </view>
-  </view>
+  </view-->
   <!--view class="weui-footer_fixed-bottom m_footer row">
        <view class='col'>
         <view class='col-4 m_active'>

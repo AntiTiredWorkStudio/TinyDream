@@ -5,7 +5,7 @@ var C = app.lib
 var ctx = wx.createCanvasContext('top');
 var index = Page({
   data: {
-    showSwiper:false,
+    showSwiper: false,
     authVisible: false,
     poolHours:0,
     poolMinutes:0,

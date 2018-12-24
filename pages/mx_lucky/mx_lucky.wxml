@@ -1,0 +1,33 @@
+<!--往期幸运者-->
+<!-- 
+    lucky_list：幸运者列表
+    left:幸运者列表左边部分（用户头像）
+    left:幸运者列表中间部分（用户信息）
+    dream_name:幸运者中奖的期数
+    user_info：用户简介
+ -->
+<view class='lucky'>
+    <view class='lucky_list'>
+        <view wx:for="{{awards}}" wx:for-item="award" wx:for-index="seek" class='lucky_main' bindtap='luckyInfo'>
+            <view class='left'>
+                <image src='{{award.headicon}}'></image>
+            </view>
+            <view class='middle'>
+                <view class='dream_name'>小梦想互助{{award.pid}}期幸运者</view>
+                <view class='user_info'>
+                    <view class='user_name'>昵称：{{award.nickname}}</view>
+                    <view class='user_sex'>梦想：{{award.title}}</view>
+                    <view class='user_age'>金 额：{{award.abill}}</view>
+                </view>
+            </view>
+            <view class='right'>
+                <view class='text_box'>
+                    <view>查</view>
+                    <view>看</view>
+                    <view>详</view>
+                    <view>情</view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>
