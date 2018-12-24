@@ -55,6 +55,12 @@ Page({
           })
 
         this.seek += this.size;
+        if (this.seek >= this.count) {
+          wx.showToast({
+            title: '已经全部加载',
+            icon: 'none'
+          })
+        }
       }else{
         wx.showToast({
           title: '已经全部加载',
@@ -102,7 +108,7 @@ Page({
      * 页面上拉触底事件的处理函数
      */
     onReachBottom: function () {
-
+      this.loadItem()
     },
 
     /**
