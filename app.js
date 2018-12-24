@@ -75,7 +75,7 @@ App({
       //
       //pages/index/index
 
-      C.Intend("../mx_zhifu/mx_zhifu", true)
+      C.Intend("../mx_zhifu/mx_zhifu", false)
       /*wx.showModal({
         title: '准备购买',
         content: '是否参与互助?',

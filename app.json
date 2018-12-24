@@ -25,6 +25,7 @@
     "pages/mx_guihua/mx_guihua",
     "pages/mx_naicha/mx_naicha",
     "pages/mx_jinxing/mx_jinxing",
+    "pages/mx_lucky/mx_lucky",
     "pages/logs/logs"
     
   ],
@@ -33,5 +34,29 @@
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "小梦想互助",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "selectedColor": "#00d094",
+    "backgroundColor": "#fff",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "参与互助",
+        "iconPath": "img/home.png",
+        "selectedIconPath": "img/home-active.png"
+      },
+      {
+        "pagePath": "pages/mx_naicha/mx_naicha",
+        "text": "小梦想",
+        "iconPath": "img/dream.png",
+        "selectedIconPath": "img/dream-active.png"
+      },
+      {
+        "pagePath": "pages/mx_wode/mx_wode",
+        "text": "个人中心",
+        "iconPath": "img/user.png",
+        "selectedIconPath": "img/user-active.png"
+      }
+    ]
   }
 }

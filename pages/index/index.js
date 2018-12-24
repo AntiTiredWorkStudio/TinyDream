@@ -2,7 +2,7 @@
 //获取应用实例
 const app = getApp()
 var C = app.lib
-
+var ctx = wx.createCanvasContext('top');
 var index = Page({
   data: {
     showSwiper:false,
@@ -38,6 +38,7 @@ var index = Page({
         console.log(res);
         // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
         if (res.authSetting['scope.userInfo']) {
+          wx.showTabBar({})
           page.setData(
             {
               authVisible : false
@@ -45,6 +46,7 @@ var index = Page({
           )
           page.onGetUserInfo()
         } else {//未授权
+          wx.hideTabBar({})
           wx.hideLoading()
           page.setData(
             {
@@ -116,6 +118,7 @@ var index = Page({
       poolMinutes:m,
       poolSeconds:s
     });
+    this.initCircle();
     //console.log(sec)
   },
   bossContent:{
@@ -151,6 +154,7 @@ var index = Page({
     pool.unit = billResult.unit;
     pool.percentVal = Math.floor((pool.cbill / pool.tbill) *10000)/100
     console.log("billResult:",billResult);
+    this.updateCircle(pool.percentVal/100)
     this.setData({
       mainpool:pool
     })
@@ -217,8 +221,35 @@ var index = Page({
       }
     })
   },
+  initCircle(){
+    var cxt_arc = wx.createCanvasContext('bottom');
+    cxt_arc.setLineWidth(15);
+    cxt_arc.setStrokeStyle('#edf0f5');
+    cxt_arc.setLineCap('round');
+    cxt_arc.beginPath();
+    cxt_arc.arc(95, 95, 80, 0, 2 * Math.PI, false);
+    cxt_arc.stroke();
+    cxt_arc.draw();
+  }
+  ,
+  //绘制进度条
+  updateCircle(jindu) {
+    var jindu = jindu * 2;
+    if (jindu == 0) {
+      ctx.clearRect(0, 0, 190, 190);
+      return;
+    }
+    ctx.setFillStyle('white');
+    ctx.clearRect(0, 0, 190, 190);
+    ctx.setLineWidth(15);
+    ctx.setStrokeStyle('#ffc057');
+    ctx.setLineCap('round');
+    ctx.beginPath();
+    ctx.arc(95, 95, 80, Math.PI / -2, jindu * Math.PI - Math.PI / 2, false);
+    ctx.stroke()
+    ctx.draw()
+  },
   onInfoReady :function(){
-
     var page = this
     wx.showShareMenu({
       withShareTicket:true
@@ -226,6 +257,8 @@ var index = Page({
     wx.showLoading({
       title: '加载中',
     })
+    wx.showTabBar({})
+    //this.updateCircle(0)
     console.log("onInfoReady")
     C.TDRequest("us", "enter",
       {

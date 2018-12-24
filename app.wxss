@@ -110,19 +110,6 @@ page{
 .x-center {
   text-align: center;
 }
-
-
-/*导航栏css样式可不能删了啊*/
-/* .sprite { background-image: url("http://cloud.antit.top/sprite.png"); background-repeat: no-repeat;background-size:100% 100%;top:0;left:0;width:100%;height:100% } */
-
-
-/* .sprite_canyu{background-image: url("http://cloud.antit.top/sprite.png"); background-position: 
-0% 90% ;width: 33.333%; height: 40px;background-repeat: no-repeat;margin:0 auto }
-.sprite_canyu_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: 0% 10%; width: 33.333%; height: 40px; background-repeat: no-repeat;margin:0 auto }
-.sprite_xiaomengxiang{background-image: url("http://cloud.antit.top/sprite.png"); background-position: 50% 90%; width: 33.333%; height: 40px; background-repeat: no-repeat;margin:0 auto }
-.sprite_xiaomengxiang_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: 50% 10%; width: 33.333%; height: 40px; background-repeat: no-repeat;margin:0 auto }
-.sprite_wode{background-image: url("http://cloud.antit.top/sprite.png"); background-position:  95% 90%; width: 33.333%; height: 40px;background-repeat: no-repeat;margin:0 auto }
-.sprite_wode_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: 95% 10%; width: 33.333%; height: 40px; background-repeat: no-repeat;margin:0 auto } */
  .sprite_canyu{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -5px -55px; width: 40px; height: 40px;background-repeat: no-repeat;margin:0 auto }
 .sprite_canyu_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -5px -5px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto } 
 
@@ -133,3 +120,14 @@ page{
 .sprite_wode_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -105px -5px; width: 33%; height: 40px; background-repeat: no-repeat;margin:0 auto } 
 
 .success_upload_img{height:100px;width:100%;display:block;margin:0 auto}
+
+/**app.wxss**/
+/*.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+} */
