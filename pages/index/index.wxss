@@ -173,7 +173,7 @@ border-radius: 10px;margin-top: 20px;}
     top: 150rpx;
     left: 50%;
     transform: translateX(-50%);
-    font-size: 65rpx;
+    font-size: 45rpx;
     color: #ffc057;
 }
 .home .home_content .dream_info .progress .present_money{

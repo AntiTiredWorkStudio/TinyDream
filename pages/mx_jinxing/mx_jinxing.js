@@ -25,6 +25,12 @@ Page({
     }
   },
 
+  statustab: function (e) {
+    console.log(e);
+    this.setData({
+      status: e.currentTarget.id
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -368,12 +374,16 @@ Page({
   },
   //切换类别
   switchType: function (type) {
+    console.log(type)
     if (this.data.type.selection == type.currentTarget.id) {
       return;
     }
     this.data.type.selection = type.currentTarget.id;
     var page = this;
     console.log(type.currentTarget.id);
+    this.setData({
+      status: type.currentTarget.id
+    })
     switch (type.currentTarget.id) {
       case "running":
         page.onTypeRunningLaunch(true, function (object) {
@@ -382,9 +392,9 @@ Page({
             showingPool: object.poolData,
             type: {
               selection: type.currentTarget.id,
-              running: "col-4 memu_act",
-              joined: "col-4 menu_unact",
-              history: "col-4 menu_unact",
+              running: "active",
+              joined: "",
+              history: "",
             }
           })
         });
@@ -396,9 +406,9 @@ Page({
             showingPool: object.poolData,
             type: {
               selection: type.currentTarget.id,
-              running: "col-4 menu_unact",
-              joined: "col-4 memu_act",
-              history: "col-4 menu_unact",
+              running: "",
+              joined: "active",
+              history: "",
             }
           })
         })
@@ -412,9 +422,9 @@ Page({
             showingPool: object.poolData,
             type: {
               selection: type.currentTarget.id,
-              running: "col-4 menu_unact",
-              joined: "col-4 menu_unact",
-              history: "col-4 memu_act",
+              running: "",
+              joined: "",
+              history: "active",
             }
           })
         })

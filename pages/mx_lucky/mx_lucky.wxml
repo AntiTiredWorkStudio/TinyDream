@@ -8,7 +8,7 @@
  -->
 <view class='lucky'>
     <view class='lucky_list'>
-        <view wx:for="{{awards}}" wx:for-item="award" wx:for-index="seek" class='lucky_main' bindtap='luckyInfo'>
+        <view wx:for="{{awards}}" wx:for-item="award" wx:for-index="seek" class='lucky_main' id="{{seek}}" bindtap='luckyInfo'>
             <view class='left'>
                 <image src='{{award.headicon}}'></image>
             </view>
@@ -17,7 +17,7 @@
                 <view class='user_info'>
                     <view class='user_name'>昵称：{{award.nickname}}</view>
                     <view class='user_sex'>梦想：{{award.title}}</view>
-                    <view class='user_age'>金 额：{{award.abill}}</view>
+                    <view class='user_age'>金 额：¥{{award.abill*0.01}}</view>
                 </view>
             </view>
             <view class='right'>

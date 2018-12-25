@@ -26,6 +26,7 @@
     "pages/mx_naicha/mx_naicha",
     "pages/mx_jinxing/mx_jinxing",
     "pages/mx_lucky/mx_lucky",
+	"pages/mx_luckyInfo/mx_luckyInfo",
     "pages/logs/logs"
     
   ],

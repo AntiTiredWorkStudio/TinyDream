@@ -3,7 +3,7 @@
 @import "common/lib/iconfont.wxss";
 @import "common/lib/widget/weui-button/weui-button.wxss";
 page{
- background:#f1f4f7;
+ background:white;
  font-family: 'PingFangSC-Regular';
  
 }

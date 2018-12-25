@@ -9,9 +9,10 @@ Page({
     data: {
       awards:[]
     },
-    luckyInfo(){
+    luckyInfo(res){
+      C.SetPageIntendData("award", this.data.awards[res.currentTarget.id]);
         wx.navigateTo({
-            url: '/pages/luckyInfo/luckyInfo',
+          url: '/pages/mx_luckyInfo/mx_luckyInfo',
         })
     },
     count :0,
