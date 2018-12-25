@@ -43,8 +43,8 @@
             </view>
             <view class='right'>
                 <view class='above'>
-                 <canvas class='circle' canvas-id='bottom-1' style='z-index:-5;width:170rpx;height:170rpx;'></canvas>
-                 <canvas class='circle' canvas-id='top-1' style='width:170rpx;height:170rpx;'></canvas>
+                 <canvas class='circle' canvas-id='bottom-{{pool.pid}}' style='z-index:-5;width:170rpx;height:170rpx;'></canvas>
+                 <canvas class='circle' canvas-id='top-{{pool.pid}}' style='width:170rpx;height:170rpx;'></canvas>
                  <view class='progress'>{{pool.percentVal}}%</view>
                 </view>
                 <button id="{{pool.pid}}" catchtap="onPoolControl" class='under'>{{pool.btnText}}</button>
@@ -75,8 +75,8 @@
               </view>
               <view class='right'>
                   <view class='above'>
-                  <canvas class='circle' canvas-id='bottom-2' style='z-index:-5;width:170rpx;height:170rpx;'></canvas>
-                    <canvas class='circle' canvas-id='top-2' style='width:170rpx;height:170rpx;'></canvas>
+                  <canvas class='circle' canvas-id='bottom-{{pool.pid}}' style='z-index:-5;width:170rpx;height:170rpx;'></canvas>
+                    <canvas class='circle' canvas-id='top-{{pool.pid}}' style='width:170rpx;height:170rpx;'></canvas>
                   <view class='progress'>{{pool.percentVal}}%</view>
                   </view>
                   <button class='under'>{{pool.btnText}}</button>

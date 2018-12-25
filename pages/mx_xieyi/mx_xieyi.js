@@ -13,7 +13,8 @@ Page({
   data: {
     editID:"",
     titleText:"",
-    contentText:""
+    contentText:"",
+    verify:false
   },
 
   /**
@@ -23,11 +24,17 @@ Page({
       //console.log("编辑",options)
       var page = this
       this.isSubmit = false;
+    //console.log("options",options)
       if(options.hasOwnProperty('id')){
         //options.id
         var tstate = ''
         if (options.hasOwnProperty('state')){
           tstate = options.state
+          if(tstate == 'all'){
+            this.setData({
+              verify: true
+            })
+          }
         }
         C.TDRequest('dr', 'gdream', { uid: app.globalData.openid, did: options.id, state: tstate},
         function(code,data){  
@@ -181,6 +188,7 @@ Page({
       console.log(app.actionList);
       force = true
     }
+
     if (this.data.editID != ""){
       C.TDRequest("dr", "gedit",
         {
@@ -201,6 +209,40 @@ Page({
             title: '修改成功',
             icon:'success'
           })
+
+          if (page.data.verify) {
+            wx.showModal({
+              title: '提示',
+              content: '该梦想即将提交审核，请确认所有信息合法无误后点击确定!',
+              success:function(res){
+                console.log(res)
+                if (res.confirm) {
+                  C.TDRequest("ds", "sver", {
+                    uid: app.globalData.openid,
+                    did: page.data.editID
+                  },
+                    function (code, data) {
+                      console.log(data)
+                      wx.showToast({
+                        title: '提交成功',
+                        icon: 'none'
+                      })
+                      app.currentPage.updateList()
+                    },
+                    function (code, data) {
+                      console.log(data)
+
+                      wx.showToast({
+                        title: data.context,
+                        icon: 'none'
+                      })
+                      app.currentPage.updateList()
+                    }
+                  );
+                }
+              }
+            })
+          }
         },
         function (code, data) {
           console.log(data)
@@ -236,5 +278,7 @@ Page({
         }
       )
     }
+
+
   }
 })

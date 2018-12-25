@@ -245,7 +245,11 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
               icon: 'none',
               mask: true,
               complete: function () {
-                C.Intend('../mx_wode/mx_wode?pay=true', true);
+                C.SetPageIntendData('pay', true)
+                //C.Intend('../mx_wode/mx_wode?pay=true', true);
+                wx.switchTab({
+                  url: '../mx_wode/mx_wode?pay=true',
+                })
                 console.log(data)
                }
             })
@@ -257,7 +261,11 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
               icon: 'none',
               mask: true,
               complete: function () {
-                C.Intend('../mx_wode/mx_wode?pay=false', true);
+                C.SetPageIntendData('pay',false)
+                wx.switchTab({
+                  url: '../mx_wode/mx_wode?pay=false',
+                })
+                //C.Intend('../mx_wode/mx_wode?pay=false', true);
                 console.log(data)
               }
             })

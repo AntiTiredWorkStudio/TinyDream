@@ -45,12 +45,12 @@
                     <text>我的参与</text>
                 </view>
             </view>
-            <view class='block'>
+            <!--view class='block'>
                 <view class='block_main'>
                     <view class='icon_notice icon'></view>
                     <text>系统通知</text>
                 </view>
-            </view>
+            </view-->
             <view class='block line'>
                 <view class='block_main' bindtap='teleManage'>
                     <view class='icon_phone icon'></view>
@@ -63,12 +63,12 @@
                     <text>实名认证</text>
                 </view>
             </view>
-            <view class='block'>
+            <!--view class='block'>
                 <view class='block_main'>
                     <view class='icon_service icon'></view>
                     <text>梦想服务</text>
                 </view>
-            </view>
+            </view-->
             <view class='block line'>
                     <button plain="true" style='font-size:13px;padding-left:0px;padding-right:0px;border:none;border-radius:0rpx;float:left;width:100%;' open-type="contact" >
                 <view class='block_main'>

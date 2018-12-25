@@ -1,109 +1,58 @@
-<!--pages/mx_naicha/mx_naicha.wxml-->
-<!-- <text>pages/mx_naicha/mx_naicha.wxml</text> -->
-<!-- <view class='container'> -->
-<view class=''>
- <view class='page-header'>
-    <view class='menu col fixed_menu'>
-      <view id="mine"  bindtap="switchType" class='{{type.mine}}' >
-        <text >我的小梦想</text>
-      </view>
-      <view id="bingo" bindtap="switchType" class='{{type.bingo}}'>
-        <text>我的幸运梦想</text>
-      </view>
-      <view id="plan" bindtap="switchType" class='{{type.plan}}'>
-        <text>梦想服务</text>
-      </view>
+<!-- 小梦想页面 -->
+<!-- 
+    dream:小梦想页面
+    dream_main:小梦想主体内容
+    dreamTab:梦想栏与幸运梦想栏切换按钮
+    dream_list:已添加的梦想
+    dream_info:梦想的信息展示
+    dream_logo:梦想图片
+    dream_right:梦想信息部分
+    dream_msg:梦想名称
+    createTime:创建时间及按钮
+    *******************************
+    此处为幸运梦想类名
+    luckyDream：幸运梦想列表
+ -->
+<view class='dream'>
+<!-- 当没有梦想的时候显示空 -->
+    <view class='empty {{isShow ? "show" : ""}}'>
+        <view class='empty_bg'></view>
     </view>
-  </view>
- <view wx:if="{{type.selection=='mine'}}" class='page-body' style='margin-bottom:80px;padding-top:45px'>
-  <view  bindtap="onEdit"  wx:for="{{dreams}}" wx:for-item="dream" wx:for-index="seek" id="{{dream.did}}"  class='box_huzhu' style='text-align:center;color:white;background:#6dceaa'>
-    <text class='bloc' style='padding-top:15px;padding-bottom:15px'>{{dream.title}}</text>
-    <!--text class='bloc' style='padding:10px 0 5px 0'>{{dream.content}}</text-->
-  </view>
-  <view wx:if='{{canAddDream}}' class='add_box' style='display:block; padding-bottom:60px'>
-     <navigator navigate="true" url="../mx_xieyi/mx_xieyi">
-      <image src='http://cloud.antit.top/add.png' style='height:50px;width:50px;display:block;margin:0 auto'></image> 
-     </navigator>
-  </view>
- </view>
- <!--我中标的梦想-->
- <view wx:if="{{type.selection=='bingo'}}" wx:for="{{bingos}}" wx:for-item="bingo" wx:for-index="seek" class='box_zhongbiao'>
-     <text class='bloc'>恭喜您在：<text style='color:#d50000'>{{bingo.pool.ptitle}}</text> </text>
-     <text class='bloc'>编号：<text style='color:#d50000'>{{bingo.lottery.lid}}</text> </text>
-     <text class='bloc'>梦想：<text style='color:#d50000'>{{bingo.title}}</text> </text>
-     <text class='bloc'>中奖，梦想池实际达到互助金额为<text style='color:#d50000'>{{bingo.pool.cbill/100}}</text>元，请您在7日内完善信息联系客服领奖！</text>
-      <view class='row box_bt'>
-        <view wx:if="{{bingo.state=='DOING'}}" class='col'>
-         <view class='col-5'>
-            <button id="{{bingo.did}}" bindtap='onDreamPerfect' class='bt_style'>完善梦想</button> 
-          </view>
-           <view class='col-1'></view>
-           <view class='col-1'></view>
-          <view class='col-5'>
-            <button id="{{bingo.did}}" bindtap='onDreamVerify' class='bt_style'>提交审核</button>
-          </view>
+    <view class='dream_main {{isShow ? "" : "show"}}'>
+        <view class='dreamTab'>
+            <view class='dream_type'>
+                <button id="mine" class='{{type.mine}}'  bindtap='switchType' >小梦想</button>
+                <button id="bingo" class='{{type.bingo}}'  bindtap='switchType' >幸运梦想</button>
+            </view>
         </view>
-       <view wx:if="{{bingo.state=='VERIFY'}}"  class='col'>
-            <button id="{{bingo.did}}" bindtap='onCommunicate' class='bt_style col-5'>联系客服</button>
-       </view>
-      </view>
-
-  </view>
- <!--我中标的梦想-->
-
-<!-- 梦想规划-->
-
- <view wx:if="{{type.selection=='plan'}}" class='box_erweima'>
-  <text class='bloc_baohan'>梦想服务包含：</text> 
-   <view class='box_jieshao'>
-    <text class='bloc1'> 1、电子书籍</text>
-     <text class='bloc1'>2、专业导师指导</text>
-     <text class='bloc1'>3、梦想执行宣传报道</text>
-   </view>
-   <view bindlongtap = "longTap" >
-     <image class='bloc_img' src='http://cloud.antit.top/qrcode.jpg'></image>
+        <view class='dream_list'>
+            <view wx:if="{{type.selection=='mine'}}">
+              <view   wx:for="{{dreams}}" wx:for-item="dream" wx:for-index="seek"  class='dream_info'>
+                  <view class='dream_logo'></view>
+                  <view class='dream_right'>
+                      <view class='dream_msg'>{{dream.title}}</view>
+                      <view class='createTime'>
+                          <text class='time'>{{dream.stateContext}}</text>
+                          <button bindtap="onEdit" id="{{dream.did}}" class='view'>查看详情</button>
+                      </view>
+                  </view>
+              </view>
+            </view>
+            
+            <view wx:if="{{type.selection=='bingo'}}">
+              <view class='luckyDream' wx:for="{{bingos}}" wx:for-item="bingo" wx:for-index="seek" id="{{bingo.did}}" bindtap='onDreamPerfect' >
+                  <view class='dream_logo'>{{bingo.pool.cbill*0.01}}</view>
+                  <view class='dream_right'>
+                      <view class='dream_msg'><text>{{bingo.title}}</text></view>
+                      <view wx:if="{{bingo.state=='SUCCESS'}}" class='icon_success'></view>
+                      <view class='tip'>
+                          <text class='tip_text'>{{bingo.pool.ptitle}}</text>
+                      </view>
+                  </view>
+              </view>
+            </view>
+        </view>
+    </view>
+    <view wx:if='{{canAddDream}}' class='add' bindtap='addDream'>
      </view>
-     <text class='bloc1' style='text-align:center;padding-bottom:20px'>长按二维码复制客服微信</text>
-  </view>
-
-<!-- 梦想规划-->
-
- <!-- 底部导航栏 -->
- <!--view class="weui-footer_fixed-bottom m_footer row">
-    <view class='col'>
-      <view class='col-4'>
-      <navigator redirect="true" url="../index/index">
-      <view class='sprite_xiaomengxiang'></view>
-      <text class='text_footer'>参与互动</text>
-       </navigator>
-    </view>
-    <view class='col-4 m_active'>
-      <view class='sprite_canyu_act'></view>
-      <text class='text_footer'>小梦想</text>
-    </view>
-    <view class='col-4'>
-      <navigator redirect="true" url="../mx_wode/mx_wode">
-      <view class='sprite_wode'></view>
-      <text class='text_footer'>个人中心</text>
-      </navigator>
-    </view>
-    </view>
-  </view-->
-  <!--view class="weui-footer_fixed-bottom m_footer row">
-       <view class='col'>
-        <view class='col-4 m_active'>
-        <navigator redirect="true" url="../index/index"><image src='/image/canyuhuzhu.png' class='footer_logo'></image>
-        <text class='bloc'>参与互动</text> </navigator>
-        </view>
-       <view class='col-4'>
-        <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
-        <text class='bloc'>小梦想</text> 
-        </view>
-        <view class='col-4'>
-        <navigator redirect="true" url="../mx_wode/mx_wode"><image src='/image/canyuhuzhu.png' class='footer_logo'></image>
-        <text class='bloc' >我的</text> </navigator>
-        </view>
-       </view>
-      </view-->
-  <!-- 底部结束 -->
 </view>

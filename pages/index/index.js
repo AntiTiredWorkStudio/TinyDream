@@ -302,7 +302,14 @@ var index = Page({
         success: function (res) {
           console.log(res)
           if (res.confirm) {
-            C.Intend('../mx_naicha/mx_naicha?type=bingo',true)
+            C.SetPageIntendData('tab_type','bingo')
+            wx.switchTab({
+              url: '../mx_naicha/mx_naicha?type=bingo'
+            })
+            /*wx.navigateTo({
+              url: '../mx_naicha/mx_naicha?type=bingo',
+            })*/
+            //C.Intend('../mx_naicha/mx_naicha?type=bingo',true)
           }
         }
       })

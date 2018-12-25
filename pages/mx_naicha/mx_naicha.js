@@ -13,9 +13,9 @@ Page({
   data: {
     type: {
       selection: "mine",
-      mine: "col-4 memu_act",
-      bingo: "col-4 menu_unact",
-      plan: "col-4 menu_unact",
+      mine: "active",
+      bingo: "",
+      plan: "",
       canAddDream : true,
       dreams:[],
       bingos:[]
@@ -32,9 +32,17 @@ Page({
     })
     app.onLoadPage(this)
     this.updateList()
-    if(options.hasOwnProperty('type')){
-      this.switchType({ currentTarget: { id: options.type}});
+
+    
+
+    if (C.ExistIntendData('tab_type')/*options.hasOwnProperty('type')*/){
+      var tId = C.GetPageIntendData('tab_type');
+      C.RemoveIntendData('tab_type')
+      this.switchType({ currentTarget: { id: tId}});
     }
+  },
+  addDream:function(){
+    C.Intend("../mx_xieyi/mx_xieyi");
   },
   getTitleDescription :function(state){
     //'SUBMIT','DOING','VERIFY','FAILED','SUCCESS'
@@ -49,6 +57,21 @@ Page({
         return '[失败]';
       case "SUCCESS":
         return '[成功]';
+    }
+  },
+  getTitleDescriptionReal: function (state) {
+    //'SUBMIT','DOING','VERIFY','FAILED','SUCCESS'
+    switch (state) {
+      case "SUBMIT":
+        return '未中奖';
+      case "DOING":
+        return '正在进行';
+      case "VERIFY":
+        return '审核中';
+      case "FAILED":
+        return '失败';
+      case "SUCCESS":
+        return '成功';
     }
   },
   indexDreamList:{},
@@ -67,7 +90,8 @@ Page({
             bingoDreams.push(data.dreams[key])
           }
 
-          dreams[key].title = dreams[key].title + page.getTitleDescription(dreams[key].state)
+          dreams[key].title = dreams[key].title
+          dreams[key].stateContext = page.getTitleDescriptionReal(dreams[key].state)
 
           page.indexDreamList[dreams[key].did] = dreams[key]
         }
@@ -133,6 +157,7 @@ Page({
 
   },
   switchType:function(res){
+    console.log('switchType',res)
     var page = this
     if (res.currentTarget.id == page.data.type.selection){
       return;
@@ -142,9 +167,9 @@ Page({
         page.setData({
           type: {
             selection: "mine",
-            mine: "col-4 memu_act",
-            bingo: "col-4 menu_unact",
-            plan: "col-4 menu_unact",
+            mine: "active",
+            bingo: "",
+            plan: "",
           }
         })
         break;
@@ -152,9 +177,9 @@ Page({
         page.setData({
           type: {
             selection: "bingo",
-            mine: "col-4 menu_unact",
-            bingo: "col-4 memu_act",
-            plan: "col-4 menu_unact",
+            mine: "",
+            bingo: "active",
+            plan: "",
           }
         })
         break;
@@ -162,9 +187,9 @@ Page({
         page.setData({
           type: {
             selection: "plan",
-            mine: "col-4 menu_unact",
-            bingo: "col-4 menu_unact",
-            plan: "col-4 memu_act",
+            mine: "",
+            bingo: "",
+            plan: "active",
           }
         })
         break;

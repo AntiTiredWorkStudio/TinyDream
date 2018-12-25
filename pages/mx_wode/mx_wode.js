@@ -33,7 +33,10 @@ Page({
       page.setData({
         owner: selfInfo
       })
-      if(options.hasOwnProperty('pay')){
+      
+      if (C.ExistIntendData('pay')){
+        console.log('intend:pay',C.ExistIntendData('pay'))
+        C.RemoveIntendData('pay')
         page.myPool()
       }
     },

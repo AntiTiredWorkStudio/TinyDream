@@ -72,6 +72,15 @@ module.exports.SetPageIntendData = function(tkey, tdata) {
   })
 }
 
+module.exports.ExistIntendData = function(tkey){
+  return wx.getStorageSync(tkey) != null && wx.getStorageSync(tkey) != "";
+}
+
+module.exports.RemoveIntendData = function (tkey) {
+  return wx.removeStorageSync(tkey)
+}
+
+
 module.exports.GetPageIntendData = function(tkey) {
   //console.log("get storage:"+tkey);
 
@@ -172,12 +181,19 @@ module.exports.BillExchange = function(bill) {
     value: 0,
     unit: ""
   }
+  
   if (bill < 1000000) {
     result.value = bill * 0.01;
+
+    result.value = Math.floor(result.value * 100) / 100 
+
     result.unit = "元";
     return result;
   } else {
     result.value = bill * 0.000001;
+
+    result.value = Math.floor(result.value * 100) / 100 
+
     result.unit = "万元";
     return result;
   }

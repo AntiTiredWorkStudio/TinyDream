@@ -217,6 +217,39 @@ Page({
     console.log("sharePool:", res)
 
   },
+  drawCircle: function (i) {
+    var ctx = wx.createCanvasContext('top-' + i)
+    //console.log(ctx)
+    ctx.setFillStyle('white');
+    ctx.clearRect(0, 0, 85, 85);
+    ctx.setLineWidth(7);
+    ctx.setStrokeStyle('#ffc057');
+    ctx.setLineCap('round');
+    ctx.beginPath();
+    ctx.arc(42.5, 42.5, 35.5, Math.PI / -2, 1.5 * Math.PI - Math.PI / 2, false);
+    ctx.stroke()
+    ctx.draw()
+  },
+
+  drawBottomCircle: function (i) {
+      var cxt_arc = wx.createCanvasContext('bottom-' + i);
+      cxt_arc.setLineWidth(7);
+      cxt_arc.setStrokeStyle('#edf0f5');
+      cxt_arc.setLineCap('round');
+      cxt_arc.beginPath();
+      cxt_arc.arc(42.5, 42.5, 35.5, 0, 2 * Math.PI, false);
+      cxt_arc.stroke();
+      cxt_arc.draw();
+  },
+  drawPoolsCircle:function(){
+    for (var key in this.data.showingPool) {
+      if (this.data.showingPool[key].state == 'RUNNING'){
+        this.drawBottomCircle(this.data.showingPool[key].pid)
+        this.drawCircle(this.data.showingPool[key].pid)
+      }
+
+    }
+  },
   onPoolView: function (target) {
     console.log("onPoolView:" + target.currentTarget.id);
     //C.Intend("../mx_canyu/mx_canyu")
@@ -431,6 +464,7 @@ Page({
 
         break;
     }
+    this.drawPoolsCircle()
   },
   //新的部分
   runningObject: {
@@ -487,10 +521,10 @@ Page({
         console.log("onTypeRunningPe", data.Pools)
         var cPool = page.poolDataUpgraded(data.Pools)
 
-        console.log("onTypeRunningLaunch", cPool)
         for (var key in cPool) {
           page.runningObject.poolData.push(C.DreamPoolAnalysis(cPool[key]))
         }
+        console.log("DreamPoolAnalysis", page.runningObject.poolData)
 
         page.runningObject.seek += page.runningObject.size
         if (success)
