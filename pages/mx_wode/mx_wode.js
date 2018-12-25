@@ -42,6 +42,15 @@ Page({
     }
     )
   },
+  teleManage:function(){
+    C.Intend("../mx_phone/mx_phone")
+  },
+  selfIdentitfy:function(){
+    C.Intend("../mx_shenfenzheng/mx_shenfengzheng");
+  },
+  questions: function () {
+    C.Intend("../mx_wenti/mx_wenti")
+  },
   myPool:function(){
     C.TDRequest(
       "ds", 'plists', {

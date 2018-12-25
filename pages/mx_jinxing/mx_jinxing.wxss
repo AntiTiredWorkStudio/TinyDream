@@ -36,6 +36,10 @@ border-radius: 10px;margin-top: 20px;}
 /*UI 1.1 版本*/
 
 /* 小梦想互助--样式表 */
+.page{
+  background: white;
+}
+
 .dreamHelp{
     border-top: 1px solid #cccac9;
 }
@@ -169,15 +173,103 @@ border-radius: 10px;margin-top: 20px;}
 }
 
 /* 结束池子处理 */
-.dreamHelp .dream_content .pool:nth-child(3){
+
+
+.dreamHelp .dream_content .fpool{
+    width: 100%;
+    margin-bottom: 30rpx;
+    border-radius: 10rpx;
+    box-shadow: 2rpx 0rpx 1rpx 2rpx #cee5f9,-2rpx 0 1rpx 2rpx #cee5f9,0 2rpx 1rpx 2rpx #cee5f9,0 -2rpx 1rpx 2rpx #cee5f9;
+    position: relative;
     background-color: #f5f5f5;
     color: #bdbdbd;
     height: 255rpx;
 }
-.dreamHelp .dream_content .pool:nth-child(3) .money{
-    color: #bdbdbd;
+
+.dreamHelp .dream_content .fpool .left{
+    float: left;
+    margin-top: 30rpx;
+    margin-left: 30rpx;
 }
-.dreamHelp .dream_content .pool:nth-child(3) .right{
+
+.dreamHelp .dream_content .fpool .left .title{
+    font-size: 32rpx;
+}
+.dreamHelp .dream_content .fpool .left .timeout{
+    margin-top: 20rpx;
+    font-size: 28rpx;
+    color: #00d094;
+    margin-bottom: 8rpx;
+}
+
+.dreamHelp .dream_content .fpool .left .timeout .icon_clock{
+    width: 23rpx;
+    height: 23rpx;
+    background: url(http://tdream.antit.top/image/clock.png) no-repeat;
+    background-size: 23rpx 23rpx;
+    margin-right: 10rpx;
+    display: inline-block;
+}
+.dreamHelp .dream_content .fpool .left .money{
+    font-size: 48rpx;
+    color: #bdbdbd;
+    margin-bottom: 5rpx;
+}
+.dreamHelp .dream_content .fpool .left .tip{
+    font-size: 24rpx;
+    color: #999;
+    margin-bottom: 5rpx;
+}
+.dreamHelp .dream_content .fpool .left .price{
+    font-size: 24rpx;
+    color: #666;
+    padding-bottom: 30rpx;
+}
+.dreamHelp .dream_content .fpool .left .price view{
+    display: inline-block;
+    margin-right: 20rpx;
+}
+.dreamHelp .dream_content .fpool .right{
+    float: right;
+    width: 170rpx;
+    margin-top: 20rpx;
+    margin-right: 20rpx;
+}
+.dreamHelp .dream_content .fpool .right .above{
+    width: 170rpx;
+    height: 170rpx;
+    /* background-color: red; */
+    position: relative;
+}
+/* 画布--样式处理 */
+.dreamHelp .dream_content .fpool .right .above canvas.circle{
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.dreamHelp .dream_content .fpool .right .above .progress{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 48rpx;
+    color: #ffc057;
+}
+.dreamHelp .dream_content .fpool .right .under::after{
+    border:none;
+}
+.dreamHelp .dream_content .fpool .right .under{
+    margin-top: 30rpx;
+    width: 170rpx;
+    height: 52rpx;
+    font-size: 28rpx;
+    line-height: 52rpx;
+    color: #fff;
+    background: #00d094;
+    border-radius: 26rpx;
+}
+
+.dreamHelp .dream_content .fpool .right{
     width: 148rpx;
     height: 148rpx;
     background: url(http://tdream.antit.top/image/ended.jpg) no-repeat;

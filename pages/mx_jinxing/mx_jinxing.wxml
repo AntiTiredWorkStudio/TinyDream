@@ -25,9 +25,9 @@
             <button id="history"  bindtap="switchType" class='{{type.history}}' >已结束</button>
         </view>
     </view>
-    <view class='dream_content'>
+    <view wx:if="{{type.selection=='running'}}" class='dream_content'>
         <!--进行中梦想池样式-->
-        <view wx:if="{{type.selection=='running'}}" wx:for="{{showingPool}}" wx:for-item="pool" wx:for-index="seek"  class='pool'>
+        <view wx:for="{{showingPool}}" wx:for-item="pool" wx:for-index="seek"  id="{{pool.pid}}" bindtap='poolInfo' class="pool">
             <view class='left'>
                 <view class='title'>{{pool.ptitle}}</view>
                 <view class='timeout'>
@@ -50,39 +50,65 @@
                 <button id="{{pool.pid}}" catchtap="onPoolControl" class='under'>{{pool.btnText}}</button>
             </view>
         </view>
+
+
+        
+
+    </view>
+    
+    <view wx:if="{{type.selection=='joined'}}" class='dream_content'>
         <!--我参与梦想池样式-->
-        <view  class='pool'>
-            <view class='left'>
-                <view class='title'>梦想互助20181220期</view>
-                <view class='timeout'>
-                    <view class='icon_clock'></view>
-                    <text>180:45:32</text>
-                </view>
-                <view class='money'>￥14,000</view>
-                <view class='tip'>目前互助金</view>
+        <view wx:for="{{showingPool}}" wx:for-item="pool" wx:for-index="seek">
+          <view wx:if="{{pool.state=='RUNNING'}}" id="{{pool.pid}}" bindtap='poolInfo'  class="pool">
+              <view class='left'>
+                  <view class='title'>{{pool.ptitle}}</view>
+                  <view class='timeout'>
+                      <view class='icon_clock'></view>
+                      <text>{{pool.tdescription}}</text>
+                  </view>
+                  <view class='money'>{{pool.realBill}}{{pool.unit}}</view>
+                  <view class='tip'>{{pool.billHint}}</view>
+                  <view class='price'>
+                      <view class='target'>互助目标 {{pool.rtbill.value}}{{pool.rtbill.unit}} </view>
+                      <view class='price_money'>价格 {{pool.ubill*0.01}}元/份</view>
+                  </view>
+              </view>
+              <view class='right'>
+                  <view class='above'>
+                  <canvas class='circle' canvas-id='bottom-2' style='z-index:-5;width:170rpx;height:170rpx;'></canvas>
+                    <canvas class='circle' canvas-id='top-2' style='width:170rpx;height:170rpx;'></canvas>
+                  <view class='progress'>{{pool.percentVal}}%</view>
+                  </view>
+                  <button class='under'>{{pool.btnText}}</button>
+              </view>
+          </view>
+          
+          <view wx:if="{{pool.state=='FINISHED'}}"  id="{{pool.pid}}" bindtap='poolInfo'  class="fpool">
+              <view class='left'>
+                <view class='title'>{{pool.ptitle}}</view>
+                <view class='money'>{{pool.realBill}}{{pool.unit}}</view>
+                <view class='tip'>{{pool.billHint}}</view>
                 <view class='price'>
-                    <view class='target'>互助目标 20000 </view>
-                    <view class='price_money'>价格 5元/份</view>
+                    <view class='target'>互助目标 {{pool.rtbill.value}}{{pool.rtbill.unit}}</view>
+                    <view class='price_money'>价格 {{pool.ubill*0.01}}元/份</view>
                 </view>
             </view>
-            <view class='right'>
-                <view class='above'>
-                 <canvas class='circle' canvas-id='bottom-2' style='z-index:-5;width:170rpx;height:170rpx;'></canvas>
-                  <canvas class='circle' canvas-id='top-2' style='width:170rpx;height:170rpx;'></canvas>
-                 <view class='progress'>70%</view>
-                </view>
-                <button class='under'>继续互助</button>
-            </view>
+            <view class='right'></view>
+          </view>
         </view>
+    </view>
+
+    <view wx:if="{{type.selection=='history'}}" class='dream_content'>
+    
         <!--已完成梦想池样式-->
-        <view   class='pool'>
+        <view wx:for="{{showingPool}}" wx:for-item="pool" wx:for-index="seek"  id="{{pool.pid}}" bindtap='poolInfo' class='fpool'>
             <view class='left'>
-                <view class='title'>梦想互助20181220期</view>
-                <view class='money'>￥14,000</view>
-                <view class='tip'>互助完成金额</view>
+                <view class='title'>{{pool.ptitle}}</view>
+                <view class='money'>{{pool.realBill}}{{pool.unit}}</view>
+                <view class='tip'>{{pool.billHint}}</view>
                 <view class='price'>
-                    <view class='target'>互助目标 20000 </view>
-                    <view class='price_money'>价格 5元/份</view>
+                    <view class='target'>互助目标 {{pool.rtbill.value}}{{pool.rtbill.unit}}</view>
+                    <view class='price_money'>价格 {{pool.ubill*0.01}}元/份</view>
                 </view>
             </view>
             <view class='right'></view>

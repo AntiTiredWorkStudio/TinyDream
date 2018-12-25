@@ -1,121 +1,96 @@
-<!--pages/mx_wode/mx_wode.wxml-->
-<!--pages/mx_guihua/mx_guihua.wxml-->
-<!-- <text>pages/mx_guihua/mx_guihua.wxml</text> -->
-<!--pages/mx_naicha/mx_naicha.wxml-->
-<!-- <text>pages/mx_naicha/mx_naicha.wxml</text> -->
-<!-- <view class='container'> -->
-<view class='mx_container'>
- <view class='page-header'>
-   <view class='col box_goumai'>
-      <view class='col-4'>
-         <text class='bloc'><text class='color_red'>{{owner.totalJoin}}</text><text style='color:white'>个</text></text>
-          <text class='bloc' style='color:#ffffff'>参与中的梦想池</text>
-      </view>
-      <view class='col-4'>
-         <text class='bloc'><text class='color_red'>{{owner.totalReward.value}}</text><text style='color:white'>{{owner.totalReward.unit}}</text></text>
-          <text class='bloc' style='color:#ffffff'>已获得互助总金额</text>
-      </view>
-      <view class='col-4'>
-         <text class='bloc'><text class='color_red'>{{owner.dayBuy}}</text><text style='color:white'>份</text></text>
-          <text class='bloc' style='color:#ffffff'>今日参与份数</text>
-      </view>
-    </view>
-  </view>
- <view class='page-body'>
-  <view class='box_huzhu row'>
-  <!-- 梦想池 -->
-    <view bindtap='myPool' class=' col box_list'>
-      <text class='col-11'>我参与互助的梦想池</text>
-      <text class='col-1'>></text>
-    </view>
-     <!-- 梦想池 -->
-     <navigator navigator="true" url="../mx_phone/mx_phone"><view class=' col box_list'>
-     <text class='col-11'>手机号管理</text>
-      <text class='col-1'>></text>
-    </view></navigator>
-     <!-- 梦想池 -->
-    <navigator navigator="true" url="../mx_shenfenzheng/mx_shenfengzheng">
-    <view class=' col box_list'>
-      <text class='col-11'>实名认证</text>
-      <text class='col-1'>></text>
-    </view>
-    </navigator>
-     <!-- 梦想池 -->
-    <!--view class=' col box_list'>
-      <text class='col-11'>池主申请</text>
-      <text class='col-1'>>></text>
-    </view-->
-     <!-- 梦想池 --> 
-      <navigator navigator="true" url="../mx_wenti/mx_wenti">
-    <view class=' col box_list'>
-      <text class='col-11'>常见问题</text>
-      <text class='col-1'>></text>
-    </view>
-    </navigator>
-     <!-- 梦想池 -->
-    <!--view bindtap='onCommunicate'  class=' col box_list'>
-      <text class='col-11'>联系客服</text>
-      <text class='col-1'>></text>
-    </view-->
-    
-      <button plain="true" style='font-size:13px;padding-left:0px;padding-right:0px;border:none;border-radius:0rpx;float:left;width:100%;' open-type="contact" >
-    <view style='width:100%;background:white;height:49px;display: flex;align-items: center;justify-content: center;border-bottom:thin solid #e7e7e7'>
-      <text class='col-11' style='padding-left:17px;float:left;text-align:left;'>联系客服</text>
-      <text class='col-1' style='padding-right:20px;float:right;text-align:right;'>></text>
-    </view>
-    </button>
-    
-      <button plain="true" style='font-size:13px;padding-left:0px;padding-right:0px;border:none;border-radius:0rpx;float:left;width:100%;' open-type="feedback" >
-    <view style='width:100%;background:white;height:49px;display: flex;align-items: center;justify-content: center;border-bottom:thin solid #e7e7e7'>
-      <text class='col-11' style='padding-left:17px;float:left;text-align:left;'>用户反馈</text>
-      <text class='col-1' style='padding-right:20px;float:right;text-align:right;'>></text>
-    </view>
-    </button>
-      
-    
-  </view>
-  
- </view>
-
- <!-- 底部导航栏 -->
-
- <!--view class="weui-footer_fixed-bottom m_footer row">
-    <view class='col'>
-      <view class='col-4'>
-      <navigator redirect="true" url="../index/index">
-      <view class='sprite_xiaomengxiang'></view>
-      <text class='text_footer'>参与互动</text>
-       </navigator>
-    </view>
-    <view class='col-4'>
-      <navigator redirect="true" url="../mx_naicha/mx_naicha">
-      <view class='sprite_canyu'></view>
-      <text class='text_footer'>小梦想</text>
-       </navigator>
-    </view>
-    <view class='col-4 m_active'>
-      <view class='sprite_wode_act'></view>
-      <text class='text_footer'>个人中心</text>
-    </view>
-    </view>
-  </view-->
 
 
-  <!--view class="weui-footer_fixed-bottom m_footer row">
-       <view class='col'>
-        <view class='col-4 m_active'>
-        <navigator redirect="true" url="../index/index"><image src='/image/canyuhuzhu.png' class='footer_logo'></image>
-        <text class='bloc'>参与互动</text> </navigator>
+<!-- 个人中心页面 -->
+<!-- 
+    user:个人中心页面
+    header:用户头像
+    user_info:用户详情
+    nickName:用户昵称
+    dream_userInfo:梦想互助参与详情
+    user_title:个人中心标题
+    plate:个人中心板块
+    module:功能模块
+ -->
+<view class='user'>
+    <view class='header'>
+        <image src='{{owner.headicon}}'></image>
+    </view>
+    <view class='user_info'>
+        <view class='message'>
+            <view class='nickName'>{{owner.nickname}}</view>
+            <view class='dream_poolInfo'>
+                <view class='left'>
+                    <view class='num'>{{owner.totalJoin}}</view>
+                    <view class='tip'>参与中的池</view>
+                </view>
+                <view class='line'></view>
+                <view class='middle'>
+                    <view class='num'>{{owner.totalReward.value}}</view>
+                    <view class='tip'>获得互助总金额</view>
+                </view>
+                <view class='line'></view>
+                <view class='right'>
+                    <view class='num'>{{owner.dayBuy}}</view>
+                    <view class='tip'>今日参与份数</view>
+                </view>
+            </view>   
         </view>
-       <view class='col-4'>
-        <navigator redirect="true" url="../mx_naicha/mx_naicha"><image src='/image/canyuhuzhu.png' class='footer_logo'></image>
-        <text class='bloc'>小梦想</text> </navigator>
+    </view>
+    <view class='plate'>
+        <view class='user_title'><text></text>个人中心</view>
+        <view class='module'>
+            <view class='block'>
+                <view class='block_main' bindtap='myPool'>
+                    <view class='icon_join icon'></view>
+                    <text>我的参与</text>
+                </view>
+            </view>
+            <view class='block'>
+                <view class='block_main'>
+                    <view class='icon_notice icon'></view>
+                    <text>系统通知</text>
+                </view>
+            </view>
+            <view class='block line'>
+                <view class='block_main' bindtap='teleManage'>
+                    <view class='icon_phone icon'></view>
+                    <text>手机号管理</text>
+                </view>
+            </view>
+            <view class='block'>
+                <view class='block_main' bindtap='selfIdentitfy'>
+                    <view class='icon_name icon'></view>
+                    <text>实名认证</text>
+                </view>
+            </view>
+            <view class='block'>
+                <view class='block_main'>
+                    <view class='icon_service icon'></view>
+                    <text>梦想服务</text>
+                </view>
+            </view>
+            <view class='block line'>
+                    <button plain="true" style='font-size:13px;padding-left:0px;padding-right:0px;border:none;border-radius:0rpx;float:left;width:100%;' open-type="contact" >
+                <view class='block_main'>
+                    <view class='icon_cach icon'></view>
+                    <text>联系客服</text>
+                </view>
+              </button>
+            </view>
+            <view class='block bottom'>
+             <button plain="true" style='font-size:13px;padding-left:0px;padding-right:0px;border:none;border-radius:0rpx;float:left;width:100%;' open-type="feedback" >
+                <view class='block_main'>
+                    <view class='icon_feed icon'></view>
+                    <text>用户反馈</text>
+                </view>
+              </button>
+            </view>
+            <view class='block bottom'>
+                <view class='block_main' bindtap='questions'>
+                    <view class='icon_question icon'></view>
+                    <text>常见问题</text>
+                </view>
+            </view>
         </view>
-        <view class='col-4'>
-        <image src='/image/canyuhuzhu.png' class='footer_logo'></image>
-        <text class='bloc' >我的</text>
-        </view>
-       </view>
-      </view-->
-  <!-- 底部结束 -->
+    </view>
 </view>
