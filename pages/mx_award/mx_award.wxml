@@ -1,0 +1,46 @@
+<!--查看领奖进度-->
+<!-- 
+    tip:说明（告诉用户这个版块作用）
+    bottom:版块下半部分
+ -->
+<view class='award'>
+    <view class='main'>
+    
+        <!--view class='award_info Issued'-->
+        <!--view class='award_info audit'-->
+        <view class='{{stateInfo.processClass}}'>
+            <view class='title'>
+                <view class='left'>{{stateInfo.title}}</view>
+                <view class='right'>{{stateInfo.stateInfo}}</view>
+            </view>
+            <view class='tip'>
+                {{stateInfo.hint}}
+            </view>
+            <view class='bottom'>
+                <view class='progress '>
+                    <view class='progress_main'>
+                        <view class='{{stateInfo.steps.submit.stepClass}}'>
+                            <view class='icon'></view>
+                            <view>梦想提交</view>
+                            <view class='{{stateInfo.steps.verify.lineClass}}'></view>
+                        </view>
+                         <view class='{{stateInfo.steps.verify.stepClass}}'>
+                            <view class='icon'></view>
+                            <view>资料审核</view>
+                            <view class='{{stateInfo.steps.success.lineClass}}'></view>
+                        </view>
+                        <view class='{{stateInfo.steps.success.stepClass}}'>
+                            <view class='icon'></view>
+                            <view>等待打款</view>
+                            <view class='{{stateInfo.steps.paid.lineClass}}'></view>
+                        </view>
+                        <view class='{{stateInfo.steps.paid.stepClass}}'>
+                            <view class='icon'></view>
+                            <view>互助金颁发</view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

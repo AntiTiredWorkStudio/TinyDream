@@ -80,6 +80,12 @@ module.exports.RemoveIntendData = function (tkey) {
   return wx.removeStorageSync(tkey)
 }
 
+module.exports.GetAndRemoveIntentData = function (tkey) {
+    var result = wx.getStorageSync(tkey);
+    wx.removeStorageSync(tkey)
+    return result
+}
+
 
 module.exports.GetPageIntendData = function(tkey) {
   //console.log("get storage:"+tkey);

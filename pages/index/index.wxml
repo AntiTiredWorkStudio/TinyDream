@@ -27,15 +27,19 @@
         </view>
       </view>
     </view>
-    <view wx:if="{{authVisible}}" class='page-body'>
-      <image class='bloc' src='/image/canyuhuzhu.png' style='width:200px;height:200px;margin:0 auto;margin-top:30%'></image>
-      <view class='bloc' style=''>
-        <text class='bloc' style='text-align:center;margin-top:20px'>小程序将会获取您的用户信息，请您授权</text>
-        <view class='flex-item box_zhifu'>
-          <button open-type="getUserInfo" bindgetuserinfo='onGetUserInfo' style='color:white;background:#3fab79;width:80%;border-radius:5px;margin-top:15px'>微信授权</button>
+    <!--小程序授权页面-->
+    <view wx:if="{{authVisible}}" class='guide'>
+        <view class='header'>
+            <view class='logo'></view>
+            <view class='app_name'>小梦想互助</view>
         </view>
-      </view>
+        <view class='company'>
+            该小程序由北京XXXXXXX有限公司开发，请确认授权以下信息
+        </view>
+        <view class='auth'>· 获得你的公开信息（昵称、头像等）</view>
+        <button open-type="getUserInfo" bindgetuserinfo='onGetUserInfo'>授权登录</button>
     </view>
+
     <!--主要梦想池-->
     <view wx:if="{{!authVisible && mainpool.pid!=null}}" class='dream_info' catchtap='morePools'>
       <view class='dream_title'>{{mainpool.ptitle}}</view>

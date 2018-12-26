@@ -51,6 +51,9 @@ Page({
   selfIdentitfy:function(){
     C.Intend("../mx_shenfenzheng/mx_shenfengzheng");
   },
+  dreamServer:function(){
+    C.Intend("../mx_dreamserver/mx_dreamserver")
+  },
   questions: function () {
     C.Intend("../mx_wenti/mx_wenti")
   },

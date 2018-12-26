@@ -1,21 +1,18 @@
 {
   "pages": [
-    
     "pages/index/index",
     "pages/mx_wenti/mx_wenti",
     "pages/mx_routine/mx_routine",
-    "pages/mx_gongshi/mx_gongshi",
     "pages/mx_zhifu/mx_zhifu",
     "pages/mx_xieyi/mx_xieyi",
     "pages/mx_tanchuang/mx_tanchuang",
     "pages/mx_huzhu/mx_huzhu",
     "pages/mx_login/mx_login",
-    
+    "pages/mx_dreamserver/mx_dreamserver",
     "pages/mx_phone/mx_phone",
     "pages/mx_shenfenzheng/mx_shenfengzheng",
     "pages/mx_canyu/mx_canyu",
     "pages/mx_zhongjiang/mx_zhongjiang",
-    "pages/reward/reward",
     "pages/mx_wangjie/mx_wangjie",
     "pages/mx_kefu/mx_kefu",
     "pages/mx_zhongbiao/mx_zhongbiao",
@@ -26,7 +23,9 @@
     "pages/mx_naicha/mx_naicha",
     "pages/mx_jinxing/mx_jinxing",
     "pages/mx_lucky/mx_lucky",
-	"pages/mx_luckyInfo/mx_luckyInfo",
+	  "pages/mx_luckyInfo/mx_luckyInfo",
+    "pages/mx_luckyDream/mx_luckyDream",
+    "pages/mx_award/mx_award",
     "pages/logs/logs"
     
   ],

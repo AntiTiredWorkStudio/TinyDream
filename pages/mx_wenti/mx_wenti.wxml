@@ -1,36 +1,13 @@
-<!--pages/mx_huzhu/mx_huzhu.wxml-->
-<!-- <text>pages/mx_huzhu/mx_huzhu.wxml</text> -->
-<view class='container'>
-  <view class='page-header'></view>
-  <view class='page-body'>
-    <view class='bloc box_huzhu'>
-      <text class='bloc_guize' style='font-weight:bold'>小梦想互助常见问题</text>
-      <text class='bloc' style='font-weight:bold'>1、小梦想互助怎么玩？
-</text>
-      <text class='bloc' style='padding-left:10px'>小梦想互助流程：多人参与互助并支付互助金额——通过抓阄机制随机匹配1名幸运者——幸运者获得所有梦想互助金启动梦想——平台跟踪报道梦想执行情况</text>
-     <text class='bloc' style='font-weight:bold'>2、必须提交小梦想才能参与互助吗？</text>
-     <text class='bloc' style='padding-left:10px'>是的，没有提交过梦想的用户无法参与小梦想互助。</text>
-     <text class='bloc' style='font-weight:bold'>3、3、如何得到编号？</text>
-     <text class='bloc' style='padding-left:10px'> 用户支付购买梦想池的互助金额后，平台会给用户随机匹配一个梦想编码，该编码参与梦想池的幸运者编号抓阄。</text>
-      <text class='bloc' style='font-weight:bold'>4、每期梦想互助产生几个幸运者？平台如何公平匹配幸运者？（如何抓阄）</text>
-     <text class='bloc' style='padding-left:10px'> 每期产生1名幸运者，通过随机抓阄机制：每期梦想互助中，从参与互助的所有用户中随机产生。
-幸运者的编号计算公式为：
-</text>
-     <text class='bloc' style='padding-left:10px'>((A+B)/C)取余数+10000000
-</text>
-     <text class='bloc' style='padding-left:10px'>数值A = 每期梦想互助结束后最新一期“中国福利彩票”期号+前五个红色球的数字 </text>
-     <text class='bloc' style='padding-left:10px'>数值B = 每期梦想互助的期号</text>
-     <text class='bloc' style='padding-left:10px'>数值C = 每期梦想互助参与份数</text>
-     <text class='bloc' style='font-weight:bold'>5、每期梦想互助结束的标准是什么？结束时互助目标金额没达到怎么办？</text>
-     <text class='bloc' style='padding-left:10px'> 每期梦想互助结束的标准为：互助目标金额达到或互助时间截止。每期梦想互助结束时，实际参与互助的总金额没有达到互助目标金额，则幸运者得到的互助金额以每期梦想互助实际参与互助总金额为准。</text>
-     <text class='bloc' style='font-weight:bold'>6、幸运者编号公布时间？</text>
-     <text class='bloc' style='padding-left:10px'>每期梦想互助结束后的最新一个中国福利彩票号码公布后的2小时内。</text>
-     <text class='bloc' style='font-weight:bold'>7、参与互助的份数和金额有限制吗？</text>
-     <text class='bloc' style='padding-left:10px'>为了防止大家沉迷于互助影响正常的生活，平台对每人每天的参与互助的份额和金额有所限制，每人每天限购5份。</text>
-     <text class='bloc' style='font-weight:bold'>8、成为幸运者后如何兑奖（领取梦想互助金）？</text>
-     <text class='bloc' style='padding-left:10px'>幸运者公布日起，7个工作日内完善梦想和实名认证，如果提交的资料没有问题，平台工作人员会在3个工作日内通过审核并完成转账。</text>
-     <text class='bloc' style='font-weight:bold'>9、没有成为幸运者，支付的参与互助的资金能退回吗？</text>
-     <text class='bloc' style='padding-left:10px'>不能，因为资金会给予幸运者去实现梦想，这也是我们平台的最终价值，让每个人的小梦想都有机会去实现！</text>
+<!--问题详情页面-->
+<!-- 
+    title：问题标题
+    question_info:问题详细内容
+ -->
+<view class='question'>
+    <view class='questionInfo'>
+        <view class='question_list' wx:for="{{question}}" wx:key="{{index}}">
+            <view class='title'>{{item.question}}</view>
+            <text class='info'>{{item.text}}</text>
+        </view>
     </view>
-  </view>
 </view>

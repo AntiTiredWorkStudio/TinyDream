@@ -86,7 +86,7 @@ Page({
         var dreams = data.dreams
         var bingoDreams = []
         for(var key in data.dreams){
-          if (data.dreams[key].state == "DOING" || data.dreams[key].state == "VERIFY"){
+          if (data.dreams[key].state == "DOING" || data.dreams[key].state == "VERIFY" || data.dreams[key].state == "SUCCESS"){
             bingoDreams.push(data.dreams[key])
           }
 
@@ -218,7 +218,17 @@ Page({
   },*/
   onDreamPerfect(res){
     console.log("onDreamPerfect",res.currentTarget.id)
-    C.Intend("../mx_xieyi/mx_xieyi?id=" + res.currentTarget.id +"&state=all");
+    var targetBingo = {}
+    for(var seek in this.data.bingos){
+      if(this.data.bingos[seek].did == res.currentTarget.id){
+        targetBingo = this.data.bingos[seek];
+        break;
+      }
+    } 
+    ///console.log(targetBingo)
+    C.SetPageIntendData('bingo', targetBingo)
+    C.Intend("../mx_luckyDream/mx_luckyDream?id=" + res.currentTarget.id +"&state=all");
+    //C.Intend("../mx_xieyi/mx_xieyi?id=" + res.currentTarget.id +"&state=all");
   },
   onDreamVerify(res) {
     console.log(res.currentTarget.id)
@@ -252,18 +262,5 @@ Page({
       phoneNumber: '400-600-2233',
     })*/
     this.switchType({currentTarget:{id:'plan'}})
-  },
-  longTap: function () {
-    console.log('longTap')
-    wx.setClipboardData({
-      data: "Melodybaby0925",
-      success: function (res) {
-        wx.getClipboardData({
-          success: function (res) {
-            wx.showToast({ title: '微信号复制成功' })
-          }
-        })
-      }
-    })
   }
 })
