@@ -363,6 +363,7 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    console.log("app.globalData.currentPage:", app.globalData.currentPage)
     clearInterval(this.countdownInterval)
   },
 

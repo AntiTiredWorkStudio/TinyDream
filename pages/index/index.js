@@ -383,6 +383,8 @@ var index = Page({
    */
   onUnload: function () {
       console.log("on unload")
+      console.log("app.globalData.currentPage:",app.globalData.currentPage)
+
       if (this.orderInterval) {
         clearInterval(this.orderInterval)
       }

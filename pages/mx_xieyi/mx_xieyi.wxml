@@ -22,11 +22,11 @@
         </view>
         <view wx:if='{{verify}}'>
         <view class='title upload info'>
-            上传打印盖章的
+            {{publicLetterUrl==''?"上传打印盖章的":"查看上传的"}}
             <text bindtap='look'>《小梦想互助幸运者梦想互助金申请公函》</text>
         </view>
         <view class='btns'>
-            <button class='uploaded' bindtap='pickLetter'>点击上传</button>
+            <button class='uploaded' bindtap='pickLetter'>{{publicLetterUrl==''?"点击上传":"重新上传"}}</button>
             <view>
                 还没有公函？立即
                 <text bindtap='download'>下载</text>
@@ -41,7 +41,7 @@
             <label>
             
             <checkbox-group bindchange="checkedEvent">
-                <checkbox class='check' value='1' color='#0dd094' checked='true'>
+                <checkbox class='check' value='0' color='#0dd094' checked='false'>
                 </checkbox>
                 阅读并同意
                 <text bindtap='readDetial' >《小梦想互助平台参与互助协议》</text>

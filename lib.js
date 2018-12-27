@@ -145,7 +145,10 @@ module.exports.Intend = function(tUrl, redict = false, onsuccess = null) {
       success: function(res) {
         if (onsuccess)
           onsuccess(res)
-        //console.log("跳转:", res);
+        console.log("跳转:", res);
+        var page = getCurrentPages().pop();
+        if (page == undefined || page == null) return;
+        page.onLoad();
       }, //成功后的回调；
       fail: function(res) {
         //console.log("跳转:", res);
@@ -154,8 +157,10 @@ module.exports.Intend = function(tUrl, redict = false, onsuccess = null) {
   } else {
     wx.redirectTo({
       url: tUrl, //跳转页面的路径，可带参数 ？隔开，不同参数用 & 分隔；相对路径，不需要.wxml后缀
-      success: function() {
-
+      success: function () {
+        var page = getCurrentPages().pop();
+        if (page == undefined || page == null) return;
+        page.onLoad();
       }, //成功后的回调；
     })
   }

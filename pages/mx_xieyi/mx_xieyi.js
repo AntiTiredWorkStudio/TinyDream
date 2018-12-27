@@ -22,6 +22,7 @@ Page({
     editID:"",
     titleText:"",
     contentText:"",
+    publicLetterUrl:"",
     verify:false
   },
   uploadInfo:null,
@@ -59,7 +60,8 @@ Page({
           page.setData({
             editID: options.id,
             titleText: data.dream.title,
-            contentText: data.dream.content
+            contentText: data.dream.content,
+            publicLetterUrl: data.dream.videourl
           })
           if (data.hasOwnProperty('upload')){
             page.uploadInfo = data.upload
@@ -84,8 +86,9 @@ Page({
       mask: true
     })
     let that = this;
+    var letter_url = this.data.publicLetterUrl == "" ? 'https://tinydream.antit.top/transactionform.jpg' : this.data.publicLetterUrl;
     wx.downloadFile({
-      url: 'https://tinydream.antit.top/transactionform.jpg',
+      url: letter_url,
       success(res) {
         var ctx = wx.createCanvasContext('look');
         ctx.setFillStyle("#fff");
@@ -94,6 +97,12 @@ Page({
         ctx.draw();
         that.setData({
           hide: false
+        })
+        wx.hideLoading();
+      },
+      fail(res) {
+        wx.showToast({
+          title: '下载失败',
         })
         wx.hideLoading();
       }
@@ -271,6 +280,14 @@ Page({
       })
       return;
     }
+
+    if (this.data.publicLetterUrl == "") {
+      wx.showToast({
+        title: "还未上传互助公函",
+        icon: "none"
+      })
+      return;
+    }
     
 
     //dr = dedit & uid=a01 & title=关于程序的梦想 & content=我就特么想赶紧做完这个
@@ -403,11 +420,28 @@ Page({
       mask:true
     })
     console.log("准备上传",this.uploadInfo.uptoken, res, this.uploadInfo.fileName, this.uploadInfo.upurl)
+    var page = this;
     this.uploadQiniu(this.uploadInfo.uptoken, res,this.uploadInfo.fileName,this.uploadInfo.upurl,function(res){
-      wx.hideLoading()
-      wx.showToast({
-        title: '上传'+(res?"成功":"失败"),
-      })
+      if(res){
+        C.TDRequest('dr', 'gedit', { uid: app.globalData.openid, did: page.data.editID, contentList: JSON.stringify({ videourl:  page.uploadInfo.domain + '/' + page.uploadInfo.fileName })},
+        function(code,data){
+          page.setData({
+            publicLetterUrl: page.uploadInfo.domain + '/' + page.uploadInfo.fileName
+          })
+          console.log(data)
+          wx.showToast({
+            title: '上传成功',
+          })
+          wx.hideLoading()
+        },
+        function (code, data) {
+          console.log(data)
+          wx.showToast({
+            title: '上传失败',
+          })
+          wx.hideLoading()
+        })
+      }
     });
   },
   pickLetter:function(){

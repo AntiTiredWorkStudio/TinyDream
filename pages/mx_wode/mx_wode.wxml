@@ -21,7 +21,7 @@
             <view class='dream_poolInfo'>
                 <view class='left'>
                     <view class='num'>{{owner.totalJoin}}</view>
-                    <view class='tip'>参与中的池</view>
+                    <view class='tip'>互助总期数</view>
                 </view>
                 <view class='line'></view>
                 <view class='middle'>
