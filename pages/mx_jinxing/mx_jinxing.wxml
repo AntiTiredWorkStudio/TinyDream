@@ -34,7 +34,9 @@
                     <view class='icon_clock'></view>
                     <text>{{pool.tdescription}}</text>
                 </view>
-                <view class='money'>{{pool.realBill}}{{pool.unit}}</view>
+                
+        
+                <view class='money'><text>{{pool.realBill}}</text><text style='font-size:13px'>{{pool.unit}}</text></view>
                 <view class='tip'>{{pool.billHint}}</view>
                 <view class='price'>
                     <view class='target'>互助目标 {{pool.rtbill.value}}{{pool.rtbill.unit}} </view>
@@ -66,7 +68,7 @@
                       <view class='icon_clock'></view>
                       <text>{{pool.tdescription}}</text>
                   </view>
-                  <view class='money'>{{pool.realBill}}{{pool.unit}}</view>
+                  <view class='money'><text>{{pool.realBill}}</text><text style='font-size:13px'>{{pool.unit}}</text></view>
                   <view class='tip'>{{pool.billHint}}</view>
                   <view class='price'>
                       <view class='target'>互助目标 {{pool.rtbill.value}}{{pool.rtbill.unit}} </view>
@@ -86,7 +88,7 @@
           <view wx:if="{{pool.state=='FINISHED'}}"  id="{{pool.pid}}" bindtap='poolInfo'  class="fpool">
               <view class='left'>
                 <view class='title'>{{pool.ptitle}}</view>
-                <view class='money'>{{pool.realBill}}{{pool.unit}}</view>
+                <view class='money'><text>{{pool.realBill}}</text><text style='font-size:13px'>{{pool.unit}}</text></view>
                 <view class='tip'>{{pool.billHint}}</view>
                 <view class='price'>
                     <view class='target'>互助目标 {{pool.rtbill.value}}{{pool.rtbill.unit}}</view>
@@ -104,7 +106,7 @@
         <view wx:for="{{showingPool}}" wx:for-item="pool" wx:for-index="seek"  id="{{pool.pid}}" bindtap='poolInfo' class='fpool'>
             <view class='left'>
                 <view class='title'>{{pool.ptitle}}</view>
-                <view class='money'>{{pool.realBill}}{{pool.unit}}</view>
+                <view class='money'><text>{{pool.realBill}}</text><text style='font-size:13px'>{{pool.unit}}</text></view>
                 <view class='tip'>{{pool.billHint}}</view>
                 <view class='price'>
                     <view class='target'>互助目标 {{pool.rtbill.value}}{{pool.rtbill.unit}}</view>

@@ -12,11 +12,12 @@ Page({
   data: {
     owner:{}
   },
-
+  loadTimes:0,
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.loadTimes++;
     wx.setNavigationBarTitle({
       title: '个人中心'
     })
@@ -135,5 +136,9 @@ Page({
     wx.makePhoneCall({
       phoneNumber: '15601390196',
     })
+  },
+
+  onShow() {
+    C.ReloadTabPage();
   }
 })

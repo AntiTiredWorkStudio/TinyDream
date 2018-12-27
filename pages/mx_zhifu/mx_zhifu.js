@@ -1,5 +1,6 @@
 //index.js
 
+var ctx = wx.createCanvasContext('top');
 //获取应用实例
 const app = getApp()
 var C = app.lib
@@ -83,7 +84,8 @@ Page({
             dream: targetDream,
             limPiece: lim
           })
-
+          
+        page.drawCircle(aPool.percentVal * 0.01);
           //调起支付
       },
       function (code, data) {
@@ -122,8 +124,14 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
           icon: 'none',
           mask: true,
           complete: function () {
-            C.Intend('../mx_wode/mx_wode?pay=true', true);
-            console.log(data)
+            C.SetPageIntendData('pay', true)
+            //C.Intend('../mx_wode/mx_wode?pay=true', true);
+            wx.switchTab({
+              url: '../mx_wode/mx_wode?pay=true',
+              success:function(){
+                C.ReloadTabPage();
+              }
+            })
           }
         })
 
@@ -134,7 +142,14 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
           icon: 'none',
           mask: true,
           complete: function () {
-            C.Intend('../mx_wode/mx_wode?pay=false', true);
+            C.SetPageIntendData('pay', false)
+            wx.switchTab({
+              url: '../mx_wode/mx_wode?pay=false',
+              success: function () {
+                C.ReloadTabPage();
+              }
+
+            })
             console.log(data)
           }
         })
@@ -153,57 +168,6 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
       uid:app.globalData.openid
     },
     function(code,data){
-      /*console.log("prepayid=" + data.pay.prepayid)
-      console.log(
-        "timeStamp:"+"" + data.pay.timestamp,
-        "noncestr:" +data.pay.noncestr,
-        "package:" +"prepayid=" + data.pay.prepayid,
-        "paySign:" +data.paySign
-      )*/
-
-
-
-      //支付完成API调用
-     /* var payData = {
-        uid: app.globalData.openid,
-        oid: app.actionList.pay.oid,
-        bill: tbill,
-        pcount: page.data.countPiece,
-        action: JSON.stringify(app.actionList)
-      }
-
-      if (page.exchangeDream != null) {
-        payData['did'] = page.exchangeDream.did
-      }
-
-      C.TDRequest('ds', 'pay', payData, function (code, data) {
-        wx.showToast({
-          title: '支付成功',
-          icon: 'none',
-          mask: true,
-          complete: function () {
-            C.Intend('../mx_wode/mx_wode?pay=true', true);
-            console.log(data)
-          }
-        })
-
-      }, function (code, data) {
-        console.log(data)
-        wx.showToast({
-          title: '支付失败',
-          icon: 'none',
-          mask: true,
-          complete: function () {
-            C.Intend('../mx_wode/mx_wode?pay=false', true);
-            console.log(data)
-          }
-        })
-
-        }) */
-      //支付完成API调用 结束
-
-     /* return;*/
-      //微信支付
       console.log(data)
       console.log({
         timeStamp: data.timeStamp,
@@ -249,6 +213,9 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
                 //C.Intend('../mx_wode/mx_wode?pay=true', true);
                 wx.switchTab({
                   url: '../mx_wode/mx_wode?pay=true',
+                  success: function () {
+                    C.ReloadTabPage();
+                  }
                 })
                 console.log(data)
                }
@@ -264,8 +231,10 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
                 C.SetPageIntendData('pay',false)
                 wx.switchTab({
                   url: '../mx_wode/mx_wode?pay=false',
+                  success: function () {
+                    C.ReloadTabPage();
+                  }
                 })
-                //C.Intend('../mx_wode/mx_wode?pay=false', true);
                 console.log(data)
               }
             })
@@ -280,11 +249,11 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
         fail(res) {
           console.log("fail:",res)
           wx.showToast({
-            title: '支付失败',
+            title: '支付取消',
             icon: 'none',
             mask: true,
             complete: function () {
-              C.Intend('../mx_wode/mx_wode?pay=false', true);
+              //C.Intend('../mx_wode/mx_wode?pay=false', true);
              // console.log(data)
             }
           })
@@ -328,7 +297,11 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
   },
   onExchangeDream:function(tdream){
     console.log('onExchangeDream',tdream)
+    if(tdream && tdream.title){
+      tdream.title = tdream.title.substring(0, 5)
+    }
     this.exchangeDream = tdream;
+    
     this.setData({
       dream: tdream
     })
@@ -336,8 +309,33 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-
+  //绘制进度条
+  drawCircle(jindu) {
+    var jindu = jindu * 2;
+    if (jindu == 0) {
+      ctx.clearRect(0, 0, 190, 190);
+      return;
+    }
+    ctx.setFillStyle('white');
+    ctx.clearRect(0, 0, 190, 190);
+    ctx.setLineWidth(15);
+    ctx.setStrokeStyle('#ffc057');
+    ctx.setLineCap('round');
+    ctx.beginPath();
+    ctx.arc(95, 95, 80, Math.PI / -2, jindu * Math.PI - Math.PI / 2, false);
+    ctx.stroke()
+    ctx.draw()
+  },
+  //事件处理函数
+  onReady() {
+    var cxt_arc = wx.createCanvasContext('bottom');
+    cxt_arc.setLineWidth(15);
+    cxt_arc.setStrokeStyle('#edf0f5');
+    cxt_arc.setLineCap('round');
+    cxt_arc.beginPath();
+    cxt_arc.arc(95, 95, 80, 0, 2 * Math.PI, false);
+    cxt_arc.stroke();
+    cxt_arc.draw();
   },
 
   /**

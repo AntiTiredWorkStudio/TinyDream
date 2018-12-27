@@ -8,6 +8,7 @@
 <view class='add'>
     <view class='mask' style='width:100%;height:100%;display:{{hide==true ? "none" : "block"}}'>
         <canvas canvas-id='look' style='width:100%;height:{{windowH-100}}px;top:0;left:0'></canvas>
+        
         <view class='close' bindtap='close'>X</view>
     </view>
     <view class='add_main'>
@@ -41,7 +42,7 @@
             <label>
             
             <checkbox-group bindchange="checkedEvent">
-                <checkbox class='check' value='0' color='#0dd094' checked='false'>
+                <checkbox class='check' value='0' color='#0dd094' >
                 </checkbox>
                 阅读并同意
                 <text bindtap='readDetial' >《小梦想互助平台参与互助协议》</text>

@@ -111,6 +111,7 @@ App({
       this.doFirstAction()
   },
   currentPage: null,
+  currentTab : "",
   lib: null,
   awardHint:false,
   globalData: {

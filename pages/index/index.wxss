@@ -234,6 +234,8 @@ border-radius: 10px;margin-top: 20px;}
     color:#595959;
     text-decoration: underline;
     margin-top: 25rpx;
+    position: relative;
+    z-index: 3;
 }
 /* 互助规则--样式处理 */
 .home .home_content .rules{
@@ -241,6 +243,7 @@ border-radius: 10px;margin-top: 20px;}
     margin: 0 auto;
     position: relative;
     top: 10rpx;
+    z-index: 2;
 }
 .home .home_content .rules .rules_title{
     width: 100%;

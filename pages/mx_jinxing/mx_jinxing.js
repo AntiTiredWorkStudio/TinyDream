@@ -634,7 +634,13 @@ Page({
         }
 
         page.joinedObject.poolData.sort(function (a, b) {
-          return b.ptime - a.ptime;
+          if(a.state == 'FINISHED' && b.state!='FINISHED'){
+            return 1;
+          } else if (b.state == 'FINISHED' && a.state != 'FINISHED'){
+            return -1;
+          } else {
+            return b.ptime - a.ptime;
+          }
         })
 
         page.joinedObject.seek += page.joinedObject.size

@@ -127,7 +127,36 @@ Page({
     wx.downloadFile({
       url: 'https://tinydream.antit.top/transactionform.jpg',
       success(res) {
-        var ctx = wx.createCanvasContext('photo');
+
+        wx.saveImageToPhotosAlbum({
+          filePath: res.tempFilePath,
+          success(res) {
+            if (res.errMsg == "saveImageToPhotosAlbum:ok") {
+              wx.hideLoading();
+              wx.showToast({
+                title: '保存成功',
+                icon: 'success',
+                mask: true
+              })
+            } else {
+              wx.hideLoading();
+              wx.showToast({
+                title: '保存失败',
+                icon: 'none',
+                mask: true
+              })
+            }
+          },
+          fail() {
+            wx.hideLoading();
+            wx.showToast({
+              title: '保存失败',
+              icon: 'none',
+              mask: true
+            })
+          }
+        })
+        /*var ctx = wx.createCanvasContext('photo');
         ctx.drawImage(res.tempFilePath, 0, 0, 793, 1122, 0, 0, 793, 1122)
         ctx.draw();
         setTimeout(function () {
@@ -135,29 +164,13 @@ Page({
             canvasId: 'photo',
             success(res) {
               console.log(res)
-              wx.saveImageToPhotosAlbum({
-                filePath: res.tempFilePath,
-                success(res) {
-                  if (res.errMsg == "saveImageToPhotosAlbum:ok") {
-                    wx.hideLoading();
-                    wx.showToast({
-                      title: '保存成功',
-                      icon: 'success',
-                      mask: true
-                    })
-                  } else {
-                    wx.hideLoading();
-                    wx.showToast({
-                      title: '保存失败',
-                      icon: 'none',
-                      mask: true
-                    })
-                  }
-                }
-              })
+            },
+            fail(res){
+              console.log(res)
+              wx.hideLoading();
             }
           })
-        }, 1000)
+        }, 1000)*/
       },
       fail(res) {
         wx.hideLoading();
@@ -281,7 +294,7 @@ Page({
       return;
     }
 
-    if (this.data.publicLetterUrl == "") {
+    if (this.data.verify && this.data.publicLetterUrl == "") {
       wx.showToast({
         title: "还未上传互助公函",
         icon: "none"
@@ -347,16 +360,25 @@ Page({
                       console.log(data)
                       wx.showToast({
                         title: '提交成功',
-                        icon: 'none'
+                        icon: 'none',
+                        mask: true
                       })
                       app.currentPage.updateList()
                     },
                     function (code, data) {
                       console.log(data)
-
-                      wx.showToast({
-                        title: data.context,
-                        icon: 'none'
+                      var hintText = data.context
+                      wx.navigateBack({
+                        success: function () {
+                          wx.showToast({
+                            title: hintText,
+                            icon: 'none',
+                            mask: true,
+                            success: function () {
+                              
+                            }
+                          })
+                        }
                       })
                       app.currentPage.updateList()
                     }

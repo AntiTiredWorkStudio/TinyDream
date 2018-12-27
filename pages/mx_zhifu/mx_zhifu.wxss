@@ -1,79 +1,241 @@
-/* pages/mx_zhifu/mx_zhifu.wxss */
-/**index.wxss**/
-/* .page-head{margin: 10px;display: flex;flex-direction: column;border-radius: 10px} */
-/*age{background: #f1f4f7}
-.page-head-title{display: flex;flex-direction: row;margin-top: 10px;margin-bottom: 5px}
-.w_logo{width: 30%;align-items: center;justify-content: center;position: relative}
-.image{position: absolute;top: -4rpx}
-.w_name{position: absolute;left: 60rpx}
-.w_desc{width: 70%;text-align: center}
 
-.wm_box{display: flex;flex-direction: column;margin-left: 10px;
-border-radius: 10px;margin-top: 20px;margin-right: 10px}
-.wm_header{display: flex;flex-direction: row;background: white;border-radius: 10px 10px 0 0}
-.wm_menxiang{width: 40%;background: #5ecd98;border-radius: 0 0 5px 5px;opacity: 0.8;text-align: center;color: white;padding: 5px 5px 5px 5px;font-size: 30rpx;margin-left:10px}
-.wm_time{width: 60%;text-align: center;font-size: 30rpx;padding: 5px 5px 5px 5px; }
-.timer{color: white;background: black;padding: 0px 5px 0px 5px;border-radius: 3px}
-.wm_body{display: flex;flex-direction: row;text-align: center;padding-top: 20px;position: relative;background: white}
-.weui-btn{color: white;background: #e9ba65;border-radius: 10px;position: absolute;bottom: 10px;}
+/*UI 1.1 版本*/
+/* pages/payInfo/payInfo.wxss */
+.payInfo{
+    border-top: 2rpx solid #eeeeed;
+}
+/* 梦想互助池--样式处理 */
+.home .home_content .dream_info{
+    width: 100%;
+    margin-top: 20rpx;
+    border-radius: 10rpx;
+    height: 770rpx;
+    text-align: center;
+}
+.home .home_content .dream_info .dream_title{
+    margin: 0 auto;
+    width: 590rpx;
+    font-size: 32rpx;
+    text-align: left;
+}
+.home .home_content .dream_info .progress{
+   margin: 50rpx auto 0;
+    width: 380rpx;
+    height:380rpx;
+    position: relative;
+}
+.home .home_content .dream_info .progress .circle{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.home .home_content .dream_info .progress .timeout{
+    position: absolute;
+    top: 105rpx;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.home .home_content .dream_info .progress .timeout .icon_clock{
+    width: 23rpx;
+    height:23rpx;
+    background: url(http://tdream.antit.top/image/clock.png) no-repeat;
+    background-size: 23rpx 23rpx;
+    margin-right: 10rpx;
+    display: inline-block;
+}
+.home .home_content .dream_info .progress .timeout .timeout_ui{
+    font-size: 28rpx;
+    color: #00d094;
+    display: inline-block;
+}
+.home .home_content .dream_info .progress .help_money{
+    position: absolute;
+    top: 150rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 65rpx;
+    color: #ffc057;
+}
+.home .home_content .dream_info .progress .present_money{
+    position: absolute;
+    bottom: 100rpx;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24rpx;
+    color: #999;
+}
 
-.wm_jindu{display: flex;flex-direction: row;background: white;padding:10px 0px 10px 0px;}
-.m_jine{margin-left: 15px}
-.wm_progress{width: 50%;border-radius: 10px;position: relative;margin-left: 10px}
-.baifenbi{position: absolute;left: 45%;top: 4px;color: white}
+/* 修改的样式 */
+.home .home_content .dream_info .targetAndPrice{
+    width: 600rpx;
+    margin: 0 auto;
+}
+.home .home_content .dream_info .targetAndPrice .target{
+    overflow: hidden;
+    height: 50rpx;
+    line-height: 50rpx;
+    position: relative;
+    margin-bottom: 56rpx;
+}
+.home .home_content .dream_info .targetAndPrice .target view:nth-child(2){
+    position: absolute;
+    color: #999;
+    left: 0;
+    font-size: 26rpx;
+}
+.home .home_content .dream_info .targetAndPrice .target view:nth-child(1) view{
+    width: 70rpx;
+    height: 37rpx;
+    display: inline-block;
+    margin-right: 0;
+    background-repeat: no-repeat;
+    background-size: 70rpx 37rpx; 
+}
+.copies{
+    margin-right: 0 !important;
+    line-height: 25rpx;
+}
+.copies_money{
+    position: relative;
+    margin-right: 0!important;
+}
+.copies text{
+    font-size: 30rpx;
+    top:0;
+    position: absolute;
+    left: 80rpx;
+    color: #333;
+}
+.home .home_content .dream_info .targetAndPrice .target view:nth-child(1) view.icon_add{
+    right: 110rpx;
+    top: 6.5rpx;
+    background-image: url(http://tdream.antit.top/image/substract.jpg)
+}
+.home .home_content .dream_info .targetAndPrice .target view:nth-child(1) view.icon_incer{
+    position: absolute;
+    right: 0;
+    top: 6.5rpx;
+    background-image: url(http://tdream.antit.top/image/plus.png)
+}
 
-.page-buzhou{margin: 15px;display: flex;flex-direction: column;background: white;margin-top: 10px;border-radius: 10px;margin-bottom: 100px}
-.mat_30{margin-left: 30px;margin-top: 12px;font-size: 14px}
-
-.box_fenshu{background:white;margin-left:10px;margin-right:10px;text-align:center;border-top: solid thin #b5b5b5;padding-top: 10px;padding-bottom: 10px}
-.jian{background:#f5f5f5;padding: 10px}
-.jia{background:#f5f5f5;padding: 10px}
-.fenshu{background:#f5f5f5;padding: 10px;margin:0px 10px 0px 10px}
-
-.box_zongji{background:white;margin-left:10px;margin-right:10px;text-align:center;border-top: solid thin #b5b5b5;padding-top: 10px;padding-bottom: 10px}
-
-.box_mengxiang{background:white;margin-left:10px;margin-right:10px;text-align:center;border-top: solid thin #b5b5b5;border-bottom: solid thin #b5b5b5;padding-top: 25px;padding-bottom: 25px;}
-.tihuan{color:#3fab79;text-decoration:underline;text-align: center }
-
-.box_zhifu{margin:0px 10px 20rpx 10px;padding: 20px 0px 20px 0px;background: white;border-radius: 0 0 10px 10px}
-/* .m_footer{border-top: solid thin #5ecd98} */
-
-page{background: #f1f4f7}
-.page-head-title{display: flex;flex-direction: row;margin-top: 10px;margin-bottom: 5px}
-.w_logo{width: 30%;align-items: center;justify-content: center;position: relative}
-.image{position: absolute;top: -4rpx}
-.w_name{position: absolute;left: 60rpx}
-.w_desc{width: 70%;text-align: center}
-
-.wm_box{display: flex;flex-direction: column;margin-left: 10px;
-border-radius: 10px;margin-top: 20px;margin-right: 10px}
-.wm_header{display: flex;flex-direction: row;background: white;border-radius: 10px 10px 0 0}
-.wm_menxiang{width: 40%;background: #5ecd98;border-radius: 0 0 5px 5px;opacity: 0.8;text-align: center;color: white;padding: 5px 5px 5px 5px;font-size: 30rpx;margin-left:10px}
-.wm_time{width: 60%;text-align: center;font-size: 30rpx;padding: 5px 5px 5px 5px; }
-.timer{color: white;background: black;padding: 0px 5px 0px 5px;border-radius: 3px}
-.wm_body{text-align: center;padding-top: 20px;position: relative;background: white}
-.weui-btn{color: white;background: #e9ba65;border-radius: 10px;position: absolute;bottom: 10px;}
-
-.wm_jindu{display: flex;flex-direction: row;background: white;padding:10px 0px 10px 0px;}
-.m_jine{margin-left: 15px}
-.wm_progress{width: 50%;border-radius: 10px;position: relative;margin-left: 10px}
-.baifenbi{position: absolute;left: 45%;top: 8px;color: white}
-
-.page-buzhou{margin: 15px;display: flex;flex-direction: column;background: white;margin-top: 10px;border-radius: 10px;margin-bottom: 100px}
-.mat_30{margin-left: 30px;margin-top: 12px;font-size: 14px}
-
-.box_fenshu{background:white;margin-left:10px;margin-right:10px;text-align:center;border-top: solid thin #b5b5b5;padding-top: 10px;padding-bottom: 4px}
-.jian{background:#f5f5f5;padding: 10px}
-.jia{background:#f5f5f5;padding: 10px}
-.fenshu{background:#f5f5f5;padding: 10px;margin:0px 10px 0px 10px}
-
-.box_zongji{background:white;margin-left:10px;margin-right:10px;text-align:center;border-top: solid thin #b5b5b5;padding-top: 10px;padding-bottom: 10px}
-
-.box_mengxiang{background:white;margin-left:10px;margin-right:10px;text-align:center;border-top: solid thin #b5b5b5;border-bottom: solid thin #b5b5b5;padding-top: 25px;padding-bottom: 25px;}
-.tihuan{color:#3fab79;text-decoration:underline;text-align: center }
-
-.box_zhifu{margin:0px 10px 20rpx 10px;padding: 20px 0px 20px 0px;background: white;border-radius: 0 0 10px 10px}
-/* .m_footer{border-top: solid thin #5ecd98} */
-
-
-
+.home .home_content .dream_info .targetAndPrice .target view:nth-child(1){
+    width: 180rpx;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    margin-right: 24rpx;
+    color: #00d094;
+    font-size: 38rpx;
+}
+.dream .dream{
+    font-size: 30rpx !important;
+    color: #333 !important;
+    margin-right: 0 !important;
+}
+.dream .icon_select{
+    width: 16rpx !important;
+    height: 28rpx !important;
+    position: absolute;
+    right: 0;
+    top: 11rpx;
+    background: url(http://tdream.antit.top/image/arrow.png) no-repeat;
+    background-size: 16rpx 28rpx !important;
+}
+.price{
+    text-align: center;
+    font-size: 26rpx;
+    color: #999;
+}
+.price text{
+    color: #00d094;
+    font-size: 36rpx;
+}
+/* 参与互助--样式处理 */
+.home .home_content .dream_info .join_help::after{
+    border:none;
+}
+.home .home_content .dream_info .join_help{
+    width: 600rpx;
+    margin: 0 auto 0;
+    position: relative;
+    top: 34rpx;
+    height: 78rpx;
+    line-height: 78rpx;
+    background-color: #00d094;
+    border-radius: 39rpx;
+    font-size: 42rpx;
+    color: #fff; 
+}
+.home .home_content .dream_info .tip_msg{
+    font-size: 20rpx;
+    color: #999;
+    position: relative;
+    top: 25rpx;
+}
+/* 分享按钮 */
+.share{
+    width: 39rpx;
+    height: 43rpx;
+    background: url(http://tdream.antit.top/image/share.jpg) no-repeat;
+    background-size: 39rpx 43rpx;
+    position: absolute;
+    top: 30rpx;
+    right: 66rpx;
+}
+/* 弹窗 */
+.home .mask{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.mask .mask_bg{
+    background-color: #fff;
+    width: 510rpx;
+    min-height: 560rpx;
+    position: absolute;
+    border-radius: 20rpx;
+    left: 120rpx;
+    top: 340rpx;
+}
+.mask .mask_bg .icon_success{
+    width: 300rpx;
+    height: 153rpx;
+    margin: 30rpx auto 0;
+}
+.mask .mask_bg .tip{
+    width: 330rpx;
+    margin: 50rpx auto;
+    text-align: center;
+    font-size: 28rpx;
+    color: #4c4c4c;
+    white-space: normal
+}
+.mask .mask_bg .notice{
+    width: 466rpx;
+    margin: 0 auto 38rpx;
+    font-size: 22rpx;
+    color: #808080;
+    text-align: center;
+    white-space: normal
+}
+.mask .mask_bg button{
+    background-color: #00d094;
+    color: #fff;
+    width: 400rpx;
+    height: 82rpx;
+    border-radius: 41rpx;
+    margin: 0 auto;
+    line-height: 82rpx;
+    font-size: 32rpx;
+}
+/* 关闭 */
+.mask .close{
+    width: 60rpx;
+    height: 60rpx;
+    position: absolute;
+    top: 70rpx;
+    right: 30rpx;
+}

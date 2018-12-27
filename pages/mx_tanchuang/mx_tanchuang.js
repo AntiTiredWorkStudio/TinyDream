@@ -140,7 +140,7 @@ Page({
       C.SetPageIntendData('exchange', page.data.dlist[page.currentSelection]);
       wx.navigateBack({
         complete: function (res) {
-          console.log(page.payPage)
+          //console.log(page.payPage)
           //page.payPage.onExchangeDream(page.data.dlist[page.currentSelection])
         }
       })

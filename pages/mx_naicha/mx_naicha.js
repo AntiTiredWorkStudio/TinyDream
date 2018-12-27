@@ -21,11 +21,12 @@ Page({
       bingos:[]
     }
   },
-
+  loadTimes :0,
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.loadTimes++;
     //dr = dlist & uid=11304626
     wx.setNavigationBarTitle({
       title: '小梦想'
@@ -39,6 +40,7 @@ Page({
       var tId = C.GetPageIntendData('tab_type');
       C.RemoveIntendData('tab_type')
       this.switchType({ currentTarget: { id: tId}});
+      console.log("switchType");
     }
   },
   addDream:function(){
@@ -116,13 +118,6 @@ Page({
   },
 
   /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
@@ -174,6 +169,13 @@ Page({
         })
         break;
       case "bingo":
+        console.log("bingo",page.data.bingos)
+        if (page.data.bingos && page.data.bingos.length == 0){
+          wx.showToast({
+            title: '暂无幸运梦想',
+            icon:'none'
+          })
+        }
         page.setData({
           type: {
             selection: "bingo",
@@ -262,5 +264,9 @@ Page({
       phoneNumber: '400-600-2233',
     })*/
     this.switchType({currentTarget:{id:'plan'}})
+  },
+
+  onShow() {
+    C.ReloadTabPage();
   }
 })

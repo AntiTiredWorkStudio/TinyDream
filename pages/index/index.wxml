@@ -34,7 +34,7 @@
             <view class='app_name'>小梦想互助</view>
         </view>
         <view class='company'>
-            该小程序由北京XXXXXXX有限公司开发，请确认授权以下信息
+            该小程序由北京圣寒科技有限公司开发，请确认授权以下信息
         </view>
         <view class='auth'>· 获得你的公开信息（昵称、头像等）</view>
         <button open-type="getUserInfo" bindgetuserinfo='onGetUserInfo'>授权登录</button>
@@ -50,7 +50,7 @@
           <view class='icon_clock'></view>
           <text class='timeout_ui'>{{poolHours}}:{{poolMinutes}}:{{poolSeconds}}</text>
         </view>
-        <view class='help_money'>{{mainpool.realBill}}{{mainpool.unit}}</view>
+        <view class='help_money'><text>{{mainpool.realBill}}</text><text style='font-size:13px'>{{mainpool.unit}}</text></view>
         <view class='present_money'>目前互助金</view>
       </view>
       <view class='targetAndPrice'>
@@ -70,9 +70,7 @@
      <view wx:if="{{!authVisible && mainpool.pid==null}}" class='dream_info_none' catchtap='morePools'>
      <view class='mat_30' style='color:#3e3e3e;padding-top:20px'>暂无进行中的梦想池</view>
     </view>
-    <navigator url="../mx_lucky/mx_lucky">
-      <view wx:if="{{!authVisible}}" class='issue'>往期幸运者</view>
-    </navigator>
+      <view wx:if="{{!authVisible}}" class='issue' bindtap='onLuckyTap'>往期幸运者</view>
     <view wx:if="{{!authVisible}}" class='rules'>
       <view class='rules_title'>
         <view class='line left'></view>

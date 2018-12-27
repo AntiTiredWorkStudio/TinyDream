@@ -58,7 +58,9 @@ var index = Page({
       }
     })
   },
+  loadTimes : 1,
   onLoad: function () {
+    this.loadTimes++;
     wx.setNavigationBarTitle({
       title: '参与互助'
     })
@@ -142,7 +144,7 @@ var index = Page({
   },
   setMainPool :function(pool){
     //this.mainpool = pool
-    console.log("main pool:",pool)
+    //console.log("main pool:",pool)
     
     var billResult = C.BillExchange(pool.cbill);
     var targetBillResult = C.BillExchange(pool.tbill);
@@ -153,7 +155,7 @@ var index = Page({
     //pool.duration;
     pool.unit = billResult.unit;
     pool.percentVal = Math.floor((pool.cbill / pool.tbill) *10000)/100
-    console.log("billResult:",billResult);
+    //console.log("billResult:",billResult);
     this.updateCircle(pool.percentVal/100)
     this.setData({
       mainpool:pool
@@ -274,8 +276,18 @@ var index = Page({
         page.onPageLaunch(data)
         wx.hideLoading()
 
-        console.log(data);
+        //console.log(data);
       }, function (code, data) {
+        wx.hideLoading()
+        wx.showModal({
+          title: '提示',
+          content: '主页加载失败,是否重试?',
+          success: function (res) {
+            if (res.confirm) {
+              page.onInfoReady()
+            }
+          }
+        })
         console.log(data);
       }
     );
@@ -392,4 +404,12 @@ var index = Page({
         clearInterval(this.countdownInterval)
       }
   },
+  onLuckyTap(){
+    console.log('onLuckyTap')
+    C.Intend('../mx_lucky/mx_lucky');
+  },
+  
+  onShow() {
+    C.ReloadTabPage();
+  }
 })

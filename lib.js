@@ -135,6 +135,23 @@ module.exports.DreamPoolAnalysis = function(pool) {
   return pool
 }
 
+module.exports.ReloadTabPage = function(){
+  var pages = getCurrentPages();
+  //console.log(pages);
+  if (pages[0] && pages[0].onLoad && pages[0].loadTimes && pages[0].loadTimes > 1) {
+    pages[0].onLoad();
+  } else {
+    pages[0].loadTimes++;
+  }
+}
+
+
+module.exports.ReloadPage = function () {
+  var pages = getCurrentPages();
+  if (pages[0] && pages[0].onLoad) {
+    pages[0].onLoad();
+  }
+}
 
 module.exports.Intend = function(tUrl, redict = false, onsuccess = null) {
   //var self = this;
@@ -146,16 +163,16 @@ module.exports.Intend = function(tUrl, redict = false, onsuccess = null) {
         if (onsuccess)
           onsuccess(res)
         console.log("跳转:", res);
-        var page = getCurrentPages().pop();
-        if (page == undefined || page == null) return;
-        page.onLoad();
+        //var page = getCurrentPages().pop();
+        //if (page == undefined || page == null) return;
+        //page.onLoad();
       }, //成功后的回调；
       fail: function(res) {
         //console.log("跳转:", res);
       }
     })
   } else {
-    wx.redirectTo({
+    wx.reLaunch({
       url: tUrl, //跳转页面的路径，可带参数 ？隔开，不同参数用 & 分隔；相对路径，不需要.wxml后缀
       success: function () {
         var page = getCurrentPages().pop();
