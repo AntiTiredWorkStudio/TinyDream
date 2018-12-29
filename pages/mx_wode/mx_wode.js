@@ -137,6 +137,9 @@ Page({
       phoneNumber: '15601390196',
     })
   },
+  notice(){
+    C.Intend('../mx_notice/mx_notice')
+  },
 
   onShow() {
     C.ReloadTabPage();

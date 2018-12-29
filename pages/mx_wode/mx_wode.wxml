@@ -46,7 +46,7 @@
                 </view>
             </view>
             <view class='block'>
-                <view class='block_main'>
+                <view class='block_main' bindtap='notice'>
                     <view class='icon_notice icon'></view>
                     <text>系统通知</text>
                 </view>

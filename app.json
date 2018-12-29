@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/mx_notice/mx_notice",
     "pages/mx_wenti/mx_wenti",
     "pages/mx_routine/mx_routine",
     "pages/mx_zhifu/mx_zhifu",
