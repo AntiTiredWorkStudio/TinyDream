@@ -15,9 +15,7 @@
  -->
 <view class='dream'>
 <!-- 当没有梦想的时候显示空 -->
-    <view class='empty {{isShow ? "show" : ""}}'>
-        <view class='empty_bg'></view>
-    </view>
+    
     <view class='dream_main {{isShow ? "" : "show"}}'>
         <view class='dreamTab'>
             <view class='dream_type'>
@@ -27,6 +25,9 @@
         </view>
         <view class='dream_list'>
             <view wx:if="{{type.selection=='mine'}}">
+            <view class='empty {{dreams.length==0 ? "show" : ""}}'>
+              <view class='empty_bg'></view>
+            </view>
               <view   wx:for="{{dreams}}" wx:for-item="dream" wx:for-index="seek"  class='dream_info'>
                   <view class='dream_logo'></view>
                   <view class='dream_right'>
@@ -40,6 +41,7 @@
             </view>
             
             <view wx:if="{{type.selection=='bingo'}}">
+            <view wx:if='{{bingos.length==0 ? "show" : ""}}'><text style='display:block;text-align:center;color:#999;font-size:13px;padding-top:20px'>暂无幸运梦想</text></view>
               <view class='luckyDream' wx:for="{{bingos}}" wx:for-item="bingo" wx:for-index="seek" id="{{bingo.did}}" bindtap='onDreamPerfect' >
                   <view class='dream_logo'>{{bingo.pool.cbill*0.01}}</view>
                   <view class='dream_right'>
@@ -53,6 +55,6 @@
             </view>
         </view>
     </view>
-    <view wx:if='{{canAddDream}}' class='add' bindtap='addDream'>
+    <view wx:if='{{canAddDream && type.selection=="mine"}}' class='add' bindtap='addDream'>
      </view>
 </view>

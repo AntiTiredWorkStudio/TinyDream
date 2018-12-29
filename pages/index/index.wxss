@@ -1,63 +1,3 @@
-/**index.wxss**/
-/* .page-head{margin: 10px;display: flex;flex-direction: column;border-radius: 10px} */
-/*.page-head-title{display: flex;flex-direction: row;margin-top: 10px;margin-bottom: 5px}
-.w_logo{width: 30%;align-items: center;justify-content: center;position: relative}
-.image{position: absolute;top: -4rpx}
-.w_name{position: absolute;left: 60rpx}
-.w_desc{width: 70%;text-align: center}
-
-.wm_box{display: flex;flex-direction: column;margin: 10px;
-border-radius: 10px;margin-top: 20px;}
-.wm_header{display: flex;flex-direction: row;background: white;border-radius: 10px}
-.wm_menxiang{width: 40%;background: #5ecd98;border-radius: 0 0 5px 5px;opacity: 0.8;text-align: center;color: white;padding: 5px 5px 5px 5px;font-size: 30rpx;margin-left:10px}
-.wm_time{width: 60%;text-align: center;font-size: 30rpx;padding: 5px 5px 5px 5px; }
-.timer{color: white;background: black;padding: 0px 5px 0px 5px;border-radius: 3px}
-.wm_body{display: flex;flex-direction: row;text-align: center;padding-top: 20px;position: relative;background: white}
-.weui-btn{color: white;background: #e9ba65;border-radius: 10px;position: absolute;bottom: 10px;}
-
-.wm_jindu{display: flex;flex-direction: row;background: white;padding:10px 0px 10px 0px;border-radius: 0 0 10px 10px}
-.m_jine{margin-left: 15px}
-.wm_progress{width: 50%;border-radius: 10px;position: relative;margin-left: 10px}
-.baifenbi{position: absolute;left: 45%;top: 10px;color: red;font-size:14px}
-
-.page-buzhou{margin: 15px;display: flex;flex-direction: column;background: white;margin-top: 10px;border-radius: 10px;margin-bottom: 100px}
-.mat_30{margin-left: 30px;margin-top: 12px;font-size: 14px}
-
-/* .m_footer{border-top: solid thin #5ecd98} */
-
-/* pages/index(new)/index(new).wxss *//**index.wxss**/
-/* .page-head{margin: 10px;display: flex;flex-direction: column;border-radius: 10px} */
-
-
-/*1.0版本CSS*/
-page{background: white; font-family: 'PingFangSC-Regular'}
-.page-head-title{display: flex;flex-direction: row;margin-top: 10px;margin-bottom: 5px;font-size: 14px}
-.w_logo{width: 30%;align-items: center;justify-content: center;position: relative}
-.image{position: absolute;top: -4rpx}
-.w_name{position: absolute;left: 60rpx;top:5px}
-.w_desc{width: 70%;text-align: center}
-
-.wm_box{display: flex;flex-direction: column;margin: 10px;
-border-radius: 10px;margin-top: 20px;}
-.wm_header{display: flex;flex-direction: row;background: white;border-radius: 10px 10px 0px 0px}
-.wm_menxiang{width: 40%;background: #5ecd98;border-radius: 0 0 5px 5px;opacity: 0.8;text-align: center;color: white;padding: 5px 5px 5px 5px;font-size: 30rpx;margin-left:10px}
-.wm_time{width: 60%;text-align: center;font-size: 30rpx;padding: 5px 5px 5px 5px; }
-.timer{color: white;background: black;padding: 0px 5px 0px 5px;border-radius: 3px}
-.wm_body{display: flex;flex-direction: row;text-align: center;padding-top: 10px;position: relative;background: white;font-size: 12px}
-.weui-btn{color: white;background: #e9ba65;border-radius: 10px;position: absolute;bottom: 10px;}
-
-.wm_jindu{display: flex;flex-direction:column;background: white;padding:10px 0px 0px 0px;border-radius: 0 0 10px 10px}
-.m_jine{margin-left: 15px}
-.wm_progress{width: 90%;margin: 0 auto;border-radius: 10px;position: relative;}
-.baifenbi{position: absolute;left: 45%;top: 1px;color: white;font-size:14px}
-
-.page-buzhou{margin: 15px;display: flex;flex-direction: column;background: white;margin-top: 10px;border-radius: 10px;margin-bottom: 0px}
-.mat_30{margin-left: 30px;font-size: 14px}
-
-.box_muyan{margin:15px 0px 15px 0px;background-image:url("http://tdream.antit.top/muyanyan.jpg");background-size:100% 100%; padding-bottom:15px;height:150px;}
-
-.box_yuanfeng{margin:15px 0px 15px 0px;background-image:url("http://tdream.antit.top/liyuanfeng.jpg");background-size:100% 100%; padding-bottom:15px;height:150px;margin-bottom: 60px;}
-/* .m_footer{border-top: solid thin #5ecd98} */
 
 /*1.1版本*/
 /**首页样式表**/
@@ -443,4 +383,109 @@ button{
     height: 88rpx;
     background-color: #05bf02;
     margin: 0 auto;
+}
+
+
+/* 遮罩 */
+.mask{
+    background: rgba(0, 0, 0, .5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 9;
+}
+.mask .bg{
+    width: 659rpx;
+    height: 718rpx;
+    position: absolute;
+    left: 6rpx;
+    transform: translateY(-50%);
+    top: 50%;
+}
+.mask .bg .title{
+    width: 100%;
+    position: absolute;
+    top: 158rpx;
+    left: 260rpx;
+    font-size: 56rpx;
+    color: #ffc057;
+}
+.mask .bg .tip{
+    position: absolute;
+    top: 260rpx;
+    width: 500rpx;
+    white-space: normal;
+    font-size: 32rpx;
+    color: #808080;
+    left: 124rpx;
+    text-align: center;
+    text-indent: 2em;
+    line-height: 50rpx;
+}
+button::after{
+    border: none;
+}
+.mask .bg button{
+    background-color: #00d094;
+    color: #fff;
+    text-align: center;
+    font-size: 38rpx;
+    width: 400rpx;
+    height: 88rpx;
+    line-height: 88rpx;
+    position: absolute;
+    bottom: 62rpx;
+    left: 175rpx;
+    border-radius: 44rpx;
+}
+
+
+/* 系统通知图标处理 */
+.icon_notice{
+    width:220rpx;
+    height: 68rpx;
+    background-color: rgba(0, 0, 0, .5);
+    position: fixed;
+    right: 0;
+    top: 160rpx;
+    border-top-left-radius: 34rpx;
+    border-bottom-left-radius: 34rpx;
+    transform: translate(0,0);
+    transition: 1s linear;
+}
+.icon_notice.hide{
+    transform: translate(110rpx,0);
+}
+.icon_notice .left{
+    width: 44rpx;
+    height: 50rpx;
+    background: url(http://tdream.antit.top/image/secretary.png) no-repeat;
+    float: left;
+    margin-left: 32rpx;
+    margin-top: 8rpx;
+    background-size: 44rpx 50rpx;
+}
+.icon_notice .right{
+    float: right;
+    margin-right: 32rpx;
+    background: url(http://tdream.antit.top/image/dialog.png) no-repeat;
+    width: 46rpx;
+    height: 42rpx;
+    margin-top: 13rpx;
+    position: relative;
+    background-size: 46rpx 42rpx;
+}
+.icon_notice .right .text{
+    width: 18rpx;
+    height: 18rpx;
+    background: red;
+    border-radius: 50%;
+    font-size: 16rpx;
+    color: #fff;
+    text-align: center;
+    line-height: 18rpx;
+    position: absolute;
+    right: -10rpx;
+    top: -3rpx;
 }

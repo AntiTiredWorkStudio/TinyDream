@@ -464,7 +464,7 @@ Page({
 
         break;
     }
-    this.drawPoolsCircle()
+    //this.drawPoolsCircle()
   },
   //新的部分
   runningObject: {

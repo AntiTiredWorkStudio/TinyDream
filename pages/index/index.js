@@ -5,6 +5,7 @@ var C = app.lib
 var ctx = wx.createCanvasContext('top');
 var index = Page({
   data: {
+    message:0,
     showSwiper: false,
     authVisible: false,
     poolHours:0,
@@ -318,15 +319,14 @@ var index = Page({
             wx.switchTab({
               url: '../mx_naicha/mx_naicha?type=bingo'
             })
-            /*wx.navigateTo({
-              url: '../mx_naicha/mx_naicha?type=bingo',
-            })*/
-            //C.Intend('../mx_naicha/mx_naicha?type=bingo',true)
           }
         }
       })
     }
-    //console.log("showShareMenu")
+    //增加获取通知数量的请求
+    this.setData({
+      message:0
+    })
   },
   morePools: function (res) {
 
@@ -389,6 +389,9 @@ var index = Page({
         }
     )
     
+  },
+  notice:function(){
+    C.Intend('../mx_notice/mx_notice');
   },
   /**
    * 生命周期函数--监听页面卸载

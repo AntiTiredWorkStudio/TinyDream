@@ -68,7 +68,7 @@
     </view>
     <!--每有梦想池时显示-->
      <view wx:if="{{!authVisible && mainpool.pid==null}}" class='dream_info_none' catchtap='morePools'>
-     <view class='mat_30' style='color:#3e3e3e;padding-top:20px'>暂无进行中的梦想池</view>
+     <view class='mat_30' style='font-size:13px;color:#3e3e3e;padding-top:20px'>暂无进行中的梦想池</view>
     </view>
       <view wx:if="{{!authVisible}}" class='issue' bindtap='onLuckyTap'>往期幸运者</view>
     <view wx:if="{{!authVisible}}" class='rules'>
@@ -130,5 +130,16 @@
       
       <view style='padding-bottom:20px'></view>
     </view>
+
+    
+    <view class='icon_notice {{message == 0 ? "hide" : ""}}'>
+        <view class='left'>
+          <button style='border:none;' plain='true' open-type="contact"></button>
+        </view>
+        <view class='right' bindtap='notice'>
+            <view class='text'>{{message}}</view>
+        </view>
+    </view>
+
   </view>
 </view>

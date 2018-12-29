@@ -45,17 +45,17 @@
             <button catchtap='onPay' class='join_help wxPay' >微信支付</button>
         </view>
     </view>
-    <cover-view class='mask' wx:if="{{ishide}}">
+    <cover-view class='mask' wx:if="{{showLog}}">
         <cover-view class='mask_bg'>
             <cover-image class='icon_success' src='http://tdream.antit.top/image/stars.png'></cover-image>
             <cover-view class='tip'>
-                您已成功参与20181227期小梦想互助
+                您已成功参与{{pool.ptitle}}
             </cover-view>
             <cover-view class='notice'>
-               您的编号为：2819281、81917917、7917917赶紧邀请小伙伴们一起来参加小梦想互助吧！
+               您的编号为：{{successNums}}赶紧邀请小伙伴们一起来参加小梦想互助吧！
             </cover-view>
-            <button>邀 请</button>
+            <button open-type="share">邀 请</button>
         </cover-view>
-        <cover-image class='close' src='http://tdream.antit.top/image/close.png' bindtap='close'></cover-image>
+        <cover-image class='close' src='http://tdream.antit.top/image/close.png' bindtap='close_window'></cover-image>
     </cover-view>
 </view>

@@ -19,9 +19,50 @@ Page({
       h: 0,
       m: 0,
       s: 0
+    },
+    successNums:"",
+    showLog :false
+  },
+  onShareAppMessage: function () {
+    var page = this;
+    return {
+      title: app.globalData.nickName + "刚刚在小梦想互助平台参与互助了" + this.data.countPiece+"份梦想,也邀请您一同加入小梦想互助!",
+      path: '/pages/index/index', //这里设定都是以"/page"开头,并拼接好传递的参数
+      success: function (res) {
+        // 转发成功
+        if (page.onLogExit) {
+          page.onLogExit();
+        }
+      },
+      fail: function (res) {
+        // 转发失败
+        if (page.onLogExit) {
+          page.onLogExit();
+        }
+      }
     }
   },
-
+  onLogExit:null,
+  onPaid: function (closeLog,data) {
+    var numText = ''
+    for(var num in data.numbers){
+      numText+=num+","
+    }
+    numText.substring(0, numText.length - 1); 
+    this.setData({
+      showLog: true,
+      successNums: numText
+    })
+    this.onLogExit = closeLog;
+  },
+  close_window:function(){
+    this.setData({
+      showLog : false
+    })
+    if(this.onLogExit){
+      this.onLogExit();
+    }
+  },
   countdownInterval: null,
   countDown:function(){
     var sec = (Math.floor(this.data.pool.ptime) + parseInt(Math.floor(this.data.pool.duration))) - Math.floor(C.PRCTIME())
@@ -119,19 +160,21 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
         pcount: page.data.countPiece,
         action: JSON.stringify(app.actionList)
       }, function (code, data) {
+        console.log('支付成功:',data)
         wx.showToast({
           title: '支付成功',
           icon: 'none',
           mask: true,
           complete: function () {
-            C.SetPageIntendData('pay', true)
-            //C.Intend('../mx_wode/mx_wode?pay=true', true);
-            wx.switchTab({
-              url: '../mx_wode/mx_wode?pay=true',
-              success:function(){
-                C.ReloadTabPage();
-              }
-            })
+            page.onPaid(function () {
+              C.SetPageIntendData('pay', true)
+              wx.switchTab({
+                url: '../mx_wode/mx_wode',
+                success: function () {
+                  C.ReloadTabPage();
+                }
+              })
+            }, data)
           }
         })
 
@@ -203,21 +246,22 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
           console.log("payData:", payData)
 
           C.TDRequest('ds', 'pay', payData, function (code, data) {
-            console.log('支付成功',data)
+            console.log('支付成功:', data)
             wx.showToast({
               title: '支付成功',
               icon: 'none',
               mask: true,
               complete: function () {
-                C.SetPageIntendData('pay', true)
-                //C.Intend('../mx_wode/mx_wode?pay=true', true);
-                wx.switchTab({
-                  url: '../mx_wode/mx_wode?pay=true',
-                  success: function () {
-                    C.ReloadTabPage();
-                  }
-                })
-                console.log(data)
+
+                page.onPaid(function () {
+                  C.SetPageIntendData('pay', true)
+                  wx.switchTab({
+                    url: '../mx_wode/mx_wode',
+                    success: function () {
+                      C.ReloadTabPage();
+                    }
+                  })
+                }, data)
                }
             })
             
@@ -377,24 +421,5 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
    */
   onReachBottom: function () {
 
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function (res) {
-    return {
-      title: res.target.id,
-      path: '/pages/index/index', //这里设定都是以"/page"开头,并拼接好传递的参数
-      success: function (res) {
-        // 转发成功
-        console.log(res);
-        console.log("转发成功:" + JSON.stringify(res));
-      },
-      fail: function (res) {
-        // 转发失败
-        console.log("转发失败:" + JSON.stringify(res));
-      }
-    }
   }
 })
