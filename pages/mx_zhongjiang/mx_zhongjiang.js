@@ -3,6 +3,8 @@
 //获取应用实例
 const app = getApp()
 var C = app.lib
+
+var ctx = wx.createCanvasContext('top');
 // pages/mx_zhongjiang/mx_zhongjiang.js
 Page({
 
@@ -10,8 +12,8 @@ Page({
    * 页面的初始数据
    */
   data: {
-    numTabClass: "col-6 memu_act",
-    userTabClass: "col-6 menu_unact",
+    numTabClass: "active",
+    userTabClass: "",
     type: "code",
     pool: {},
     pstate:'',
@@ -33,6 +35,7 @@ Page({
     pool.realBill = billResult.value;
     pool.unit = billResult.unit;
     pool.percent = Math.ceil(pool.cbill / pool.tbill * 100)
+    pool.endtime = C.GetLocalTime((parseInt(pool.ptime) + parseInt(pool.duration)))
     var less = (parseInt(pool.ptime) + parseInt(pool.duration)) - C.PRCTIME()
     //判断条件
     if (less < 0 || (parseInt(pool.cbill) >= parseInt(pool.tbill))) {
@@ -64,6 +67,34 @@ Page({
         this.viewCodes();
         break;
     }
+  },
+  //绘制进度条
+  drawCircle(jindu) {
+    var jindu = jindu * 2;
+    if (jindu == 0) {
+      ctx.clearRect(0, 0, 190, 190);
+      return;
+    }
+    ctx.setFillStyle('white');
+    ctx.clearRect(0, 0, 190, 190);
+    ctx.setLineWidth(15);
+    ctx.setStrokeStyle('#ffc057');
+    ctx.setLineCap('round');
+    ctx.beginPath();
+    ctx.arc(95, 95, 80, Math.PI / -2, jindu * Math.PI - Math.PI / 2, false);
+    ctx.stroke()
+    ctx.draw()
+  },
+  //事件处理函数
+  onReady() {
+    var cxt_arc = wx.createCanvasContext('bottom');
+    cxt_arc.setLineWidth(15);
+    cxt_arc.setStrokeStyle('#edf0f5');
+    cxt_arc.setLineCap('round');
+    cxt_arc.beginPath();
+    cxt_arc.arc(95, 95, 80, 0, 2 * Math.PI, false);
+    cxt_arc.stroke();
+    cxt_arc.draw();
   },
   onLoad: function(options) {
     var tPool = C.GetPageIntendData(options.pid)
@@ -107,7 +138,9 @@ Page({
         var count = 0
         var lotteryList = []
         console.log(data.lottey)
-        for (var key in data.lottey) {
+        lotteryList = data.lottey
+        
+        /*for (var key in data.lottey) {
           lotteryList[seeker] = {
             left: null,
             right: null
@@ -120,7 +153,7 @@ Page({
             count++
           }
           seeker++;
-        }
+        }*/
 
         console.log("lotteryList", lotteryList)
 
@@ -132,7 +165,7 @@ Page({
             page.countdownInterval = setInterval(page.countDown, 1000);
         })
 
-
+        page.drawCircle(tPool.percentVal*0.01);
         console.log('aw', data)
 
       },
@@ -144,8 +177,8 @@ Page({
   viewCodes: function() {
     console.log('viewCodes')
     this.setData({
-      numTabClass: "col-6 memu_act",
-      userTabClass: "col-6 menu_unact",
+      numTabClass: "active",
+      userTabClass: "",
       type: 'code'
     })
   },
@@ -173,8 +206,8 @@ Page({
             console.log('viewDetials')
             page.setData({
               seek: 0,
-              numTabClass: "col-6 menu_unact",
-              userTabClass: "col-6 memu_act",
+              numTabClass: "",
+              userTabClass: "active",
               type: 'detial',
               orders: data.orders,
               count: ordCount
@@ -307,12 +340,6 @@ Page({
       }
     });
     //console.log(sec)
-  },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function() {
-
   },
 
   /**

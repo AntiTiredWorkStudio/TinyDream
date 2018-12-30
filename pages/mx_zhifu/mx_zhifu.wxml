@@ -58,4 +58,5 @@
         </cover-view>
         <cover-image class='close' src='http://tdream.antit.top/image/close.png' bindtap='close_window'></cover-image>
     </cover-view>
+    
 </view>

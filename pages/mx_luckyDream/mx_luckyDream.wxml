@@ -6,7 +6,7 @@
 <view class='luckyDream'>
     <view class='background'></view>
     <view class='lucky_tip'>
-       恭喜您的梦想：{{dtitle}}在{{ptitle}}成为幸运梦想,幸运编号为{{lid}}，本期互助总资金为{{cbill.value}}{{cbill.unit}}
+       恭喜！您在“{{ptitle}}期”成为幸运者,幸运编号为“{{lid}}”，本期互助总资金为{{cbill.value}}{{cbill.unit}}，领取后启动“{{dtitle}}”小梦想吧！
     </view>
     <view class='gift'></view>
     <view wx:if='{{state!="SUCCESS"}}'>

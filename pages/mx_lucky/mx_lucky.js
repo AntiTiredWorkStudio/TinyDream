@@ -17,7 +17,7 @@ Page({
     },
     count :0,
     seek : 0,
-    size : 3,
+    size : 6,
     /**
      * 生命周期函数--监听页面加载
      */
@@ -39,7 +39,7 @@ Page({
         C.TDRequest("aw", "gplu", 
           {
             seek:this.seek,
-            count:this.count
+            count:this.size
           },
           function (code, data) {
             console.log(data)

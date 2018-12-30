@@ -26,7 +26,7 @@ Page({
   onShareAppMessage: function () {
     var page = this;
     return {
-      title: app.globalData.nickName + "刚刚在小梦想互助平台参与互助了" + this.data.countPiece+"份梦想,也邀请您一同加入小梦想互助!",
+      title: app.globalData.nickname + "刚刚参与互助了" + this.data.countPiece+"份小梦想,你也来互助吧!",
       path: '/pages/index/index', //这里设定都是以"/page"开头,并拼接好传递的参数
       success: function (res) {
         // 转发成功
@@ -120,6 +120,7 @@ Page({
            var aPool = C.DreamPoolAnalysis(data.pool)
            console.log(aPool)
         page.countdownInterval = setInterval(page.countDown, 1000);
+        targetDream.title = C.catchDreamTitle(targetDream.title)
           page.setData({
             pool: aPool ,
             dream: targetDream,
@@ -127,6 +128,7 @@ Page({
           })
           
         page.drawCircle(aPool.percentVal * 0.01);
+
           //调起支付
       },
       function (code, data) {
@@ -335,14 +337,54 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
     /**/
   },
   exchangeDream : null,
+  dreamInfoDatas: null,
   exchangeDream01: function () {
     console.log("替换梦想")
-    C.Intend("../mx_tanchuang/mx_tanchuang?type=exchange", false)
+    var page = this
+    var targetlist = [];
+    var targetInfo = {};
+    C.TDRequest("dr", "dlist",
+      {
+        uid: app.globalData.openid
+      },
+      function (code, data) {
+        var seek = 0;
+        for (var dream in data.dreams) {
+
+          var id = data.dreams[dream].did
+
+          if (data.dreams[dream].state != "SUBMIT" && data.dreams[dream].state != "FAILED") {
+            continue
+          }
+          //console.log(data.dreams[dream])
+          //targetlist[id] = data.dreams[dream]
+          //targetlist[id]['select'] = "bloc tan_li"
+          targetInfo[seek] = data.dreams[dream]
+          targetlist[seek++] = data.dreams[dream]['title']
+        }
+
+        wx.showActionSheet({
+          itemList: targetlist,
+          success(res) {
+            console.log(res.tapIndex)
+            page.onExchangeDream(targetInfo[res.tapIndex]);
+          },
+          fail(res) {
+            console.log(res.errMsg)
+          }
+        })
+        console.log(targetlist)
+        
+      }, function (code, data) {
+
+      }
+    )
+    //C.Intend("../mx_tanchuang/mx_tanchuang?type=exchange", false)
   },
   onExchangeDream:function(tdream){
     console.log('onExchangeDream',tdream)
     if(tdream && tdream.title){
-      tdream.title = tdream.title.substring(0, 5)
+      tdream.title = C.catchDreamTitle(tdream.title)
     }
     this.exchangeDream = tdream;
     

@@ -49,7 +49,14 @@ Page({
     }
   }
   ,
+  fromLuckyDream :false,
   onLoad: function (options) {
+    console.log(options)
+
+    if (options.hasOwnProperty('lucky')){
+      this.fromLuckyDream = options.lucky
+    }
+
     var page = this
     C.TDRequest('us','rnameg',{uid:app.globalData.openid},function(code,data){
       console.log(data) //已经实名认证
@@ -284,14 +291,27 @@ Page({
         signal: sign,
       },
       function (code, data) {
-        wx.hideLoading()
-        wx.showToast({
-          title: '完成上传',
-          icon: 'success'
-        })
-        page.onLoad()
+        if (page.fromLuckyDream){
+          wx.navigateBack({
+            success:function(){
+              wx.hideLoading()
+              wx.showToast({
+                title: '完成上传',
+                icon: 'success'
+              })
+            }
+          })
+        }else{
+          wx.hideLoading()
+          wx.showToast({
+            title: '完成上传',
+            icon: 'success'
+          })
+          page.onLoad()
+        }
       },
       function (code, data) {
+        console.log(data)
         wx.hideLoading()
         wx.showToast({
           title: '上传失败',
@@ -316,6 +336,8 @@ Page({
         key: keys.card_f
       }
     ]
+
+    console.log('uploadList:',uploadList)
     var signal = C.sha1(app.globalData.openid + tStamp)
     //console.log(signal)
     var i = 0
@@ -347,11 +369,11 @@ Page({
       name: 'file',
       formData: formData,
       success: function (res) {
-        //console.log(res)
+        console.log(res)
         callBack(i+1,JSON.parse( res.data).key)
       },
       fail: function (error) {
-       // console.error(error);
+        console.error(error);
         callBack(i)
       }
     })

@@ -348,7 +348,7 @@ Page({
           if (page.data.verify) {
             wx.showModal({
               title: '提示',
-              content: '该梦想即将提交审核，请确认所有信息合法无误后点击确定!',
+              content: '是否提交审核？',
               success:function(res){
                 console.log(res)
                 if (res.confirm) {
@@ -363,7 +363,10 @@ Page({
                         icon: 'none',
                         mask: true
                       })
-                      app.currentPage.updateList()
+                      /*if (getCurrentPages().length>0){
+                      console.log(getCurrentPages()[1].onLoad({id:page.editID,state:'VERIFY'}))
+                      }*/
+                      //app.currentPage.updateList()
                     },
                     function (code, data) {
                       console.log(data)
@@ -380,7 +383,7 @@ Page({
                           })
                         }
                       })
-                      app.currentPage.updateList()
+                      //app.currentPage.updateList()
                     }
                   );
                 }
@@ -463,6 +466,12 @@ Page({
           })
           wx.hideLoading()
         })
+      } else {
+        wx.showToast({
+          title: '上传失败,网络错误',
+          icon:'none'
+        })
+        wx.hideLoading()
       }
     });
   },
@@ -498,11 +507,19 @@ Page({
       name: 'file',
       formData: formData,
       success: function (res) {
-        //console.log(res)
+        /*wx.showModal({
+          title: 'txt',
+          content: JSON.stringify(res),
+        })*/
+        console.log(res)
         callBack(true)
       },
       fail: function (error) {
-        // console.error(error);
+        /*wx.showModal({
+          title: 'txt',
+          content: JSON.stringify(error),
+        })*/
+        console.error(error);
         callBack(false)
       }
     })

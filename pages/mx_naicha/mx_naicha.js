@@ -220,16 +220,36 @@ Page({
   },*/
   onDreamPerfect(res){
     console.log("onDreamPerfect",res.currentTarget.id)
-    var targetBingo = {}
-    for(var seek in this.data.bingos){
-      if(this.data.bingos[seek].did == res.currentTarget.id){
-        targetBingo = this.data.bingos[seek];
-        break;
-      }
-    } 
-    ///console.log(targetBingo)
-    C.SetPageIntendData('bingo', targetBingo)
-    C.Intend("../mx_luckyDream/mx_luckyDream?id=" + res.currentTarget.id +"&state=all");
+    var page = this
+    C.TDRequest('us', 'rnameg', { uid: app.globalData.openid},
+      function (code, data) {
+        var targetBingo = {}
+        for (var seek in page.data.bingos) {
+          if (page.data.bingos[seek].did == res.currentTarget.id) {
+            targetBingo = page.data.bingos[seek];
+            break;
+          }
+        }
+        ///console.log(targetBingo)
+        C.SetPageIntendData('bingo', targetBingo)
+        C.Intend("../mx_luckyDream/mx_luckyDream?id=" + res.currentTarget.id + "&state=all");
+    },
+      function (code, data) {
+        wx.showModal({
+          title: '提示',
+          content: '您还未提交实名认证信息',
+          confirmText:'立即前往',
+          cancelText: '稍后',
+          success:function(res){
+            if(res.confirm){
+              C.Intend('../mx_shenfenzheng/mx_shenfengzheng?lucky=true')
+            }
+          }
+        })
+    }
+    )
+
+    
     //C.Intend("../mx_xieyi/mx_xieyi?id=" + res.currentTarget.id +"&state=all");
   },
   onDreamVerify(res) {

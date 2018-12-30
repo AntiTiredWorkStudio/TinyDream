@@ -2,7 +2,9 @@
 var conf = require('conf.js')
 module.exports.conf = conf
 module.exports.app = {}
-
+module.exports.catchDreamTitle = function(text){
+  return text.substring(0, 5)
+}
 module.exports.isEmpty=function (obj) {
   if (obj === null) return true;
   if (typeof obj === 'undefined') {
@@ -203,6 +205,32 @@ module.exports.DescriptionTime = function(sec) {
     return Math.floor(sec / 86400) + "天";
   }
 }
+
+function formatNumber(n) {
+  n = n.toString()
+  return n[1] ? n : '0' + n
+}
+
+module.exports.GetLocalTime = function (number) {
+  
+
+  console.log(number);
+  var date = new Date(number * 1000);
+  //年
+  var Y = date.getFullYear();
+  //月
+  var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+  //日
+  var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate();
+  //时
+  var h = date.getHours() < 10 ? '0' + date.getHours() : date.getHours();
+  //分
+  var m = date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes();
+  //秒
+  var s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+  
+  return Y+"-"+M+'-'+D+ '  '+h+':'+m+':'+s ;
+} 
 
 module.exports.BillExchange = function(bill) {
   var result = {
