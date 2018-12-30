@@ -338,7 +338,7 @@ Page({
         },
         function (code, data) {
           console.log(data)
-          wx.navigateBack()
+          //
           app.currentPage.updateList()
           wx.showToast({
             title: '修改成功',
@@ -358,11 +358,16 @@ Page({
                   },
                     function (code, data) {
                       console.log(data)
-                      wx.showToast({
-                        title: '提交成功',
-                        icon: 'none',
-                        mask: true
+                      wx.navigateBack({
+                        success: function () {
+                          wx.showToast({
+                            title: '提交成功',
+                            icon: 'none',
+                            mask: true
+                          })
+                        }
                       })
+                      
                       /*if (getCurrentPages().length>0){
                       console.log(getCurrentPages()[1].onLoad({id:page.editID,state:'VERIFY'}))
                       }*/
