@@ -7,10 +7,10 @@
     <view wx:for='{{msgs}}' wx:for-item="msg" wx:for-index="seek" class='notice_list'>
         <view class='notice_message'>
             <view>
-                感谢您参与了梦想互助20181212期，您本期的编号为52175735、7939139、79317937。
-                <text>查看详情</text>
+               {{msg.content}}
+                <text id="{{msg.nid}}" action="{{msg.action}}" catchtap='viewDetials'>查看详情</text>
             </view>
-            <view class='time'>2018.12.19 15:30</view>
+            <view class='time'>{{msg.timeStr}}</view>
         </view>
     </view>
     <view wx:if='{{msgs.length==0}}'><text style='display:block;text-align:center;color:#999;font-size:13px;padding-top:20px'>暂无通知</text></view>

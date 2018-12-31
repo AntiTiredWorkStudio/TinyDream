@@ -48,7 +48,7 @@
                     </view>
                     <view class='right'>
                         <view class='price'>价格 {{pool.ubill*0.01}}元/份</view>
-                        <view class='look_info'>中奖计算步骤></view>
+                        <view class='look_info' catchtap='mx_calc'>幸运编号计算></view>
                     </view>
                 </view>
             </view>

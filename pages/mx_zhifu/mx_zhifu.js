@@ -27,6 +27,7 @@ Page({
     var page = this;
     return {
       title: app.globalData.nickname + "刚刚参与互助了" + this.data.countPiece+"份小梦想,你也来互助吧!",
+      imageUrl: 'http://tdream.antit.top/image/invite.jpg',
       path: '/pages/index/index', //这里设定都是以"/page"开头,并拼接好传递的参数
       success: function (res) {
         // 转发成功

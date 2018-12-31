@@ -324,9 +324,20 @@ var index = Page({
       })
     }
     //增加获取通知数量的请求
-    this.setData({
-      message:0
-    })
+
+    C.TDRequest(
+      "no","nc",{uid:app.globalData.openid}
+      ,
+      function (code, data) {
+        console.log("nc",data);
+        that.setData({
+          message: data.ncount
+        })
+      },
+      function(code,data){
+
+      }
+    )
   },
   morePools: function (res) {
 

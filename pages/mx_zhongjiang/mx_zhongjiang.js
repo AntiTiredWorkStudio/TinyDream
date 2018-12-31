@@ -27,6 +27,9 @@ Page({
       s: 0
     }
   },
+  mx_calc:function(){
+    C.Intend("../mx_calc/mx_calc?pid="+this.data.pool.pid)
+  },
   countdownInterval: null,
 
   poolDataUpgraded: function(pool) {
