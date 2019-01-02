@@ -63,13 +63,15 @@
                     <text>实名认证</text>
                 </view>
             </view>
+            <!-->
             <view class='block'>
                 <view class='block_main' bindtap='dreamServer'>
                     <view class='icon_service icon'></view>
                     <text>梦想服务</text>
                 </view>
             </view>
-            <view class='block line'>
+            <-->
+            <view class='block'>
                     <button plain="true" style='font-size:13px;padding-left:0px;padding-right:0px;border:none;border-radius:0rpx;float:left;width:100%;' open-type="contact" >
                 <view class='block_main'>
                     <view class='icon_cach icon'></view>
@@ -77,7 +79,7 @@
                 </view>
               </button>
             </view>
-            <view class='block bottom'>
+            <view class='block line'>
              <button plain="true" style='font-size:13px;padding-left:0px;padding-right:0px;border:none;border-radius:0rpx;float:left;width:100%;' open-type="feedback" >
                 <view class='block_main'>
                     <view class='icon_feed icon'></view>
@@ -85,7 +87,7 @@
                 </view>
               </button>
             </view>
-            <view class='block bottom'>
+            <view class='block bottom psa'>
                 <view class='block_main' bindtap='questions'>
                     <view class='icon_question icon'></view>
                     <text>常见问题</text>

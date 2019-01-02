@@ -100,6 +100,7 @@
 }
 .home_end .home_content .tab view.active{
     border-bottom: 2rpx solid #00d094;
+    padding-bottom:20rpx;
     color: #00d094;
 }
 .home_end .tabBox{
@@ -114,7 +115,7 @@
 .home_end .tabList{
     width: 690rpx;
     margin:0 auto;
-    margin-top: 30rpx;
+   /* margin-top: 30rpx;*/
     overflow: hidden;
 }
 .home_end .tabList .number{
@@ -337,7 +338,7 @@ page{
 .home .tabList{
     width: 690rpx;
     margin:0 auto;
-    margin-top: 30rpx;
+    /*margin-top: 30rpx;*/
     overflow: hidden;
 }
 .home .tabList .number{

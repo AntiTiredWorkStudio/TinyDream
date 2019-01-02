@@ -1,5 +1,5 @@
 <!-- 计算公式详情页面 -->
-<view class='calc'>
+<view  wx:if="{{showCalc}}"  class='calc'>
     <view class='title'>本期中奖计算步骤(开奖福彩期号:{{except}}期):</view>
     <view class='main'>
         <view>[({{except}}+{{code}}+{{pid}})/ {{pcount}}]取余数 +10000000</view>
@@ -9,5 +9,16 @@
         <view class='steps'>
         <view>得出幸运者编号为：{{pid}}-{{finalresult}}</view>
         </view>
+    </view>
+     
+</view>
+
+<view wx:if="{{!showCalc}}" class='calc'>
+<view class='title'>计算公式</view>
+    <view class='main'>
+        <view>[(A+B)/C]取余数+10000000</view>
+        <view>数值A = 每期梦想互助结束后最新一期"中国福利彩票"期号+前五个红色球的数字</view>
+        <view>数值B = 每期梦想互助的期号</view>
+        <view>数值C = 每期梦想互助参与份数</view>
     </view>
 </view>

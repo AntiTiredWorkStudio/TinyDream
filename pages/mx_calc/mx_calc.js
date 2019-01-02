@@ -14,6 +14,7 @@ Page({
       step01Result:0,
       step02Result: 0,
       finalresult:0,
+      showCalc : true,
     },
 
     /**
@@ -39,7 +40,11 @@ Page({
           console.log(data)
         },
         function(code,data){
-
+            if(code == '62'){
+                page.setData({
+                  showCalc:false
+                })
+            }
         });
     },
 
