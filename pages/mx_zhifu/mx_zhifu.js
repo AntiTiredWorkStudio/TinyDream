@@ -21,7 +21,13 @@ Page({
       s: 0
     },
     successNums:"",
-    showLog :false
+    showLog :false,
+    pickerList:[]
+  },
+  pickerInfo: [],
+  bindPickerChange:function(res){
+    console.log(res)
+    this.onExchangeDream(this.pickerInfo[res.detail.value]);
   },
   onShareAppMessage: function () {
     var page = this;
@@ -129,7 +135,35 @@ Page({
           })
           
         page.drawCircle(aPool.percentVal * 0.01);
+        C.TDRequest("dr", "dlist",
+          {
+            uid: app.globalData.openid
+          },
+          function (code, data) {
+            var seek = 0;
+            var targetInfo = []
+            var targetlist = []
+            for (var dream in data.dreams) {
 
+              var id = data.dreams[dream].did
+
+              if (data.dreams[dream].state != "SUBMIT" && data.dreams[dream].state != "FAILED") {
+                continue
+              }
+              
+              targetInfo[seek] = data.dreams[dream]
+              targetlist[seek++] = data.dreams[dream]['title']
+            }
+            page.setData({
+              pickerList: targetlist
+            });
+            page.pickerInfo = targetInfo;
+            console.log(targetlist)
+
+          }, function (code, data) {
+
+          }
+        )
           //调起支付
       },
       function (code, data) {
@@ -339,7 +373,7 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
   },
   exchangeDream : null,
   dreamInfoDatas: null,
-  exchangeDream01: function () {
+  /*exchangeDream01: function () {
     console.log("替换梦想")
     var page = this
     var targetlist = [];
@@ -363,7 +397,9 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
           targetInfo[seek] = data.dreams[dream]
           targetlist[seek++] = data.dreams[dream]['title']
         }
-
+        page.setData({
+          pickerList:targetlist
+        });
         wx.showActionSheet({
           itemList: targetlist,
           success(res) {
@@ -381,7 +417,7 @@ ds=pay&uid=a01&oid=162721259015&bill=1000&pcount=1&action={"pay" : {"info" : [],
       }
     )
     //C.Intend("../mx_tanchuang/mx_tanchuang?type=exchange", false)
-  },
+  },*/
   onExchangeDream:function(tdream){
     console.log('onExchangeDream',tdream)
     if(tdream && tdream.title){

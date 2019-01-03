@@ -37,8 +37,12 @@
                     <view class='copies_tip'>份数</view>
                 </view>
                 <view class='target price dream'>
-                    <view class='dream' bindtap='exchangeDream01'>{{dream.title}}<view class='icon_select'></view></view>
+                <picker bindchange="bindPickerChange" value="{{index}}" range="{{pickerList}}">
+                    <view class='dream'>{{dream.title}}
+                      <view class='icon_select'></view>
+                      </view>
                     <view class='dream_tip'>选择梦想</view>
+              </picker>
                 </view>
             </view>
             <view class='price'>{{pool.rubill}}元/份 结算：<text>{{countPiece*pool.rubill}}元</text></view>
