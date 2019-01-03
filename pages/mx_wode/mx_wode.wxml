@@ -72,7 +72,7 @@
             </view>
             <-->
             <view class='block'>
-                    <button plain="true" style='font-size:13px;padding-left:0px;padding-right:0px;border:none;border-radius:0rpx;float:left;width:100%;' open-type="contact" >
+                    <button plain="true" style='font-size:13px;padding-left:0px;padding-right:0px;border:none;border-radius:0rpx;float:left;width:100%;line-height:1.6;' open-type="contact" >
                 <view class='block_main'>
                     <view class='icon_cach icon'></view>
                     <text>联系客服</text>
@@ -80,7 +80,7 @@
               </button>
             </view>
             <view class='block line'>
-             <button plain="true" style='font-size:13px;padding-left:0px;padding-right:0px;border:none;border-radius:0rpx;float:left;width:100%;' open-type="feedback" >
+             <button plain="true" style='font-size:13px;padding-left:0px;padding-right:0px;border:none;border-radius:0rpx;float:left;width:100%;line-height:1.6;' open-type="feedback" >
                 <view class='block_main'>
                     <view class='icon_feed icon'></view>
                     <text>用户反馈</text>
