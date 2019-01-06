@@ -7,6 +7,7 @@ var index = Page({
   data: {
     message:0,
     showSwiper: false,
+    version: false,
     authVisible: false,
     poolHours:0,
     poolMinutes:0,
@@ -42,6 +43,7 @@ var index = Page({
           wx.showTabBar({})
           page.setData(
             {
+              version : true,
               authVisible : false
             }
           )
@@ -51,6 +53,7 @@ var index = Page({
           wx.hideLoading()
           page.setData(
             {
+              version: true,
               authVisible: true
             }
           )
@@ -220,6 +223,9 @@ var index = Page({
         // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
         // 所以此处加入 callback 以防止这种情况
         //console.log(app.globalData);
+        /*wx.showLoading({
+          title: '正在加载',
+        })*/
         page.onInfoReady()
       }
     })

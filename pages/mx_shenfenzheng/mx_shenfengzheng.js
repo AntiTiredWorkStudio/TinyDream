@@ -11,8 +11,9 @@ Page({
    */
   data: {
     idfrontimg: "",
-    idbackimg: "",
-    cardimg:"",
+    realName: "",
+    bank: "",
+    openbank: "",
     hasIdentity:"",
     idNumber:"",
     cardNumber: "",
@@ -120,10 +121,14 @@ Page({
       "商丘市商业银行",
       "安徽省农村信用社",
       "江西省农村信用社",
-      "湖南农村信用社"]
+      "湖南农村信用社"],
+    bankSelection:"工商银行"
   },
-  bindPickerChange:function(){
-
+  bindPickerChange:function(res){
+    console.log('bindPickerChange',this.data.bankList[res.detail.value])
+    this.setData({
+      bankSelection: this.data.bankList[res.detail.value]
+    })
   },
   /**
    * 生命周期函数--监听页面加载
@@ -135,15 +140,15 @@ Page({
     switch(state){
       case "SUBMIT":
         htext = "实名认证信息已经提交"
-        hstyle = "color:#e9ba65;font-weight:bold;font-size:18px"
+        hstyle = "color:#e9ba65;font-weight:bold;font-size:13px"
         break;
       case "SUCCESS":
         htext = "实名认证审核通过"
-        hstyle = "color:#00ff00;font-weight:bold;font-size:18px"
+        hstyle = "color:#00ff00;font-weight:bold;font-size:13px"
         break;
       case "FAILED":
         htext = "实名认证失败"
-        hstyle = "color:red;font-weight:bold;font-size:18px"
+        hstyle = "color:red;font-weight:bold;font-size:13px"
         break;
       default:
         break;
@@ -161,32 +166,37 @@ Page({
     if (options.hasOwnProperty('lucky')){
       this.fromLuckyDream = options.lucky
     }
+    this.onSubmitRefreash();
+  },
+
+  onSubmitRefreash: function () {
 
     var page = this
-    C.TDRequest('us','rnameg',{uid:app.globalData.openid},function(code,data){
+    C.TDRequest('us', 'rnamegx', { uid: app.globalData.openid }, function (code, data) {
       console.log(data) //已经实名认证
       var hintInfo = page.getHintInfo(data.realName[app.globalData.openid].state)
       console.log(hintInfo)
       page.setData({
         idfrontimg: data.realName[app.globalData.openid].icardfurl,
-        idbackimg: data.realName[app.globalData.openid].icardburl,
-        cardimg: data.realName[app.globalData.openid].ccardfurl,
         hasIdentity: true,
         idNumber: data.realName[app.globalData.openid].icardnum,
         cardNumber: data.realName[app.globalData.openid].ccardnum,
+        realName: data.realName[app.globalData.openid].realname,
+        bank: data.realName[app.globalData.openid].bank,
+        openbank: data.realName[app.globalData.openid].openbank,
         hint: hintInfo.text,
         hintStyle: hintInfo.style
       })
     }, function (code, data) {
       console.log(data) //未实名认证
       var targetState = "NONE"
-      if(data.code=="41"){
-        targetState = "FAILED"   
+      if (data.code == "41") {
+        targetState = "FAILED"
         wx.showModal({
           title: '提示',
           content: '您提交的实名认证信息不符合规则,未通过审核,如需帮助请与客服联系',
-          success:function(res){
-            if (res.confirm){
+          success: function (res) {
+            if (res.confirm) {
               //跳转至客服页面
             }
           }
@@ -196,8 +206,6 @@ Page({
       console.log(hintInfo)
       page.setData({
         idfrontimg: "",
-        idbackimg: "",
-        cardimg: "",
         hasIdentity: false,
         idNumber: "身份证号",
         cardNumber: "银行卡号",
@@ -249,14 +257,23 @@ Page({
 
   },
 
+  //实名认证需要检查的内容
   idNum: "",
   cardNum: "",
+  realName: "",
+  openBank: "",
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
 
   }, 
+  onInputRealname: function (res) {
+    this.realName = res.detail.value
+  },
+  onInputOpenBank: function (res) {
+    this.openBank = res.detail.value
+  },
   onInputIDCode: function(res){
     this.idNum = res.detail.value
     //console.log(res.detail.value)
@@ -352,7 +369,38 @@ Page({
     /*idfrontimg: "",
       idbackimg: "",
         cardimg: ""*/
-    if (this.idNum == "" || this.cardNum == "" || this.data.cardimg == "" || this.data.idfrontimg == "" || this.data.idbackimg== ""){
+    if (!(/^[\u4E00-\u9FA5]{2,6}$/.test(this.realName))){
+      wx.showToast({
+        title: "姓名不符合格式",
+        icon: "none"
+      })
+      return;
+    }
+    if (!(/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/.test(this.idNum))) {
+      wx.showToast({
+        title: "身份证号不符合格式",
+        icon: "none"
+      })
+      return;
+    }
+
+    if (!(/(^[1-9]\d*$)/.test(this.cardNum))) {
+      wx.showToast({
+        title: "银行卡号不符合格式",
+        icon: "none"
+      })
+      return;
+    }
+
+    if (!(/(^[\u4E00-\u9FFF]+$)/.test(this.openBank))) {
+      wx.showToast({
+        title: "开户行不符合格式",
+        icon: "none"
+      })
+      return;
+    }
+    
+    if (this.idNum == "" || this.cardNum == "" || this.realName=="" || this.openBank=="" || this.data.idfrontimg == ""){
       wx.showToast({
         title:"信息填写不全",
         icon:"none"
@@ -364,12 +412,13 @@ Page({
       mask:true
     })
     //us=rnames&uid=a01
-    C.TDRequest('us','rnames',{uid:app.globalData.openid},
+    C.TDRequest('us','rnamesx',{uid:app.globalData.openid},
     function(code,data){
       var token = data.uptoken
       var filenames = data.filename
       var url = data.upurl
       var timeStamp = data.timeStamp
+      console.log(data)
       page.uploadAll(token, filenames, url,timeStamp)
       //page.uploadQiniu(token, page.data.idfrontimg, filenames.id_f, url)
     },
@@ -386,17 +435,28 @@ Page({
     //console.log("完成上传:", keyList)
     //us = rnamef & uid=a01 & ccardnum=123 & icardnum=456 & signal=saasd
     var page =this
+    /*
+
+  idNum: "",
+  cardNum: "",
+  realName: "",
+  openBank: "",
     
+    * */
     C.TDRequest(
-      'us','rnamef',
+      'us','rnamefx',
       {
         uid:app.globalData.openid,
+        realname:page.realName,
         ccardnum: page.cardNum,
         icardnum: page.idNum,
+        bank:page.data.bankSelection,
+        openbank:page.openBank,
         signal: sign,
       },
       function (code, data) {
         if (page.fromLuckyDream){
+          console.log("幸运梦想",page.fromLuckyDream);
           wx.navigateBack({
             success:function(){
               wx.hideLoading()
@@ -406,13 +466,15 @@ Page({
               })
             }
           })
-        }else{
+        } else {
+          console.log("普通", page.fromLuckyDream);
           wx.hideLoading()
           wx.showToast({
             title: '完成上传',
             icon: 'success'
           })
-          page.onLoad()
+          page.onSubmitRefreash()
+          //page.onLoad()
         }
       },
       function (code, data) {
@@ -431,14 +493,6 @@ Page({
       {
         filePath:page.data.idfrontimg,
         key:keys.id_f
-      },
-      {
-        filePath: page.data.idbackimg,
-        key: keys.id_b
-      },
-      {
-        filePath: page.data.cardimg,
-        key: keys.card_f
       }
     ]
 

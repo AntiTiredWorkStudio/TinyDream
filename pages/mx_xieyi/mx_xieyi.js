@@ -340,10 +340,10 @@ Page({
           console.log(data)
           //
           app.currentPage.updateList()
-          wx.showToast({
+          /*wx.showToast({
             title: '修改成功',
             icon:'success'
-          })
+          })*/
 
           if (page.data.verify) {
             wx.showModal({
@@ -392,6 +392,16 @@ Page({
                     }
                   );
                 }
+              }
+            })
+          }else{
+            wx.navigateBack({
+              success: function () {
+                wx.showToast({
+                  title: '修改成功',
+                  icon: 'success',
+                  mask: true
+                })
               }
             })
           }

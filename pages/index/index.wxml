@@ -1,5 +1,5 @@
 <!--UI 1.1版本-->
-<view class='home'>
+<view wx:if="{{version}}" class='home'>
   <view class='home_content'>
 
   <swiper wx:if="{{!authVisible && showSwiper}}" indicator-dots='true' autoplay='4000' indicator-color='#3e3e3e' indicator-active-color='#ffffff' style='height:180px'>

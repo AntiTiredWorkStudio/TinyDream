@@ -1,0 +1,48 @@
+<!-- 我的页面 -->
+<view class='user'>
+    <view class='main'>
+        <view class='dream_info' bindtap='onSubmitAndPay'>
+            <view class='bg'></view>
+            <view class='info'>
+                <view class='title'>{{dreamName}}</view>
+                <view class='dream_title'>{{dreamContent}}</view>
+            </view>
+        </view>
+        <view class='title'>
+            <view class='line'></view>
+            <view class='text'>个人中心</view>
+        </view>
+    </view>
+    <view class='bg order' bindtap='order'>
+        <view class='user_main'>
+            <view class='icon icon_order'></view>
+            <view class='text'>我的订单</view>
+            <view class='icon_right'></view>
+        </view>
+    </view>
+    <view class='bg help' bindtap='help'>
+        <view class='user_main'>
+            <view class='icon icon_help'></view>
+            <view class='text'>申请帮助</view>
+            <view class='icon_right'></view>
+        </view>
+    </view>
+    <button plain="true" style='font-size:13px;padding-left:0px;padding-right:0px;border:none;border-radius:0rpx;float:left;width:100%;line-height:1.6;' open-type="contact" >
+    <view class='bg coach'>
+        <view class='user_main'>
+            <view class='icon icon_coach'></view>
+            <view class='text'>联系客服</view>
+            <view class='icon_right'></view>
+        </view>
+    </view>
+        </button>
+    <button plain="true" style='font-size:13px;padding-left:0px;padding-right:0px;border:none;border-radius:0rpx;float:left;width:100%;line-height:1.6;' open-type="feedback" >
+    <view class='bg feedback'>
+        <view class='user_main'>
+            <view class='icon icon_feedback'></view>
+            <view class='text'>意见反馈</view>
+            <view class='icon_right'></view>
+        </view>
+    </view>
+   </button>
+</view>

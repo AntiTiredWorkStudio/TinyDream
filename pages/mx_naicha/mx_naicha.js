@@ -221,7 +221,7 @@ Page({
   onDreamPerfect(res){
     console.log("onDreamPerfect",res.currentTarget.id)
     var page = this
-    C.TDRequest('us', 'rnameg', { uid: app.globalData.openid},
+    C.TDRequest('us', 'rnamegx', { uid: app.globalData.openid},
       function (code, data) {
         var targetBingo = {}
         for (var seek in page.data.bingos) {

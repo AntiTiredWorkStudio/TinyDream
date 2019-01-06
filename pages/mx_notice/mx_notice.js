@@ -46,29 +46,98 @@ Page({
         }
       )
     },
+    viewMsgInfo:function(msg){
+      var page = this
+      wx.showModal({
+        title: '详情',
+        content: msg.content,
+        showCancel: false,
+        confirmText: "知道了",
+        success(res) {
+          C.TDRequest('no', 'nr', { nid: msg.nid },
+            function (code, data) {
+              page.onLoad()
+            }, function (code, data) {
+              page.onLoad()
+            })
+        }
+      })
+    },
+    viewMsg : null,
     viewDetials:function(res){
       var page = this
-        console.log(res.currentTarget.id);
+        //console.log(res.currentTarget.id);
         for(var key in this.data.msgs){
           if(this.data.msgs[key].nid == res.currentTarget.id){
             var msg = this.data.msgs[key];
-            wx.showModal({
-              title: '详情',
-              content: msg.content,
-              showCancel:false,
-              confirmText:"知道了",
-              success(res){
-                C.TDRequest('no', 'nr', {nid: msg.nid},
-                function(code,data){
-                  page.onLoad()
-                  }, function (code, data) {
-                    page.onLoad()
-                })
-              }
-            })
+            page.viewMsg = msg;
+            if (msg.action =='view'){
+              /*wx.showModal({
+                title: '详情',
+                content: msg.content,
+                showCancel: false,
+                confirmText: "知道了",
+                success(res) {
+                  C.TDRequest('no', 'nr', { nid: msg.nid },
+                    function (code, data) {
+                      page.onLoad()
+                    }, function (code, data) {
+                      page.onLoad()
+                    })
+                }
+              })*/
+              page.viewMsgInfo(page.viewMsg)
+            }else{
+              this.doNoticeAction(msg.action);
+            }
+            /**/
             break;
           }
         }
+    },
+
+    doNoticeAction : function(jsonStr){
+      var page = this
+      var action = {}
+      try{
+        action = JSON.parse(jsonStr.replace(/\'/g, '"'));
+      }catch(err){
+        if (this.viewMsg!= null){
+          this.viewMsgInfo(this.viewMsg)
+        }
+        return;
+      }
+      
+      var rule = {
+        buy:function(pars){
+          console.log(pars.pid)
+          C.TDRequest('dp','pinfo',{pid:pars.pid},
+            function(code,data){
+              C.TDRequest('no', 'nr', { nid: page.viewMsg.nid },
+                function (nocode, result) {
+                  wx.navigateBack({
+                    delta: 1,
+                    success: function () {
+                      C.SetPageIntendData(pars.pid, data.pool)
+                      C.Intend("../mx_zhongjiang/mx_zhongjiang?pid=" + pars.pid);
+                    }
+                  })
+                }, function (code, data) {
+                })
+            },
+            function(code,data){
+              wx.showToast({
+                title:data.context
+              })
+            }
+          )
+          //
+          //
+        }
+      }
+      rule[action.type](action)
+      
+      console.log(action);
     },
 
     /**

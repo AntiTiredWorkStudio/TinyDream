@@ -128,8 +128,7 @@ Page({
         })
       }
     );
-    //aw=lfromp&pid=100012
-    //ds=pdetial&uid=97374267&pid=100011
+    
     C.TDRequest(
       'ds',
       'pdetial', {
@@ -400,7 +399,13 @@ Page({
   },
   onPoolJoin: function (target) {
     console.log("onPoolJoin:" + target.currentTarget.id);
-
+    /*console.log(
+        { 
+          uid: app.globalData.openid, 
+          pid: target.currentTarget.id 
+        }
+      )
+    return;*/
     C.TDRequest(
       "ds", "buy", { uid: app.globalData.openid, pid: target.currentTarget.id },
       function (code, data) {

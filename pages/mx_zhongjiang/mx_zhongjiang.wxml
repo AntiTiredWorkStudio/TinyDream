@@ -29,12 +29,12 @@
                     <text class='price_tip'>总参与份数</text>
                 </view>
             </view>
-            <button class='join_help' catchtap='join'>参与互助</button>
+            <button class='join_help' catchtap='onPoolJoin' id="{{pool.pid}}">参与互助</button>
         </view>
         
         <!-- 结束部分的UI -->
         <view wx:if="{{pool.state=='FINISHED'}}" class='end'>
-            <view class='title'>{{pool.ptitle}}(已结束）</view>
+            <view class='title'>{{pool.ptitle}}(已结束)</view>
             <view class='dream_info'>
                 <view class='box_info'>
                     <view class='left'>

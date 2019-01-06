@@ -1,6 +1,10 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/demo_user/demo_user",
+    "pages/demo_help/demo_help",
+    "pages/demo_application/demo_application",
+    "pages/demo_order/demo_order",
     "pages/mx_calc/mx_calc",
     "pages/mx_notice/mx_notice",
     "pages/mx_wenti/mx_wenti",

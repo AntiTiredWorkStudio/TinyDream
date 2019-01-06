@@ -1,112 +1,32 @@
-<!--pages/mx_shenfenzheng/mx_shenfengzheng.wxml-->
-<!--pages/mx_xieyi/mx_xieyi.wxml-->
-<!--pages/mx_phone/mx_phone.wxml-->
-<view class=''>
- <view class='page-header'></view>
- <view class='page-body'>
-  <view class='box_huzhu' style='margin-bottom:100px'>
-
-    <text  style="{{hintStyle}}">{{hint}}</text> 
-
-    <text class='bloc'>身份证号码</text>
-    <input bindinput='onInputIDCode' type='text' placeholder="{{idNumber}}" maxlength="18" class='mx_number bloc' style='margin-top:20px' disabled='{{hasIdentity}}'/>
-    <text class='bloc mt_20'>身份证照片</text>
-    <view class='col mt_20'>
-
-      <view bindtap='pickIDf' class='col-6 mx_shenfen'>
-      <!-- 上传成功的图片 -->
-      <image wx:if="{{idfrontimg!=''}}" class='success_upload_img' src='{{idfrontimg}}'></image>
-      <!-- 还没有上传的添加按钮 -->
-      <view wx:if="{{idfrontimg==''}}">
-        <text>身份证正面</text> 
-       <view  class=''>
-    <image src='http://cloud.antit.top/add.png' style='height:50px;width:50px;display:block;margin:0 auto'></image>
-          </view> 
-        </view>
-      </view>
-      <view bindtap='pickIDb' class='col-6 mx_shenfen'>
-       <!-- 上传成功的图片 -->
-      <image wx:if="{{idbackimg!=''}}" class='success_upload_img' src='{{idbackimg}}'></image>
-      <!-- 还没有上传的添加按钮 -->
-      
-      <view wx:if="{{idbackimg==''}}">
-        <text>身份证背面</text> 
-       <view class=''>
-    <image src='http://cloud.antit.top/add.png' style='height:50px;width:50px;display:block;margin:0 auto'></image>
-        </view> 
-      </view> 
-      </view>
-    </view>
-     <!-- 身份证结束 -->
-     <!-- 银行卡开始 -->
-     <text class='bloc mt_20'>银行卡卡号</text>
-    <input bindinput='onInputCardCode' type='number' placeholder="{{cardNumber}}" maxlength="20" class='mx_number bloc' style='margin-top:20px' disabled='{{hasIdentity}}'/>
-    <text class='bloc mt_20'>银行卡正面照片</text>
-   <view class='col'>
-     <view class='col-3'></view>
-     <view class='col-6'>
-      <view bindtap='pickCard' style='margin-top:20px'>
-    <image wx:if="{{cardimg!=''}}" class='success_upload_img' src='{{cardimg}}' ></image>
-  </view>
-     </view>
-      <view class='col-3'></view>
-   </view>
-  
-
-    <view class='col mt_20'>
-    <view  wx:if="{{cardimg==''}}" class='col-6 mx_shenfen mt_20' style='margin:0 auto'>
-      <text>银行卡正面</text> 
-       <view bindtap='pickCard' class='' style=''>
-    <image src='http://cloud.antit.top/add.png' style='height:50px;width:50px;display:block;margin:0 auto;'></image>
-     </view>
-     </view>
-    </view>
-    
-      
-    <!-- 银行卡结束 -->
-
-    <view wx:if='{{!hasIdentity}}' class='yz_group row' style='width:70%;margin:10px auto'>
-      <view class='flex-item' style='margin:30rpx 0px 30rpx 0px;'><button bindtap='submit' style='color:white;background:#5ecd98;border-radius:25px;margin-bottom:10px'>提交</button></view>
-      </view>
-    </view>
- </view>
- 
-</view>
-
-
-
-
 <!--UI v1.1实名认证-->
 <view class='auth'>
     <view class='auth_main'>
+      <text  style="{{hintStyle}}">{{hint}}</text> 
         <form>
             <view class='real_name'>
                 <view>真实姓名</view>
-                <input placeholder='请输入您的真实姓名' name='real_name'></input>
-            </view>
-            <view class='real_name'>
-                <view>性别</view>
-                <input disabled name='sex'></input>
-                <view class='icon'></view>
+                <input bindinput='onInputRealname' disabled='{{hasIdentity}}' placeholder='{{realName==""?"请输入您的真实姓名":realName}}' name='real_name'></input>
             </view>
             <view class='real_name'>
                 <view>身份证号</view>
-                <input placeholder='请输入您的身份证号码' name='idcard' type='idcard'></input>
+                <input bindinput='onInputIDCode' disabled='{{hasIdentity}}' placeholder='{{idNumber==""?"请输入您的身份证号码":idNumber}}' name='idcard' type='idcard'></input>
             </view>
             <view class='real_name'>
                 <view>银行卡号</view>
-                <input placeholder='请输入您的银行卡号码' name='bankcard' type='idcard'></input>
-            </view>
-            <view class='real_name'>
-                <view>开户银行</view>
-                <input placeholder='请输入开户行全称' name='bankname' type='text'></input>
+                <input bindinput='onInputCardCode'  disabled='{{hasIdentity}}' placeholder='{{cardNumber==""?"请输入您的银行卡号码":cardNumber}}' name='bankcard' type='idcard'></input>
             </view>
             <view class='real_name'>
                 <view>选择银行</view>
-                <picker bindchange="bindPickerChange" value="{{index}}" range="{{bankList}}">
-                  <input disabled name='bank'></input>
-                  <view class='icon'></view>
-                </picker>
+                <input disabled='true' placeholder='请输入开户行全称' name='bankname' type='text' value='{{openbank==""?bankSelection:openbank}}'>
+                 </input>
+                 <picker bindchange="bindPickerChange" value="{{index}}" range="{{bankList}}" disabled='{{hasIdentity}}'>
+                 <view wx:if='{{!hasIdentity}}' class='icon'></view>
+                 </picker>
+                  
+            </view>
+            <view class='real_name'>
+                <view>开户银行</view>
+                <input  bindinput='onInputOpenBank' disabled='{{hasIdentity}}' placeholder='{{openbank==""?"请输入开户行全称":openbank}}' name='bankname' type='text'></input>
             </view>
             <view class='real_name'>
                 <view>请拍照并上传您的手持身份证正面的照片</view>
@@ -115,13 +35,14 @@
                     <view>2.请手持身份证正面拍照</view>
                     <view>3.确保照片的内容完整并清晰可见</view>
                 </view>
-                <view class='id_img'>
-                    <image src='http://tdream.antit.top/image/idf.png'></image>
+                <view bindtap='pickIDf' class='id_img'>
+                    <image wx:if="{{idfrontimg!=''}}" src='{{idfrontimg}}'></image>
+                    <image wx:if="{{idfrontimg==''}}" src='http://tdream.antit.top/image/idf.png'></image>
                 </view>
             </view>
         </form>
     </view>
-    <view class='submit'>
-        <button>提交审核</button>
+    <view wx:if='{{!hasIdentity}}' class='submit'>
+        <button bindtap='submit' >提交审核</button>
     </view>
 </view>

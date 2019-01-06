@@ -80,7 +80,6 @@ Page({
     }
   },
   poolInfo: function (res) {
-    console.log(res)
 
     var targetPoolInfo = {}
     for (var key in this.data.showingPool) {
@@ -90,6 +89,7 @@ Page({
       }
     }
 
+    console.log(targetPoolInfo)
 
     C.SetPageIntendData(res.currentTarget.id, targetPoolInfo)
     C.Intend("../mx_zhongjiang/mx_zhongjiang?pid=" + res.currentTarget.id);

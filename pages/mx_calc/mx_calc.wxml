@@ -3,7 +3,7 @@
     <view class='title'>本期中奖计算步骤(开奖福彩期号:{{except}}期):</view>
     <view class='main'>
         <view>[({{except}}+{{code}}+{{pid}})/ {{pcount}}]取余数 +10000000</view>
-        <view>=({{step01Result}} / 1000)  取余数 +10000000</view>
+        <view>=({{step01Result}} / {{pcount}})  取余数 +10000000</view>
         <view>={{step02Result}}+10000000（{{step02Result}}为余数）</view>
         <view>={{finalresult}}</view>
         <view class='steps'>

@@ -45,7 +45,7 @@ page{
   margin: 0px;
 }
 
-.col {
+/*.col {
   display: flex;
   font-family: -apple-system-font, "Helvetica Neue", sans-serif;
   font-size: 13px;
@@ -107,7 +107,7 @@ page{
 
 .x-center {
   text-align: center;
-}
+}*/
  .sprite_canyu{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -5px -55px; width: 40px; height: 40px;background-repeat: no-repeat;margin:0 auto }
 .sprite_canyu_act{background-image: url("http://cloud.antit.top/sprite.png"); background-position: -5px -5px; width: 40px; height: 40px; background-repeat: no-repeat;margin:0 auto } 
 
