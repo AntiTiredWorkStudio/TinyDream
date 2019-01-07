@@ -102,7 +102,7 @@ Page({
             if(data.dream[0].ptime==0){
               page.setData({
                 title: data.dream[0].title,
-                time: data.dream[0].ctime,
+                time: C.GetLocalTime(data.dream[0].ctime),
                 bill: data.dream[0].bill,
                 has: true,
                 pay: false
@@ -110,7 +110,7 @@ Page({
             }else{
               page.setData({
                 title: data.dream[0].title,
-                time: data.dream[0].ptime,
+                time: C.GetLocalTime(data.dream[0].ptime),
                 bill: data.dream[0].bill,
                 has: true,
                 pay:true
