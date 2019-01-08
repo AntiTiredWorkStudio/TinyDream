@@ -11,7 +11,7 @@ Page({
       hasDream:false,
       hasPay:false,
       dreamName:"暂未提交梦想",
-      dreamContent:"点击填写并提交自己的梦想",
+      dreamContent:"点击填写梦想并购买服务",
     },
     onSubmitAndPay:function(){
         if(this.data.hasDream&& this.data.hasPay){
@@ -40,7 +40,9 @@ Page({
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-     
+      wx.setNavigationBarTitle({
+        title: '小梦想互助',
+      })
     },
 
     /**
