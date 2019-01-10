@@ -135,5 +135,6 @@ App({
     headicon: null,
     hasInfo:false,
     version:false,
+    auth:null,
   }
 })

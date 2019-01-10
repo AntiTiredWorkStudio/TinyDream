@@ -19,6 +19,22 @@ module.exports.isEmpty=function (obj) {
   }
   return false;
 }
+
+module.exports.GetSignalString = function (secret, timeStamp, requestArray) {
+  var requestString = '';
+  for (var key in requestArray) {
+    requestString = requestString + key + "=" + requestArray[key] + "&";
+  }
+  return this.sha1(requestString.substring(0, requestString.length - 1) + "&secret=" + secret + "&time=" + timeStamp);
+}
+
+module.exports.CheckAndSetAuthInfo = function (requestData) {
+  if (requestData.hasOwnProperty('auth') && requestData.hasOwnProperty("openid")) {
+    var authData = requestData.auth;
+    authData.openid = requestData.openid;
+    this.app.globalData.auth = JSON.stringify(authData);
+  }
+}
 //默认请求模板
 module.exports.TDRequest = function(module, action, data, success, failed) {
   //  var postdata = data
@@ -31,6 +47,19 @@ module.exports.TDRequest = function(module, action, data, success, failed) {
     postdata[key] = data[key]
   }
   postdata[module] = action
+
+  if(self.app.globalData.auth != null){
+    var auth = JSON.parse(self.app.globalData.auth);
+    var secret = auth.secret;
+    var openid = auth.openid;
+    var timeStamp = auth.timeStamp;
+    if (!postdata.hasOwnProperty('uid')) {
+      postdata['openid'] = openid;
+    }
+    var signal = this.GetSignalString(secret, timeStamp, postdata);
+    postdata['signal'] = signal;
+  }
+
   //console.log(postdata)
   wx.request({
     url: conf.url,
@@ -40,6 +69,7 @@ module.exports.TDRequest = function(module, action, data, success, failed) {
       "Content-Type": "application/x-www-form-urlencoded"
     },
     success: function(res) {
+      self.CheckAndSetAuthInfo(res.data);
       if (res.data.code == "0") {
         if (res.data.actions) {
           if (self.app != null && self.app.doAction) {
